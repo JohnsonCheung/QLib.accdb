@@ -16,10 +16,16 @@ Private A$()
 Sub Lin()
 PushI A, ""
 End Sub
+
+Sub X(Optional V)
+Var V
+End Sub
+
 Sub Var(Optional V)
 If IsEmpty(V) Then PushI A, "": Exit Sub
 PushIAy A, Fmt(V)
 End Sub
+
 Sub Box(S$, Optional C$ = "*")
 PushIAy A, MxBox.Box(S, C)
 End Sub
@@ -44,3 +50,12 @@ End Function
 Private Property Get IEr_Er() As String()
 MsgBox "asdf"
 End Property
+
+Sub XTab(V)
+If IsArray(V) Then
+    X AmTab(V)
+Else
+    X vbTab & V
+End If
+End Sub
+

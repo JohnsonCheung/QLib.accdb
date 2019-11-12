@@ -54,16 +54,16 @@ Dim W As Database:     Set W = Db(.WFb)
 :                              CpyFfn .TpFx, .OupFx                    ' <== Cpy to OupFx.  Assume OupFx is always new
 :                              RfhFx .OupFx, .WFb
 :                              If Not XShouldOpnWb(P) Then Exit Sub    ' <== is it done?
-Dim OWb As Workbook: Set OWb = WbzFx(.OupFx)
-:                              XCpyInp P, OWb                          ' <== Cpy inp ws
-:                              XFmt .WbFmtr, OWb                       ' <== Fmt wb
-:                              OWb.Save                                ' <== Sav
-:                              If Not .IsOpn Then OWb.Close            ' <== KeepOpn?
+Dim Wb1 As Excel.Workbook:     Set Wb1 = WbzFx(.OupFx)
+:                              XCpyInp P, Wb1                          ' <== Cpy inp ws
+:                              XFmt .WbFmtr, Wb1                       ' <== Fmt wb
+:                              Wb1.Save                                 ' <== Sav
+:                              If Not .IsOpn Then Wb1.Close            ' <== KeepOpn?
 End With
 End Sub
 
 Sub XCFx(P As CFx, ToWb As Workbook)
-Dim FmWb As Workbook: Set FmWb = Xls.Workbooks.Open(P.Fx)
+Dim FmWb As Excel.Workbook: Set FmWb = Xls.Workbooks.Open(P.Fx)
 Dim J%: For J = 0 To CWsUB(P.CWs)
     XCpyWs P.CWs(J), FmWb, ToWb
 Next

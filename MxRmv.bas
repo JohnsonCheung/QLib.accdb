@@ -23,10 +23,6 @@ Function RmvAft$(S, Sep$)
 RmvAft = Brk1(S, Sep, NoTrim:=True).S1
 End Function
 
-Function RmvDDRmk$(S)
-RmvDDRmk = BefOrAll(S, "--")
-End Function
-
 Function RmvDblSpc$(S)
 Dim O$: O = S
 While HasSubStr(O, "  ")
@@ -160,12 +156,8 @@ End If
 End Function
 
 Function RmvT1$(S)
-Dim T$: T = T1(S)
-If T = "" Then
-    RmvT1 = S
-Else
-    RmvT1 = LTrim(Mid(S, Len(T) + 1))
-End If
+Dim L$: L = S: ShfT1 L
+RmvT1 = L
 End Function
 
 Function RmvTT$(S)

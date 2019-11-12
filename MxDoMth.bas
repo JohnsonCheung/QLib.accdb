@@ -107,22 +107,6 @@ Function DoPubFunzP(P As VBProject) As Drs
 DoPubFunzP = SelDrs(Dw2Eq(DoMthczP(P), "Mdy MdTy", "Pub", "Std"), FFoPubFun)
 End Function
 
-Function MthQnzMthn$(Mthn)
-Dim D As Drs: D = DwEQ(DoMthP, "Mthn", Mthn)
-Select Case Si(D.Dy)
-Case 0: InfLin CSub, "No such Mthn[" & Mthn & "]"
-Case 1:
-    Dim IxMdn%: IxMdn = IxzAy(D.Fny, "Mdn")
-    MthQnzMthn = D.Dy(0)(IxMdn) & "." & Mthn
-Case Else
-    InfLin CSub, "No then one Md has Mthn[" & Mthn & "]"
-    IxMdn = IxzAy(D.Fny, "Mdn")
-    Dim Dr: For Each Dr In D.Dy
-        Debug.Print Dr(IxMdn) & "." & Mthn
-    Next
-End Select
-End Function
-
 Function DoMthP() As Drs
 DoMthP = DoMthzP(CPj)
 End Function

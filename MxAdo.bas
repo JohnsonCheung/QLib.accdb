@@ -128,7 +128,7 @@ Next
 End Function
 
 Function VzScvl(Scvl$, Nm$)
-VzScvl = Bet(EnsSfx(Scvl, ";"), Nm & "=", ";")
+VzScvl = IsBet(EnsSfx(Scvl, ";"), Nm & "=", ";")
 End Function
 
 Function DtaSrczScvl(Scvl$)

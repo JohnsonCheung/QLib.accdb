@@ -4,32 +4,34 @@ Option Explicit
 Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxCsv."
 
-Function DrzCsvLin(CsvLin) As String()
+Function DrzCsvLin(CsvLin) As Variant()
 If Not HasDblQ(CsvLin) Then DrzCsvLin = SplitComma(CsvLin): Exit Function
+Stop
 End Function
 
-Function CvCsv$(V)
+Function Csv$(V)
 Select Case True
-Case IsStr(V): CvCsv = """" & V & """"
-Case IsDte(V): CvCsv = Format(V, "YYYY-MM-DD HH:MM:SS")
+Case IsStr(V): Csv = """" & V & """"
+Case IsDte(V): Csv = Format(V, "YYYY-MM-DD HH:MM:SS")
 Case IsEmpty(V):
-Case Else: CvCsv = V
+Case Else: Csv = V
 End Select
 End Function
 
-Function CsvStrzDrs$(D As Drs)
-CsvStrzDrs = JnCrLf(CsvLyzDrs(D))
+Function CsvlzDrs$(D As Drs)
+':Csvl: :Lines #Csv-Lines#
+CsvlzDrs = JnCrLf(CsvLyzDrs(D))
 End Function
 
 Function CsvLyzDrs(D As Drs) As String()
+':CsvLy: :Ly #Csv-Ly#
 PushI CsvLyzDrs, JnComma(D.Fny)
 Dim Dr: For Each Dr In Itr(D.Dy)
     PushI CsvLyzDrs, CsvLinzDr(Dr)
 Next
 End Function
 
-
-Sub WrtDrsXls(D As Drs, Fcsv$)
+Sub WrtDrsAsXls(D As Drs, Fcsv$)
 'Do Wrt @D to @Fcvs using Xls-Style @@
 DltFfnIf Fcsv
 PushXlsVisHid
@@ -38,7 +40,7 @@ PopXlsVis
 End Sub
 
 Sub WrtDrs(D As Drs, Fcsv$)
-WrtStr CsvStrzDrs(D), Fcsv, OvrWrt:=True
+WrtStr CsvlzDrs(D), Fcsv, OvrWrt:=True
 End Sub
 
 Sub WrtDrsRes(D As Drs, ResFnn$, Optional Pseg$)
@@ -52,7 +54,7 @@ Dim O$(), U&, J&, V
 U = UB(Dr)
 ReDim O(U)
 For Each V In Dr
-    O(J) = CvCsv(V)
+    O(J) = Csv(V)
     J = J + 1
 Next
 CsvLinzDr = Join(O, ",")

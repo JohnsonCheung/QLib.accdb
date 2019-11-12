@@ -15,10 +15,10 @@ End Function
 
 Function DoMdzP(P As VBProject) As Drs
 Dim MdId As Drs: MdId = DoMdIdzP(P)
-DoMdzP = AddCol_MdSts_Mthnn(MdId, P)
+DoMdzP = AddMdCol_Sts_Mthnn(MdId, P)
 End Function
 
-Function AddCol_MdSts_Mthnn(MdId As Drs, P As VBProject) As Drs
+Function AddMdCol_Sts_Mthnn(MdId As Drs, P As VBProject) As Drs
 Dim Dy()
     Dim IxMdn%: IxMdn = IxzAy(MdId.Fny, "Mdn")
     Dim Dr: For Each Dr In Itr(MdId.Dy)
@@ -31,5 +31,5 @@ Dim Dy()
             PushI Dy, AddAy(Dr, Array(.NLin, NMth, .NPub, .NPrv, .NFrd, MthnnzL(L)))
         End With
     Next
-AddCol_MdSts_Mthnn = AddColzFFDy(MdId, "NLin NMth NPub NPrv NFrd Mthnn", Dy)
+AddMdCol_Sts_Mthnn = AddColzFFDy(MdId, "NLin NMth NPub NPrv NFrd Mthnn", Dy)
 End Function

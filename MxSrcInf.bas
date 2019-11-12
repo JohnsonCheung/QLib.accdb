@@ -110,6 +110,10 @@ Function Src(M As CodeModule) As String()
 Src = SplitCrLf(Srcl(M))
 End Function
 
+Function SrcM() As String()
+SrcM = SplitCrLf(Srcl(CMd))
+End Function
+
 Function SrczM(M As CodeModule) As String()
 SrczM = SplitCrLf(Srcl(M))
 End Function

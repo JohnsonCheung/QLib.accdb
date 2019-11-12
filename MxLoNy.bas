@@ -4,7 +4,7 @@ Option Compare Text
 Const CLib$ = "QXls."
 Const CMod$ = CLib & "MxLoNy."
 
-Function LoNyzWs(S As Worksheet) As String()
+Function LoNyzWs(S As Excel.Worksheet) As String()
 LoNyzWs = Itn(S.ListObjects)
 End Function
 

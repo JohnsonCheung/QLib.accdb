@@ -4,7 +4,6 @@ Option Compare Text
 Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxShfTyDfn."
 
-
 Function ShfTyDfnNm$(OLin$)
 Dim A$: A = T1(OLin)
 If IsTyDfnNm(A) Then
@@ -28,5 +27,4 @@ If IsMemNm(A) Then
     OLin = RmvT1(OLin)
 End If
 End Function
-
 

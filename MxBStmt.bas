@@ -17,9 +17,6 @@ Function FoBStmt() As String()
 FoBStmt = SyzSS(FFoBStmt)
 End Function
 
-Function DoBStmtzM(M As CodeModule)
-
-End Function
 Function DyoBStmt(Src$()) As Variant()
 Dim L, J&: For Each L In Itr(Src)
     J = J + 1

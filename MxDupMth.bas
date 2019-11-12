@@ -23,7 +23,7 @@ DoDupMthP = DoDupMthzP(CPj, InclPrv, IsExactDup)
 End Function
 
 Function DoDupMthzP(P As VBProject, Optional InclPrv As Boolean, Optional IsExactDup As Boolean) As Drs
-Dim A As Drs: A = DwEQ(DoMthczP(P), "MdTy", "Std")
+Dim A As Drs: A = DwEq(DoMthczP(P), "MdTy", "Std")
 Dim A1 As Drs:
     If InclPrv Then
         A1 = A

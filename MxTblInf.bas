@@ -468,7 +468,7 @@ SqzT = SqzRs(RszT(D, T), ExlFldNm)
 End Function
 
 Function SrcFbzT$(D As Database, T)
-SrcFbzT = Bet(D.TableDefs(T).Connect, "Database=", ";")
+SrcFbzT = IsBet(D.TableDefs(T).Connect, "Database=", ";")
 End Function
 
 Function SrcTn$(D As Database, T)

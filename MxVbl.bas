@@ -78,22 +78,24 @@ Dim VblLy$()
 GoSub T1
 Exit Sub
 T0:
-    Erase XX
-    X "1 | 2 | 3"
-    X "4 | 5 6 |"
-    X "| 7 | 8 | 9 | 10 | 11 |"
-    X "12"
-    VblLy = XX
+    With New Bfr
+    .X "1 | 2 | 3"
+    .X "4 | 5 6 |"
+    .X "| 7 | 8 | 9 | 10 | 11 |"
+    .X "12"
+    VblLy = .Ly
+    End With
     Ept = Array(SyzSS("1 2 3"), Sy("4", "5 6", ""), Sy("", "7", "8", "9", "10", "11", ""), Sy("12"))
     GoTo Tst
 Exit Sub
 T1:
-    Erase XX
-    X "|lskdf|sdlf|lsdkf"
-    X "|lsdf|"
-    X "|lskdfj|sdlfk|sdlkfj|sdklf|skldf|"
-    X "|sdf"
-    VblLy = XX
+    With New Bfr
+    .X "|lskdf|sdlf|lsdkf"
+    .X "|lsdf|"
+    .X "|lskdfj|sdlfk|sdlkfj|sdklf|skldf|"
+    .X "|sdf"
+    VblLy = .Ly
+    End With
     Ept = ""
     GoTo Tst
 Tst:
@@ -102,4 +104,8 @@ Tst:
 '    C
     Return
 End Sub
+
+Function LyzVbl(Vbl) As String()
+LyzVbl = SplitVBar(Vbl)
+End Function
 

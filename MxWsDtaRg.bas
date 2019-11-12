@@ -7,7 +7,7 @@ Sub ClrDtarg(A As Worksheet)
 DtaDtarg(A).Clear
 End Sub
 
-Function DtaDtarg(Ws As Worksheet) As Range
+Function DtaDtarg(Ws As Excel.Worksheet) As Range
 Set DtaDtarg = Ws.Range(A1zWs(Ws), LasCell(Ws))
 End Function
 

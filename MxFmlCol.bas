@@ -24,7 +24,7 @@ Dim NewFld$, FunNm$, PmAy$(), Fml$, I
 For Each I In Itr(FmlSy)
     Fml = I
     NewFld = Bef(Fml, "=")
-    FunNm = Bet(Fml, "=", "(")
+    FunNm = IsBet(Fml, "=", "(")
     PmAy = SplitComma(BetBkt(Fml))
     O = AddFml(O, NewFld, FunNm, PmAy)
 Next

@@ -5,7 +5,7 @@ Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxGp."
 
 Function GpAsAyDy(D As Drs, Gpcc$) As Variant()
-'Fm  D : ..{Gpcc}..        ! it has col-@Gpcc
+'@D : ..{Gpcc}..        ! it has col-@Gpcc
 'Ret   : gp-of-:Dy:-of-@D ! each gp of dry has same @Gpcc val
 Dim O()
     Dim SDy():  SDy = D.Dy              ' the src-dy to be gp
@@ -22,7 +22,7 @@ GpAsAyDy = O
 End Function
 
 Function Gp(D As Drs, Gpcc$, Optional C$) As Drs
-'Fm  D : ..@Gpcc..@C.. ! it has col-Gpcc and optional col-C
+'@D : ..@Gpcc..@C.. ! it has col-Gpcc and optional col-C
 'Ret   : @Gpcc #Gp ! where #Gp is opt gp of col-C, in :Av: @@
 Dim OKey(), OGp()  ' Sam Si
     Dim SDy(): SDy = D.Dy               ' #Src-Dy. Source Dy to be gp
@@ -60,7 +60,7 @@ Dim I&, Key(), O(), Dr, R&: For Each Dr In Itr(Dy)
     I = IxzDyDr(Key, Dr)
     If I = -1 Then
         PushI Key, Dr
-        PushI O, LngAp(R)
+        PushI O, LngAy(R)
     Else
         PushI O(I), R
     End If

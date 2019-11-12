@@ -5,8 +5,8 @@ Const CNs$ = "as"
 Const CLib$ = "QDao."
 Const CMod$ = CLib & "MxFds."
 
-Function CsvzFds$(A As DAO.Fields)
-CsvzFds = CsvLinzDr(AvzItr(A))
+Function CsvLinzFds$(A As DAO.Fields)
+CsvLinzFds = CsvLinzDr(AvzItr(A))
 End Function
 
 Function DrzFds(A As DAO.Fields, Optional FF$) As Variant()

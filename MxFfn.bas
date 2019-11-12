@@ -389,7 +389,6 @@ Function IsInstFdr(Fdr$) As Boolean
 IsInstFdr = IsTimStr(Fdr)
 End Function
 
-
 Function FfnzPthFn$(Pth, Fn$)
 FfnzPthFn = Ffn(Pth, Fn)
 End Function
@@ -397,3 +396,11 @@ End Function
 Function Ffn$(Pth, Fn$)
 Ffn = EnsPthSfx(Pth) & Fn
 End Function
+
+Function HasExtss(Ffn, ExtssLin) As Boolean
+Dim E$: E = Ext(Ffn)
+Dim Sy$(): Sy = SyzSS(ExtssLin)
+HasExtss = HasEleS(Sy, E)
+End Function
+
+

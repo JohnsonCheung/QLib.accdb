@@ -354,7 +354,7 @@ End With
 End Function
 
 Function SelDistCnt(D As Drs, FF$) As Drs
-'Fm  D : ..{Gpcc}    ! it has columns-Gpcc
+'@D : ..{Gpcc}    ! it has columns-Gpcc
 'Ret   : {Gpcc} Cnt  ! each @Gpcc is unique.  Cnt is rec cnt of such gp
 Dim Gp(), Cnt&()
     With GpCnt(D, FF)
@@ -436,9 +436,9 @@ UpdCC = Drs(A.Fny, Dy)
 End Function
 
 Function UpdDrs(A As Drs, B As Drs, Jn$, Upd$, IsLefJn As Boolean) As Drs
-'Fm  A  : ..@Jn-LHS..@Upd-LHS.. ! to be updated
-'Fm  B  : ..@Jn-RHS..@Upd-RHS.. ! used to update @A.@Upd-LHS
-'Fm  Jn : :SS-JnTerm            ! :JnTerm is :ColonTerm.  LHS is @A-fld and RHS is @B-fld
+'@A  : ..@Jn-LHS..@Upd-LHS.. ! to be updated
+'@B  : ..@Jn-RHS..@Upd-RHS.. ! used to update @A.@Upd-LHS
+'@Jn : :SS-JnTerm            ! :JnTerm is :ColonTerm.  LHS is @A-fld and RHS is @B-fld
 'Fm Upd : :Upd-UpdTerm          ! :UpdTer: is :ColTerm.  LHS is @A-fld and RHS is @B-fld
 'Ret    : sam as @A             ! new Drs from @A with @A.@Upd-LHS updated from @B.@Upd-RHS. @@
 Dim C As Dictionary: Set C = DiczDrsCC(B)
@@ -479,7 +479,7 @@ Exit Sub
 T0:
     ColIx = 0
     Dy = Array(Array(1, 2, 3, 4), Array(1, 2, 3), Array(2, 4, 3))
-    Ept = LngAp(0, 1)
+    Ept = LngAy(0, 1)
     GoTo Tst
 Tst:
     Act = F_SubRxy_ByDupFFDyColIx(Dy, ColIx)
@@ -491,3 +491,16 @@ End Sub
 Sub Z_SelDist()
 'BrwDrs SelDistCnt(DoPubFun, "Mdn Ty")
 End Sub
+Function DePatn(A As Drs, C$, ExlPatn$) As Drs
+Dim ODy()
+Dim R As RegExp: Set R = Rx(ExlPatn)
+Dim Ix%: Ix = IxzAy(A.Fny, C)
+Dim Dr: For Each Dr In Itr(A.Dy)
+    Dim V: V = Dr(Ix)
+    If Not R.Test(V) Then
+        PushI ODy, Dr
+    End If
+Next
+DePatn = Drs(A.Fny, ODy)
+End Function
+

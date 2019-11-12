@@ -306,6 +306,13 @@ For Each I In V
 Next
 IsAllBlnkSy = True
 End Function
+
+Function IsBlnk(V) As Boolean
+Select Case True
+Case IsBlnkStr(V), IsNull(V), IsEmpty(V), IsMissing(V): IsBlnk = True
+End Select
+End Function
+
 Function IsBlnkStr(V) As Boolean
 If IsStr(V) Then
     If Trim(V) = "" Then IsBlnkStr = True

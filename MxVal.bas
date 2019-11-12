@@ -4,10 +4,6 @@ Option Explicit
 Const CLib$ = "QVb."
 Const CMod$ = CLib & "MxVal."
 
-Function AddIxPfxzLines(Lines, Optional B As EmIxCol = EiBeg0) As String()
-AddIxPfxzLines = AddIxPfx(SplitCrLf(Lines), B)
-End Function
-
 Function FmtPrim$(Prim)
 FmtPrim = Prim & " (" & TypeName(Prim) & ")"
 End Function

@@ -8,7 +8,7 @@ Function SrcpzCmp$(A As VBComponent)
 SrcpzCmp = SrcpzP(PjzC(A))
 End Function
 
-Function SrcpzPjf$(Pjf)
+Function SrcpzPjf$(Pjf, Optional Libv$)
 SrcpzPjf = EnsPth(Pjf & ".src")
 End Function
 
@@ -21,14 +21,25 @@ Dim P$: P = Pjp(DistPj)
 SrcpzDistPj = AddFdrAp(UpPth(P, 1), ".Src", Fdr(P))
 End Function
 
-Function SrcpP$()
-SrcpP = SrcpzP(CPj)
+Function SrcpP$(Optional Libv$)
+SrcpP = SrcpzP(CPj, Libv)
 End Function
 
-Function SrcpzP$(P As VBProject)
-SrcpzP = SrcpzPjf(Pjf(P))
+Function SrcpzP$(P As VBProject, Optional Libv$)
+SrcpzP = SrcpzPjf(Pjf(P), Libv)
 End Function
+
 Sub BrwSrcpP()
 BrwPth SrcpP
+End Sub
+
+Function IsSrcp(Pth) As Boolean
+Dim F$: F = Fdr(Pth)
+If Not HasExtss(F, ".xlam .accdb") Then Exit Function
+IsSrcp = Fdr(ParPth(Pth)) = ".Src"
+End Function
+
+Sub ThwNotSrcp(Srcp$)
+If Not IsSrcp(Srcp) Then Err.Raise 1, , "Not Srcp:" & vbCrLf & Srcp
 End Sub
 

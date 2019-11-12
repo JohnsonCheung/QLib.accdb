@@ -27,7 +27,6 @@ Dim Nav(): Nav = Array("aa bb", 1, 2)
 D LyzNav(Nav)
 End Sub
 
-
 Function LinzFunMsgNav$(Fun$, Msg$, Nav())
 LinzFunMsgNav = LinzFunMsg(Fun, Msg) & " " & LinzNav(Nav)
 End Function
@@ -41,10 +40,10 @@ End Function
 Function LyzMsgNav(Msg$, Nav()) As String()
 LyzMsgNav = AddAy(LyzMsg(Msg), IndentSy(LyzNav(Nav)))
 End Function
+
 Function LinzLyzMsgNav$(Msg$, Nav())
 LinzLyzMsgNav = EnsSfxDot(Msg) & " | " & LinzNav(Nav)
 End Function
-
 
 Function LinzNav$(Nav())
 Dim Ny$(), Av()

@@ -19,8 +19,8 @@ Type RC
     C As Long
 End Type
 Function HasRC(A As RRCC, B As RC) As Boolean
-If NBet(B.R, A.R1, A.R2) Then Exit Function
-If NBet(B.C, A.C1, A.C2) Then Exit Function
+If IsNBet(B.R, A.R1, A.R2) Then Exit Function
+If IsNBet(B.C, A.C1, A.C2) Then Exit Function
 HasRC = True
 End Function
 Function RRCC(R1, R2, C1, C2) As RRCC

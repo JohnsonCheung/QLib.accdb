@@ -104,6 +104,7 @@ End Sub
 Function SrcT1AsetP() As Aset
 Set SrcT1AsetP = T1Aset(SrczP(CPj))
 End Function
+
 Function T1Aset(Ly$()) As Aset
 Dim O As New Aset, L
 For Each L In Itr(Ly)
@@ -116,17 +117,7 @@ T1zS = T1(S)
 End Function
 
 Function T1$(S)
-Dim O$: O = LTrim(S)
-If FstChr(O) = "[" Then
-    Dim P%
-    P = InStr(S, "]")
-    If P = 0 Then
-        Thw CSub, "S has fstchr [, but no ]", "S", S
-    End If
-    T1 = Mid(S, 2, P - 2)
-    Exit Function
-End If
-T1 = BefOrAll(O, " ")
+T1 = ShfT1(CStr(S))
 End Function
 
 Function T2zS$(S)
@@ -157,7 +148,6 @@ N = 2: A = "a b c": Ept = "b": GoSub Tst
 N = 3: A = "a b c": Ept = "c": GoSub Tst
 Exit Sub
 Tst:
-
     Act = TermN(A, N)
     C
     Return
@@ -214,6 +204,7 @@ Dim Ay$(): Ay = Split(Lin, ",")
 If Not IsBet(Ix, 0, UB(Ay)) Then Exit Function
 CommaTerm = Ay(Ix)
 End Function
+
 Function LinzTermAy$(TermAy)
 LinzTermAy = TLin(TermAy)
 End Function
@@ -254,8 +245,25 @@ End If
 End Function
 
 Function ShfT1$(OLin)
-ShfT1 = T1(OLin)
-OLin = LTrim(RmvPfx(OLin, ShfT1))
+Dim O$: O = LTrim(OLin)
+If FstChr(O) = "[" Then
+    Dim P%
+    P = InStr(O, "]")
+    If P = 0 Then
+        Thw CSub, "OLin has fstchr [, but no ]", "OLin", OLin
+    End If
+    ShfT1 = Mid(O, 2, P - 2)
+    OLin = LTrim(Mid(O, P - 1))
+    Exit Function
+End If
+P = InStr(O, " ")
+If P = 0 Then
+    ShfT1 = O
+    OLin = ""
+Else
+    ShfT1 = Left(O, P - 1)
+    OLin = LTrim(Mid(O, P + 1))
+End If
 End Function
 
 Function ShfTermDot$(OLin$)

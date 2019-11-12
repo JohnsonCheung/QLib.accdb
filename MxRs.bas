@@ -48,7 +48,7 @@ End With
 End Function
 
 Function CsvLinzRs$(A As DAO.Recordset)
-CsvLinzRs = CsvzFds(A.Fields)
+CsvLinzRs = CsvLinzFds(A.Fields)
 End Function
 
 Function CsvLyzRs(A As DAO.Recordset, Optional FF$) As String()
@@ -64,7 +64,7 @@ While Not A.EOF
     I = 0
     Set Flds = A.Fields
     For Each F In Fny
-        Dr(I) = CvCsv(Flds(F).Value)
+        Dr(I) = Csv(Flds(F).Value)
         I = I + 1
     Next
     Push O, Join(Dr, ",")

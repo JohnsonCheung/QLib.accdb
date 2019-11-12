@@ -543,11 +543,12 @@ End Sub
 
 Function EoFfnMis(Ffn$, Optional Inpn$ = "File") As String()
 If HasFfn(Ffn) Then Exit Function
-Erase XX
-XLin "[?] not found"
-XTab "Path : " & Pth(Ffn)
-XTab "File : " & Fn(Ffn)
-EoFfnMis = XX
+With New Bfr
+.X "[?] not found"
+.XTab "Path : " & Pth(Ffn)
+.XTab "File : " & Fn(Ffn)
+EoFfnMis = .Ly
+End With
 End Function
 Function EoFxwwMis(Fx$, Wsnn$, Optional Inpn$ = "Excel file") As String()
 EoFxwwMis = EoFfnMis(Fx, Inpn)
@@ -558,12 +559,13 @@ End Function
 
 Function EoWsMis(Fx, Wsn, Optional Inpn$ = "Excel file") As String()
 If HasFxw(Fx, Wsn) Then Exit Function
-Erase XX
-XLin FmtQQ("[?] miss ws [?]", Inpn, Wsn)
-XTab "Path  : " & Pth(Fx)
-XTab "File  : " & Fn(Fx)
-XTab "Has Ws: " & Termss(WnyzFx(Fx))
-EoWsMis = XX
+With New Bfr
+.X FmtQQ("[?] miss ws [?]", Inpn, Wsn)
+.XTab "Path  : " & Pth(Fx)
+.XTab "File  : " & Fn(Fx)
+.XTab "Has Ws: " & Termss(WnyzFx(Fx))
+EoWsMis = .Ly
+End With
 End Function
 
 Function EoFxwMis(Fx$, Wsn, Optional Inpn$ = "Excel file") As String()
@@ -583,8 +585,8 @@ For Each Ws In CWb.Sheets
     If Ws.CodeName = WsCdn Then Set WszCd = Ws: Exit Function
 Next
 End Function
-Function WszDic(Dic As Dictionary, Optional InclDicValOptTy As Boolean) As Worksheet
-Set WszDic = WszDrs(DoDic(Dic, InclDicValOptTy))
+Function WszDic(Dic As Dictionary, Optional InclValTy As Boolean) As Worksheet
+Set WszDic = WszDrs(DoDic(Dic, InclValTy))
 End Function
 
 Function WszDt(A As Dt) As Worksheet

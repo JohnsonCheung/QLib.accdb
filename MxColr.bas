@@ -205,6 +205,12 @@ For Each I In ColrLy
 Next
 End Function
 
+Function IsColrStr(S) As Boolean
+
+End Function
+Function VdtColrStrSS$()
+Stop
+End Function
 Function Colr&(ColrNm$)
 Dim X$
 X = FstElezRmvT1(ColrLy, ColrNm)
@@ -217,12 +223,11 @@ Dim Ws As Worksheet, Sq(), J%
 Sq = ColrSq
 'Set Ws = WszRg(RgzSq(ColrSq, NewA1))
 For J = 1 To UBound(Sq(), 1)
-    WsRC(Ws, J, 3).Interia.Color = Sq(J, 2)
+    WsRC(Ws, J, 3).Interia.Colr = Sq(J, 2)
 Next
 WsCC(Ws, 1, 2).EntireColumn.AutoFit
 Set ColrWb = WbzWs(ShwWs(Ws))
 End Property
-
 
 Sub SetColr_ToDo()
 'TstStep
@@ -233,17 +238,17 @@ Sub SetColr_ToDo()
 '   Under FmtWbAllLo
 'AutoImp will show msg if import/noImport
 'ColrLy
-'   what is the common color name in DotNet Library
-'       Use Enums: System.Drawing.KnownColor is no good, because the Enmn is in seq, it is not return
-'       Use VBA.ColorConstants-module is good, but there is few constant
-'       Answer: Use *KnownColor to feed in struct-*Color, there is *Color.ToArgb & *KnownColor has name
+'   what is the common Colr name in DotNet Library
+'       Use Enums: System.Drawing.KnownColr is no good, because the Enmn is in seq, it is not return
+'       Use VBA.colrCnstants-module is good, but there is few constant
+'       Answer: Use *KnownColr to feed in struct-*Colr, there is *Colr.ToArgb & *KnownColr has name
 '               Run the FSharp program.
 '               Put the generated file
 '                   in
-'                       C:\Users\user\Source\Repos\EnumLines\EnumLines\bin\Debug\ColorLines.Const.Txt
+'                       C:\Users\user\Source\Repos\EnumLines\EnumLines\bin\Debug\ColrLines.Const.Txt
 '                   Into
 '                       C:\Users\user\Desktop\MHD\SAPAccessReports\StockShipRate\StockShipRate\Spec
-'               Run ConstGen: It will addd the Const ColorLines = ".... at end
+'               Run ConstGen: It will addd the Const ColrLines = ".... at end
 '               Put Fct-Module
 'To find some common values to feed into ColrLines
 '
@@ -254,38 +259,43 @@ Sub SetColr_ToDo()
 '    ColrLines
 End Sub
 
-Sub FSharpBldKnownColor()
-'// Learn more about F# at http://fsharp.org
-'// See the 'F# Tutorial' project for more help.
+Function CdoDiColrnqColr$()
+'Aim            : Use Assembly to build the KnowColor-Vb module
+'Assembly       : System.Drawing.dll
+'Enum           : System.Drawing.KnownColor
+'KnownColorCount: 174 - 1  ! All Alpha-Value = 255, only 1 knownColor has Alphas-Value = 2, which is 'Transparent'
+'Target-Vb-Fun  : DiColrnqColr
+
 'open System.Drawing
 'open System
 'open System.IO
 'open System.Windows.Forms
 '
-'type slis = String list
+'type ss = String list
 'type sy = String[]
-'type sseq = String seq
-'let slis_lines(a:slis) = String.Join("\r\n",a)
-'let sy_lines(a:sy) = String.Join("\r\n",a)
-'let str_wrt ft a = File.WriteAllText(ft,a)
-'let sseq_wrt ft (a:sseq) = File.WriteAllLines(ft,a)
-'let slis_wrt ft a = a|> sseq_wrt ft
-'let mayStr_wrt a ft = match a with | Some a -> str_wrt a ft | _ -> ()
-'Let colorConstFt = "ColorLines.Txt"
-'//let knownColor_lin a = a.ToString() + " " + Color.FromKnownColor(a).ToArgb().ToString()
-'let knownColor_lin a = "Const " + a.ToString() + "& = " + Color.FromKnownColor(a).ToArgb().ToString()
-'let sy_wrt a ft = a |> sseq_wrt ft
-'let arr_seq<'a>(a:Array) = seq { for i in a -> unbox i }
-'let arr_ay<'a>(a:Array) = [|for i in a -> unbox i|]
-'let arr_lis<'a>(a:Array) = [for i in a -> unbox i]
-'let knownColorArr = Enum.GetValues(KnownColor.ActiveBorder.GetType())
-'let knownColorLis = knownColorArr |> arr_lis<KnownColor>
-'let colorConstLis = knownColorLis |> List.map knownColor_lin |> List.sort
-'let wrt_colorConstFt() = slis_wrt colorConstFt colorConstLis
+'type ss = String seq
+'type als<'a> = 'a list
+'type aay<'a> = 'a[]
+'type asq<'a> = 'a seq
+'let lines'sl(a:sl) = String.Join("\r\n",a)
+'let lines'sy(a:sy) = String.Join("\r\n",a)
+'let wrt_str  ft a = File.WriteAllText(ft,a)
+'let wrt_strSeq ft (a:ss) = File.WriteAllLines(ft,a)
+'let wrt_strList ft a = a|> wrt_sseq ft
+'let wrt_mayStr ft a = match a with | Some a -> str_wrt a ft | _ -> ()
+'let colrCnstFt = "ColrLines.Txt"
+'//let knownColr'lin colr = colr.ToString() + " " + Colr.FromKnownColr(colr).ToArgb().ToString()
+'let known'ColrCnstlin colr = "Const " + a.ToString() + "& = " + Colr.FromKnownColr(a).ToArgb().ToString()
+'let wrt_sy ft a = a |> wrt_sseq ft
+'let asq'ay<'a>(a:Array) = seq { for i in a -> unbox i }
+'let aay'ay<'a>(a:Array) = [|for i in a -> unbox i|]
+'let als'ay<'a>(a:Array) = [for i in a -> unbox i]
+'let ``known:ColrAy`` = Enum.GetValues(KnownColr.ActiveBorder.GetType())
+'let ``known:ColrLs`` = knownColrAy |> al'ay<KnownColr>
+'let  ``colr:CnstLs`` = knownColrLs |> List.map knownColr'lin |> List.sort
 '[<EntryPoint>]
 'let main argv =
-'    printfn "%A" argv
-'//    MessageBox.Show System.Environment.CurrentDirectory |> ignore
-'    do wrt_colorConstFt()
+'    wrt_sl colrCnstFt colrCnst`Ls
+'    do wrt_colrCnstFt()
 '    0 // return an integer exit code
-End Sub
+End Function

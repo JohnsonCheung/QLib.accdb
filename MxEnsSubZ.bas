@@ -8,7 +8,7 @@ Private Type DiArgItmqVar '
 End Type
 
 Function WCd$(MDMdyCall As Drs, Itm$)
-Dim Cl$():           Cl = StrCol(DwEQ(MDMdyCall, "Mdy", Itm), "Call") ' Cl = CallLy
+Dim Cl$():           Cl = StrCol(DwEq(MDMdyCall, "Mdy", Itm), "Call") ' Cl = CallLy
 Dim ClSrt$():     ClSrt = AySrt(Cl)
 Dim ClAliR$():   ClAliR = AlignRzT1(ClSrt)
 Dim ClCrPfx$(): ClCrPfx = AmAddPfx(ClAliR, vbCrLf)
@@ -78,7 +78,7 @@ Next
 End Sub
 
 Function WMthNyzTy(DoMth As Drs, Ty$) As String()
-WMthNyzTy = StrCol(DwEQ(DoMth, "Ty", Ty), "Mthn")
+WMthNyzTy = StrCol(DwEq(DoMth, "Ty", Ty), "Mthn")
 End Function
 
 Function WCallPm$(MthPm$, D As DiArgItmqVar)
@@ -93,7 +93,7 @@ WCallPm = JnCommaSpc(O)
 End Function
 
 Function WMthNy(DoMth As Drs, Mdy$) As String()
-WMthNy = StrCol(DwEQ(DoMth, "Mdy", Mdy), "Mthn")
+WMthNy = StrCol(DwEq(DoMth, "Mdy", Mdy), "Mthn")
 End Function
 
 Function XDiArgNmqArgVar(MD2 As Drs) As Dictionary
@@ -111,7 +111,7 @@ Function CdSubZ$(M As CodeModule)
 '':MN: :Mthn:
 '':AG: :Arg:
 Dim Md       As Drs:       Md = AddMthColMthPm(DoMthzM(M))                                                        ' :Drs-L Mdy Ty Mthn MthLin>
-Dim MdRetObj As Drs: MdRetObj = SelDrs(AddMthColIsRetObj(AddColzRetAs(Md)), "Mdy Ty Mthn MthPm RetSfx IsRetObj") ' :Drs-Mdy Ty Mthn MthPm RetSfx IsRetObj>
+Dim MdRetObj As Drs: MdRetObj = SelDrs(AddMthColIsRetObj(AddMthColRetAs(Md)), "Mdy Ty Mthn MthPm RetSfx IsRetObj") ' :Drs-Mdy Ty Mthn MthPm RetSfx IsRetObj>
 
 '-- CdZDashXX-----------------------------------------------------------------------------------------------------------
 '   is list of Mthn of Z_XXX within @M
@@ -136,7 +136,7 @@ Dim AGDi     As DiArgItmqVar: Set AGDi.D = DiczDrsCC(DoArg, "ArgItm ArgVar")
 Dim MDNoZ     As Drs:              MDNoZ = DwNe(MdRetObj, "Mthn", "Z")
 Dim MDCallPm  As Drs:           MDCallPm = XMDCallPm(MDNoZ, AGDi)                               ' :Drs-Mdy Ty Mthn MthPm RetSfx IsRetObj CallPm>
 Dim MDCall    As Drs:             MDCall = XMDCall(MDCallPm)                                 ' :Drs-Mdy Ty Mthn MthPm RetSfx IsRetObj CallPm Call>
-Dim MDGet     As Drs:              MDGet = DwEQSel(MDCall, "Ty", "Get", "Call")
+Dim MDGet     As Drs:              MDGet = DwEqSel(MDCall, "Ty", "Get", "Call")
 Dim MDMdyCall As Drs:          MDMdyCall = DwNeSel(MDCall, "Ty", "Get", "Mdy Call")          ' :Drs-Mdy Call>
 Dim CDPub$:                        CDPub = WCd(MDMdyCall, "Pub")
 Dim CDPrv$:                        CDPrv = WCd(MDMdyCall, "Prv")

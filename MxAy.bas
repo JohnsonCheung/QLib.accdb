@@ -41,9 +41,6 @@ If Si(Dup) = 0 Then Exit Function
 PushI ChkDup, FmtQQ(QMsg, JnSpc(Dup))
 End Function
 
-Function LyzVbl(Vbl) As String()
-LyzVbl = SplitVBar(Vbl)
-End Function
 Function DupAmT1(Ly$(), Optional C As VbCompareMethod = vbTextCompare) As String()
 Dim A$(): A = AmT1(Ly)
 DupAmT1 = AwDup(A, C)
@@ -243,7 +240,7 @@ End If
 SampLinzAy = "*Ay:[" & U & "]" & S
 End Function
 
-Function SeqDiKqCnt(Ay) As Dictionary 'The return dic of key=AyEle pointing to 2-Ele-LngAp with Ele-0 as Seq#(0..) and Ele- as Cnt
+Function SeqDiKqCnt(Ay) As Dictionary 'The return dic of key=AyEle pointing to 2-Ele-LngAy with Ele-0 as Seq#(0..) and Ele- as Cnt
 Dim S&, O As New Dictionary, L&(), X
 For Each X In Itr(Ay)
     If O.Exists(X) Then
@@ -377,71 +374,7 @@ End Function
 Function StmtLy(StmtLin) As String()
 StmtLy = SyEnsSfxDot(AyLTrim(Split(StmtLin, ". ")))
 End Function
-Function AyZip(A1, A2) As Variant()
-Dim U1&: U1 = UB(A1)
-Dim U2&: U2 = UB(A2)
-Dim U&: U = Max(U1, U2)
-Dim O()
-    Dim J&
-    O = ResiU(O, U)
-    For J = 0 To U
-        If U1 >= J Then
-            If U2 >= J Then
-                O(J) = Array(A1(J), A2(J))
-            Else
-                O(J) = Array(A1(J), Empty)
-            End If
-        Else
-            If U2 >= J Then
-                O(J) = Array(, A2(J))
-            Else
-                Stop
-            End If
-        End If
-    Next
-AyZip = O
-End Function
 
-Function AyZip_Ap(Ay, ParamArray Ap()) As Variant()
-Dim Av(): If UBound(Ap) >= 0 Then Av = Ap
-Dim UCol%
-    UCol = UB(Av)
-
-Dim URow1&
-    URow1 = UB(Ay)
-
-Dim URow&
-Dim URowAy&()
-    Dim J%, IURow%
-    URow = URow1
-    For J = 0 To UB(Av)
-        IURow = UB(Av(J))
-        Push URowAy, IURow
-        If IURow > URow Then URow = IURow
-    Next
-
-Dim ODy()
-    Dim Dr()
-    ODy = ResiU(ODy, URow)
-    Dim I%
-    For J = 0 To URow
-        Erase Dr
-        If URow1 >= J Then
-            Push Dr, Ay(J)
-        Else
-            Push Dr, Empty
-        End If
-        For I = 0 To UB(Av)
-            If URowAy(I) >= J Then
-                Push Dr, Av(I)(J)
-            Else
-                Push Dr, Empty
-            End If
-        Next
-        ODy(J) = Dr
-    Next
-AyZip_Ap = ODy
-End Function
 
 Function ItmAddAy(Itm, Ay)
 ItmAddAy = InsEle(Ay, Itm)
@@ -704,8 +637,8 @@ Next
 SqzDy = O
 End Function
 
-
 Function AyzAyOfAy(AyOfAy())
+If Si(AyOfAy) = 0 Then AyzAyOfAy = EmpAv: Exit Function
 Dim O: O = AyOfAy(0)
 Dim J&: For J = 1 To UB(AyOfAy)
     PushIAy O, AyOfAy(J)

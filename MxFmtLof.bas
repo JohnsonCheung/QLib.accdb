@@ -3,37 +3,36 @@ Option Compare Text
 Option Explicit
 Const CLib$ = "QXls."
 Const CMod$ = CLib & "MxFmtLof."
+Public Const VdtLofAlivv$ = "Left Right Centre"
+Public Const VdtLofBdrvv$ = "Left Right Both"
 ':Lof: :Ly #ListObject-Formatter# ! Each line is Ly with T1 LofLofT1nn"
-':FldKss: :Likss #Fld-Lik-SS# ! A :SS to expand a given Fny
+':FldLikss: :Likss #Fld-Lik-SS# ! A :SS to expand a given Fny
 ':Ali:   :
-Public Const SSoLofT1$ = "Ali Bdr Bet Cor Fml Fmt Lvl Tot Wdt Tit Nm Lbl"
-Public Const SSoAli$ = "Left Right Center"
-Public Const SSoLRBoth$ = "Left Right Both"
-Sub FmtLo(L As ListObject, Lof$())
-Dim F$(): F = FnyzLo(L)
+Sub FmtLo(Lo As ListObject, Lof$())
+Dim F$(): F = FnyzLo(Lo)
 ThwIf_Er EoLof(Lof, F), CSub
-Dim D As Dictionary: Set D = DiT1qLyItr(Lof, SSoLofT1)
-Dim I
-For Each I In D("Ali"): SetLoAli L, F, I: Next
-For Each I In D("Bdr"): SetLoBdr L, F, I: Next
-For Each I In D("Bet"): SetLoBet L, I:    Next
-For Each I In D("Cor"): SetLoCor L, F, I: Next
-For Each I In D("Fml"): SetLoFml L, I:    Next
-For Each I In D("Fmt"): SetLoFmt L, F, I: Next
-For Each I In D("Lvl"): SetLoLvl L, F, I: Next
-For Each I In D("Tot"): SetLoTot L, F, I: Next
-For Each I In D("Wdt"): SetLoWdt L, F, I: Next
-SetLoTit L, LyzLyItr(D("Tit"))
-SetLon L, T2(FstElezT1(Lof, "Nm"))
-For Each I In D("Lbl"): SetLoLbl L, I: Next ' Must run Last
+Dim D As Dictionary: Set D = DiT1qLyItr(Lof, VdtLofT1ss)
+Dim L
+For Each L In D("Ali"): SetLoAli Lo, L, F: Next
+For Each L In D("Bdr"): SetLoBdr Lo, L, F: Next
+For Each L In D("Bet"): SetLoBet Lo, L:    Next
+For Each L In D("Cor"): SetLoCor Lo, L, F: Next
+For Each L In D("Fml"): SetLoFml Lo, L:    Next
+For Each L In D("Fmt"): SetLoFmt Lo, L, F: Next
+For Each L In D("Lvl"): SetLoLvl Lo, L, F: Next
+For Each L In D("Tot"): SetLoTot Lo, L, F: Next
+For Each L In D("Wdt"): SetLoWdt Lo, L, F: Next
+SetLoTit Lo, LyzLyItr(D("Tit"))
+SetLon Lo, T2(FstElezT1(Lof, "Nm"))
+For Each L In D("Lbl"): SetLoLbl Lo, L: Next ' Must run Last
 End Sub
 
 'Ali -----------------------------------------------------------
-Sub SetLoAli(L As ListObject, Fny$(), LinOf_Ali_FldKss)
-'Fm LinOf_Ali_FldKss : T1 is :Ali: Rst is FldKss.  :Ali: is 'Left | Right | Center'
-'Ret                   : align those col as stated in @FldKss and in @LoFny as @Ali
-Dim Ali$:     Ali = T1(LinOf_Ali_FldKss)
-Dim Fny1$(): Fny1 = AwLikss(Fny, RmvT1(LinOf_Ali_FldKss))
+Sub SetLoAli(L As ListObject, LinOf_Ali_FldLikss, Fny$())
+'Fm LinOf_Ali_FldLikss : T1 is :Ali: Rst is FldLikss.  :Ali: is 'Left | Right | Center'
+'Ret                   : align those col as stated in @FldLikss and in @LoFny as @Ali
+Dim Ali$:     Ali = T1(LinOf_Ali_FldLikss)
+Dim Fny1$(): Fny1 = AwLikss(Fny, RmvT1(LinOf_Ali_FldLikss))
 Dim H As XlHAlign: H = HAlign(Ali)
 Dim F: For Each F In Itr(Fny1)
     EntColRgzLc(L, F).HorizontalAlignment = H
@@ -45,19 +44,19 @@ Select Case Ali
 Case "Left": HAlign = xlHAlignLeft
 Case "Right": HAlign = xlHAlignRight
 Case "Center": HAlign = xlHAlignCenter
-Case Else: Inf CSub, "Invalid Ali", "Valid Ali", SSoAli: Exit Function
+Case Else: Inf CSub, "Invalid Ali", "Valid Ali", VdtLofAlivv: Exit Function
 End Select
 End Function
-Function FnyzT1FldKss(Fny$(), LinOf_T1_FldKss) As String()
-FnyzT1FldKss = AwLikss(Fny, RmvT1(LinOf_T1_FldKss))
+Function FnyzT1FldLikss(Fny$(), LinOf_T1_FldLikss) As String()
+FnyzT1FldLikss = AwLikss(Fny, RmvT1(LinOf_T1_FldLikss))
 End Function
-Sub SetLoBdr(L As ListObject, Fny$(), LinOf_LRBoth_FldKss)
+Sub SetLoBdr(L As ListObject, LinOf_LRBoth_FldLikss, Fny$())
 '#  A.Fny                 :
-'Fm LinOf_LRBoth_FldKss : T1 is :Ali: Rst is FldKss.  :LRBoth: is 'Left | Right | Both'
-'Ret                   : align those col as stated in @FldKss and in @LoFny as @Ali
+'Fm LinOf_LRBoth_FldLikss : T1 is :Ali: Rst is FldLikss.  :LRBoth: is 'Left | Right | Both'
+'Ret                   : align those col as stated in @FldLikss and in @LoFny as @Ali
 
-Dim LRBoth$: LRBoth = T1(LinOf_LRBoth_FldKss)
-Dim Fny1$():   Fny1 = FnyzT1FldKss(Fny, LinOf_LRBoth_FldKss)
+Dim LRBoth$: LRBoth = T1(LinOf_LRBoth_FldLikss)
+Dim Fny1$():   Fny1 = FnyzT1FldLikss(Fny, LinOf_LRBoth_FldLikss)
 Dim IsLeft As Boolean: IsLeft = HasEle(SyzSS("Left Both"), LRBoth)
 Dim IsRight As Boolean: IsRight = HasEle(SyzSS("Right Both"), LRBoth)
 Dim F: For Each F In Itr(Fny)
@@ -71,9 +70,9 @@ Dim FSum$, FFm$, FTo$: AsgTTRst LinOf_Sum_Fm_To, FSum, FFm, FTo
 EntColRgzLc(L, FSum).Formula = FmtQQ("=Sum([?]:[?])", FFm, FTo)
 End Sub
 
-Sub SetLoCor(L As ListObject, Fny$(), LinOf_Cor_FldKss)
-Dim Cor$: Cor = T1(LinOf_Cor_FldKss)
-Dim Fny1$(): Fny1 = FnyzT1FldKss(Fny, LinOf_Cor_FldKss)
+Sub SetLoCor(L As ListObject, LinOf_Cor_FldLikss, Fny$())
+Dim Cor$: Cor = T1(LinOf_Cor_FldLikss)
+Dim Fny1$(): Fny1 = FnyzT1FldLikss(Fny, LinOf_Cor_FldLikss)
 Dim C&: C = Colr(Cor)
 Dim F: For Each F In Itr(Fny1)
     EntColRgzLc(L, F).Color = C
@@ -85,9 +84,9 @@ Dim F$, Fml$: AsgTRst LinOf_Fld_Fml, F, Fml
 EntColRgzLc(L, F).Formula = Fml
 End Sub
 
-Sub SetLoFmt(L As ListObject, Fny$(), LinOf_Fmt_FldKss)
-Dim Fmt$: Fmt = T1(LinOf_Fmt_FldKss)
-Dim Fny1$(): Fny1 = FnyzT1FldKss(Fny, LinOf_Fmt_FldKss)
+Sub SetLoFmt(L As ListObject, LinOf_Fmt_FldLikss, Fny$())
+Dim Fmt$: Fmt = T1(LinOf_Fmt_FldLikss)
+Dim Fny1$(): Fny1 = FnyzT1FldLikss(Fny, LinOf_Fmt_FldLikss)
 Dim F: For Each F In Itr(Fny1)
     EntColRgzLc(L, F).NumberFormat = Fmt
 Next
@@ -102,20 +101,21 @@ Set R1 = LoHdrCell(L, Fld)
 Set R2 = CellAbove(R1)
 SwapCellVal R1, R2
 End Sub
-Sub AsgT1Fny(LinOf_T1_FldKss, Fny$(), OT1, OFny$())
-OFny = FnyzT1FldKss(Fny, LinOf_T1_FldKss)
-OT1 = T1(LinOf_T1_FldKss)
 
+Sub AsgT1Fny(LinOf_T1_FldLikss, Fny$(), OT1, OFny$())
+OFny = FnyzT1FldLikss(Fny, LinOf_T1_FldLikss)
+OT1 = T1(LinOf_T1_FldLikss)
 End Sub
-Sub SetLoLvl(L As ListObject, Fny$(), LinOf_Lvl_FldKss)
-Dim XFny$(), XLvl As Byte: AsgT1Fny LinOf_Lvl_FldKss, Fny, XLvl, XFny
+
+Sub SetLoLvl(L As ListObject, LinOf_Lvl_FldLikss, Fny$())
+Dim XFny$(), XLvl As Byte: AsgT1Fny LinOf_Lvl_FldLikss, Fny, XLvl, XFny
 Dim F: For Each F In Itr(XFny)
     EntColRgzLc(L, F).OutlineLevel = XLvl
 Next
 End Sub
 
-Sub SetLoTot(L As ListObject, Fny$(), LinOf_SACnt_FldKss)
-Dim XSumAvgCnt$, XFny$():              AsgT1Fny LinOf_SACnt_FldKss, Fny, XSumAvgCnt, XFny
+Sub SetLoTot(L As ListObject, LinOf_SACnt_FldLikss, Fny$())
+Dim XSumAvgCnt$, XFny$():              AsgT1Fny LinOf_SACnt_FldLikss, Fny, XSumAvgCnt, XFny
 Dim T As XlTotalsCalculation: T = XTotCalc(XSumAvgCnt)
 Dim F: For Each F In Itr(XFny)
     L.ListColumns(F).Total = T
@@ -135,10 +135,10 @@ XTotCalc = O
 End Function
 
 'Wdt----------------------------------------------------------
-Sub SetLoWdt(L As ListObject, Fny$(), LinOf_Wdt_FldKss)
-Dim Wdt$, Fny1$(): AsgT1Fny LinOf_Wdt_FldKss, Fny, Wdt, Fny1
+Sub SetLoWdt(L As ListObject, LinOf_Wdt_FldLikss, Fny$())
+Dim Wdt$, Fny1$(): AsgT1Fny LinOf_Wdt_FldLikss, Fny, Wdt, Fny1
 Dim W%: W = Wdt
-If Not IsBet(W, 5, 200) Then Inf CSub, "Invalid Wdt (should between 5 200)", "Wdt Lin", W, LinOf_Wdt_FldKss: Exit Sub
+If Not IsBet(W, 5, 200) Then Inf CSub, "Invalid Wdt (should between 5 200)", "Wdt Lin", W, LinOf_Wdt_FldLikss: Exit Sub
 Dim F: For Each F In Itr(Fny)
     RgzLc(L, F).EntireColumn.Width = W
 Next
@@ -158,10 +158,10 @@ Tst:
 End Sub
 
 Sub Z_SetBdr()
-Dim Lin$, L As ListObject, Fny$()
+Dim Lin$, Lo As ListObject, Fny$()
 '--
-Set L = SampLo
-Fny = FnyzLo(L)
+Set Lo = SampLo
+Fny = FnyzLo(Lo)
 '--
 GoSub T1
 GoSub T2
@@ -171,7 +171,7 @@ T2: Lin = "Left D E F": GoTo Tst
 T3: Lin = "Right A B C": GoTo Tst
 T4: Lin = "Center A B C": GoTo Tst
 Tst:
-    SetLoBdr L, Fny, Lin     '<=='
+    SetLoBdr Lo, L, Fny     '<=='
     Stop
     Return
 End Sub
@@ -370,7 +370,7 @@ Brw FmtLof(SampLof)
 End Sub
 
 Function FmtLof(Lof$()) As String()
-Dim mAmT1$():    mAmT1 = TermAy(LofT1nn)
+Dim mAmT1$():    mAmT1 = TermAy(VdtLofT1ss)
 Dim O$()
     Dim T$, I
     For Each I In mAmT1

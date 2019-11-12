@@ -8,10 +8,6 @@ A.MissingItemsLimit = xlMissingItemsNone
 A.Refresh
 End Sub
 
-Sub RfhFx(Fx, Fb)
-RfhWb(WbzFx(Fx), Fb).Close SaveChanges:=True
-End Sub
-
 Sub RfhWs(A As Worksheet)
 Dim Q As QueryTable: For Each Q In A.QueryTables: Q.BackgroundQuery = False: Q.Refresh: Next
 Dim P As PivotTable: For Each P In A.PivotTables: P.Update: Next
@@ -30,4 +26,9 @@ ClsWczWb Wb
 DltWc Wb
 Set RfhWb = Wb
 End Function
+
+Sub RfhFx(Fx, Fb)
+RfhWb(WbzFx(Fx), Fb).Close SaveChanges:=True
+End Sub
+
 

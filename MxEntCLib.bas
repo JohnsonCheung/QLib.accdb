@@ -2,7 +2,7 @@ Attribute VB_Name = "MxEntCLib"
 Option Explicit
 Option Compare Text
 Const CLib$ = "QIde."
-Const CMod$ = CLib & "Module2."
+Const CMod$ = CLib & "MxEntCLib."
 Sub EntCLibP()
 EntCLibzP CPj
 End Sub

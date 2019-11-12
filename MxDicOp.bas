@@ -80,8 +80,8 @@ Next
 DrDicKy = O
 End Function
 
-Function DicFny(InclDicValOptTy As Boolean) As String()
-DicFny = SplitSpc("Key Val"): If InclDicValOptTy Then PushI DicFny, "ValTy"
+Function DicFny(InclValTy As Boolean) As String()
+DicFny = SplitSpc("Key Val"): If InclValTy Then PushI DicFny, "ValTy"
 End Function
 Function DyoDotAy(DotAy$()) As Variant()
 Dim I, Lin
@@ -90,13 +90,13 @@ For Each I In Itr(DotAy)
     PushI DyoDotAy, SplitDot(Lin)
 Next
 End Function
-Function DyzDi(A As Dictionary, Optional InclDicValOptTy As Boolean) As Variant()
+Function DyzDi(A As Dictionary, Optional InclValTy As Boolean) As Variant()
 Dim I, Dr
 If A.Count = 0 Then Exit Function
 Dim K(): K = A.Keys
 If Si(K) = 0 Then Exit Function
 For Each I In K
-    If InclDicValOptTy Then
+    If InclValTy Then
         Dr = Array(I, A(I), TypeName(A(I)))
     Else
         Dr = Array(I, A(I))

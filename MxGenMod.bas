@@ -117,7 +117,7 @@ Dim JCnst As Drs:  JCnst = SelDrs(Src, "Key Fss")
 Dim CdCnst$():    CdCnst = B_CdCnst(JCnst)
 
 '== CdMain OK ==========================================================================================================
-Dim InpPm As Drs:    InpPm = DwEQSel(Src, "StpTy", "Inp", "Key Ret StpTy")
+Dim InpPm As Drs:    InpPm = DwEqSel(Src, "StpTy", "Inp", "Key Ret StpTy")
 Dim MMPm$:            MMPm = B_MPm(InpPm)
 Dim LAs():             LAs = SelDrs(LasRec(Src), "Key Ret StpTy").Dy(0)
 Dim MMthn$:          MMthn = LAs(0)
@@ -676,7 +676,7 @@ Next
 End Function
 
 Function B_MPmLin$(MainPm As Drs)
-'Fm  : MainPm (MainDD) : Nm TyChr AsTy !
+'@MainPm (MainDD) : Nm TyChr AsTy !
 'Ret : !
 Dim O$(), Arg$, Nm$, TyChr$, AsTy$, Dr, INm%, ITyChr%, IAsTy%
 AsgIx MainPm, "Nm TyChr AsTy", INm, ITyChr, IAsTy

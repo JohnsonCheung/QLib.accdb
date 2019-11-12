@@ -45,7 +45,7 @@ Dim McLNewO As Drs: McLNewO = LNewO(D2.Dy)                    ' Lno NewL OldL   
 :                             If XUpd Then RplLin M, McLNewO ' <==                           ! Upd Md-M by std Do-Lno-NewL-OldL
 '== Gen Bs (Brw-Stmt) ==================================================================================================
 Dim Bs      As Drs:              Bs = XBs(McCln)                               ' L BsLin ! Fst2Chr = '@
-Dim Bs1     As Drs:             Bs1 = DwEQSel(McR123, "IsRmk", False, "V Sfx")
+Dim Bs1     As Drs:             Bs1 = DwEqSel(McR123, "IsRmk", False, "V Sfx")
 Dim Bs2     As Drs:             Bs2 = DwNe(Bs1, "V", "")
 Dim Vsfx    As Dictionary: Set Vsfx = DiczDrsCC(Bs2)
 Dim Mdn$:                       Mdn = MdnzM(M)
@@ -53,7 +53,7 @@ Dim BsLNewO As Drs:         BsLNewO = XBsLNewO(Bs, Vsfx, Mdn, Mlnm)
 :                                     If XUpd Then RplLin M, BsLNewO
 
 '== Crt Chd-Mth (Cm)====================================================================================================
-Dim CmSel  As Drs:   CmSel = DwEQ(McR123, "IsRmk", False)
+Dim CmSel  As Drs:   CmSel = DwEq(McR123, "IsRmk", False)
 Dim CmV    As Drs:     CmV = SelDrs(CmSel, "V Sfx LHS RHS")    ' V Sfx LHS RHS
 Dim CmDot  As Drs:   CmDot = XCmDot(CmV)                       ' V Sfx LHS RHS DotNm
 Dim CmNmDD As Drs:  CmNmDD = XCmNmDD(CmDot, Mlnm)              ' V Sfx LHS RHS DotNm CmNmDD       ! DD : cm is DblDash xxx__xxx
@@ -77,7 +77,7 @@ Dim CmlDclPm  As Drs:  CmlDclPm = XCmlDclPm(CmlPm, CmlVSfx)               ' V Sf
 Dim CmlMthRet As Drs: CmlMthRet = XCmlMthRet(CmlDclPm)                    ' V Sfx RHS CmNm Pm DclPm TyChr RetSfx
 Dim CmlEpt    As Drs:    CmlEpt = XCmlEpt(CmlMthRet)                      ' V CmNm EptL
                              D1 = DoMthzM(M)                              ' L Mdy Ty Mthn MthLin
-                             D1 = DwEQ(D1, "Mdy", "Prv")
+                             D1 = DwEq(D1, "Mdy", "Prv")
 Dim CmlAct    As Drs:    CmlAct = SelDrsAs(D1, "L Mthn:CmNm MthLin:ActL") ' L CmNm ActL
 Dim CmlJn     As Drs:     CmlJn = JnDrs(CmlEpt, CmlAct, "CmNm", "L ActL") ' V CmNm EptL L ActL                  ! som EptL & ActL may eq
                              D2 = DeCeqC(CmlJn, "EptL ActL")              ' V CmNm EptL L ActL                  ! All EptL & ActL are diff
@@ -100,7 +100,7 @@ Dim MbLNewO As Drs: MbLNewO = DeCeqC(MbSel, "NewL OldL")
 
 '== Crt Mth-Brw (Mb)====================================================================================================
                      D1 = LDrszJn(MbEpt, MbAct, "Mthn", "L", "HasAct") ' Mthn MthLin MbStmt L HasAct
-                     D2 = DwEQ(D1, "HasAct", False)                    ' Mthn MthLin MbStmt L HasAct
+                     D2 = DwEq(D1, "HasAct", False)                    ' Mthn MthLin MbStmt L HasAct
 Dim MbNew As Drs: MbNew = SelDrsAs(D2, "Mthn MbStmt:NewL")
 :                         If XUpd Then XOCrtMb M, MbNew               ' <==
 
@@ -119,7 +119,7 @@ Dim CrSelV  As Drs:  CrSelV = DrszFillLasIfB(CrSel, "V")           ' V R1 R2 R3 
 Dim FF$:                 FF = "R1 R2 R3"
 Dim Sy$():               Sy = SyzAp("", "", "")
 Dim CrAllL  As Drs:  CrAllL = DeVy(CrSelV, FF, Sy)                 ' IsColon V R1 R2 R3 #All-Lin ! SelRec AllLin has at least 1 rmk
-Dim CrWiRmk As Drs: CrWiRmk = DwEQExl(CrAllL, "IsColon", False)    ' V R1 R2 R3                  ! SelRec ^IsColon=False
+Dim CrWiRmk As Drs: CrWiRmk = DwEqExl(CrAllL, "IsColon", False)    ' V R1 R2 R3                  ! SelRec ^IsColon=False
 
 '.. Fnd #Vpr1    : V P R1 R2 R3 IsRet   ! Each V | P having what rmk.  IsRet is True....................................
 '   Fm  CmlDclPm : V Pm                 ! The var calling chd mth is using what Pm
@@ -230,7 +230,7 @@ Function XMcFill(McR123 As Drs) As Drs
 'Ret       : L *Rmk *V *LRC *R *F    ! Add ^F*.  [F* F0 FSfx FRHS FR1 FR2] ^F0 is Len-of-front-spc. @@
 Dim Gpno%(): Gpno = AwDist(IntCol(McR123, "Gpno"))
 Dim IGpno: For Each IGpno In Itr(Gpno)
-    Dim A As Drs: A = DwEQ(McR123, "Gpno", IGpno) ' ..McLin.. ! Sam *Gpno
+    Dim A As Drs: A = DwEq(McR123, "Gpno", IGpno) ' ..McLin.. ! Sam *Gpno
     Dim B As Drs: B = XAddColzF0(A)               ' ..F0      ! *F0 is len of spc of fst dr of @A
     Dim C As Drs: C = AddColzFiller(B, "Dcl LHS RHS R1 R2")
     Dim O As Drs: O = AddDrs(O, C)
@@ -281,7 +281,7 @@ Function XMcTRmk(McRmk As Drs) As Drs
 Dim IGpno%, MaxGpno, A As Drs, B As Drs, O As Drs
 MaxGpno = AyMax(IntCol(McRmk, "Gpno"))
 For IGpno = 1 To MaxGpno
-    A = DwEQ(McRmk, "Gpno", IGpno)
+    A = DwEq(McRmk, "Gpno", IGpno)
     B = XMcTRmkI(A)
     O = AddDrs(O, B)
 Next
@@ -515,7 +515,7 @@ If NoReczDrs(McFill) Then Stop
 Dim A As Drs: A = SelDrs(McFill, "L McLin Gpno Dcl IsColon LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2")
 Dim Gpno: Gpno = DistCol(McFill, "Gpno")
 Dim IGpno: For Each IGpno In Itr(Gpno)
-    Dim B As Drs: B = DwEQ(A, "Gpno", IGpno) ' L McLin Gpno Dcl LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2
+    Dim B As Drs: B = DwEq(A, "Gpno", IGpno) ' L McLin Gpno Dcl LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2
     Dim C As Drs: C = XDoAlign(B)
     Dim O As Drs: O = AddDrs(O, C)
 Next
@@ -524,7 +524,7 @@ XMcAlign = O
 End Function
 
 Function XCmLin(CmDta As Drs, CmMdy$) As String()
-'Fm  CmDta  V TyChr Pm RetSfx
+'@ CmDta  V TyChr Pm RetSfx
 'Ret CmLin MthLin                     ! MthLin is always a function @@
 Dim Dr, CmNm$, MthPfx$, Pm$, TyChr$, RetSfx$
 For Each Dr In Itr(CmDta.Dy)
@@ -863,7 +863,7 @@ Function XMcDcl(McVSfx As Drs) As Drs
 Dim McLin$, IxMcLin%, Dr, Dy(), IGpno
 AsgIx McVSfx, "McLin", IxMcLin
 For Each IGpno In AwDist(IntCol(McVSfx, "Gpno"))
-    Dim A As Drs: A = DwEQ(McVSfx, "Gpno", IGpno) ' L McLin Gpno IsRmk V Sfx Rst ! Sam Gpno
+    Dim A As Drs: A = DwEq(McVSfx, "Gpno", IGpno) ' L McLin Gpno IsRmk V Sfx Rst ! Sam Gpno
     Dim B As Drs: B = XDcl(A) ' L McLin Gpno IsRmk V Sfx Dcl Rst ! Adding Dcl using V Sfx
     Dim O As Drs: O = AddDrs(O, B)
 Next
@@ -943,7 +943,7 @@ XDclPm = JnCommaSpc(O)
 End Function
 
 Function XCrEpt(CrJn As Drs) As S12s
-'Fm  CrJn : V Rmk CmNm
+'@ CrJn : V Rmk CmNm
 'Ret      : CmNm RmkMdes ! RmkMdes is find by each V in CrVpr & Mthn = V & CmPfx @@
 Dim A As Drs: A = SelDrs(CrJn, "CmNm Rmk")
 Dim Dr, Ly$(): For Each Dr In Itr(A.Dy)

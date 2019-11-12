@@ -4,7 +4,7 @@ Option Explicit
 Const CLib$ = "QXls."
 Const CMod$ = CLib & "MxLofVbl."
 
-Function LofVblzQt$(A As QueryTable)
+Function LofVblzQt$(A As Excel.QueryTable)
 LofVblzQt = LofVblzFbtStr(FbtStrzQt(A))
 End Function
 

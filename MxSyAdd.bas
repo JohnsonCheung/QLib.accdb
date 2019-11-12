@@ -76,14 +76,13 @@ End Function
 Function AddAyAp(Ay, ParamArray Itm_or_AyAp())
 Const CSub$ = CMod & "AddAyAp"
 Dim Av(): Av = Itm_or_AyAp
-If Not IsArray(Ay) Then Thw CSub, "Fst parameter must be array", "Fst-Pm-TyeName", TypeName(Ay)
-Dim I
+If Not IsArray(Ay) Then Thw CSub, "Ay must be array", "Ay-TypeName", TypeName(Ay)
 AddAyAp = Ay
-For Each I In Av
+Dim I: For Each I In Av
     If IsArray(I) Then
-        PushAy AddAyAp, I
+        PushIAy AddAyAp, I
     Else
-        Push AddAyAp, I
+        PushI AddAyAp, I
     End If
 Next
 End Function

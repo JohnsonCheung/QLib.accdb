@@ -112,11 +112,13 @@ End Sub
 Sub GenFbazP(P As VBProject)
 Dim OPj As VBProject
 Dim SPth$:     SPth = SrcpzP(P)         '#Src-Pth#
+
 Dim OFba$:     OFba = DistFba(SPth)     '#Oup-Fba#
 :                     DltFfnIf OFba
-Stop
 :                     CrtFb OFba                    ' <== Crt OFba
+
 :                     ExpPjzP P                       ' <== Exp
+
 :                     OpnFb Acs, OFba
             Set OPj = PjzAcs(Acs)
 :                     AddRfzS OPj, RfSrczSrcp(SPth) ' <== Add Rf
@@ -124,7 +126,7 @@ Stop
 Dim Frm$():     Frm = FrmFfnAy(SPth)
 Dim F: For Each F In Itr(Frm)
     Dim N$: N = RmvExt(RmvExt(F))
-:               Acs.LoadFromText acForm, N, F ' <== Load Frm
+:               Acs.LoadFromText acForm, N, F       ' <== Load Frm
 Next
 #If False Then
 'Following code is not able to save

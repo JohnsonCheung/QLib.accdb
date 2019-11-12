@@ -75,8 +75,8 @@ AddColzFiller = O
 End Function
 
 Function AddColzFillerC(A As Drs, C) As Drs
-'Fm   A : ..{C}.. ! @A should have col @C
-'Fm   C : #Coln.
+'@  A : ..{C}.. ! @A should have col @C
+'@  C : #Coln.
 'Ret    : a new drs with addition col @F where F = "F" & C and value eq Len-of-Col-@C
 If NoReczDrs(A) Then Stop
 Dim W%: W = WdtzAy(StrCol(A, C))
@@ -509,9 +509,9 @@ EnsColTyzInt = O
 End Function
 
 Function FmtLNewO(L_NewL_OldL As Drs, Org_L_Lin As Drs) As String()
-'Fm  : L_NewL_OldL ! Assume all NewL and OldL are nonEmp and <>
+'@ : L_NewL_OldL ! Assume all NewL and OldL are nonEmp and <>
 'Ret : LinesAy !
-Dim SDy(): SDy = SelDy(Org_L_Lin.Dy, LngAp(0, 1))
+Dim SDy(): SDy = SelDy(Org_L_Lin.Dy, LngAy(0, 1))
 Dim S As Drs: S = DrszFF("L Lin", SDy)
 Dim D As Drs: D = DeCeqC(L_NewL_OldL, "NewL OldL")
 Dim NewL As Drs: NewL = LDrszJn(S, D, "L", "NewL")
@@ -523,7 +523,7 @@ FmtLNewO = StrCol(OneG, "Lines")
 End Function
 
 Function FmtLNewOGpno(NewL As Drs) As Drs
-'Fm  NewL: L Lin NewL ! NewL may empty, when non-Emp, NewL <> Lin
+'@ NewL: L Lin NewL ! NewL may empty, when non-Emp, NewL <> Lin
 'Ret D: L Lin NewL Gpno ! Gpno is running from 1:
 '                      !   all conseq Lin with Emp-NewL is one group
 '                      !   each non-Emp-NewL is one gp
@@ -583,7 +583,7 @@ FmtLNewOLines = DrszFF("L Gpno Lines", Dy)
 End Function
 
 Function FmtLNewONLin(Gpno As Drs) As Drs
-'Fm  Gpno: L Lin NewL Gpno
+'@Gpno: L Lin NewL Gpno
 'Ret E: L Gpno NLin SNewL ! NLin=L# is in front; SNewL = Spc is in front, only when nonEmp
 Dim MaxL&: MaxL = AyMax(LngAyzDrs(Gpno, "L"))
 Dim NDig%: NDig = Len(CStr(MaxL))
@@ -603,7 +603,7 @@ FmtLNewONLin = DrszFF("L Gpno NLin SNewL", Dy)
 End Function
 
 Function FmtNewOneG(NLin As Drs) As Drs
-'Fm  D: L Gpno NLin SNewL !
+'@D: L Gpno NLin SNewL !
 'Ret E: Gpno Lines ! Gpno now become uniq
 Dim O$(), L&, LasG&, Dr, Dy(), Gpno&, NLin_$, SNewL
 If NoReczDrs(NLin) Then Exit Function
@@ -861,7 +861,7 @@ End Sub
 
 Sub Z_GpCol()
 Dim Col():            Col = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-Dim RLvlGpIx&(): RLvlGpIx = LngAp(1, 1, 1, 3, 3, 2, 2, 3, 0, 0)
+Dim RLvlGpIx&(): RLvlGpIx = LngAy(1, 1, 1, 3, 3, 2, 2, 3, 0, 0)
 Dim G():                G = ColGp(Col, RLvlGpIx)
 Stop
 End Sub

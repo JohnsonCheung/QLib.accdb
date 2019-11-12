@@ -86,7 +86,7 @@ Function WDStru(Ip As TDoLTDH) As Drs
 'Fm Ip : L T1 Dta IsHdr}
 'Ret WDStru: Stru F Ty E
 Dim A As Drs, Dr, Dy(), B As Drs, T1$, Dta$
-A = DwEQSel(Ip.D, "IsHdr", False, "T1 Dta")
+A = DwEqSel(Ip.D, "IsHdr", False, "T1 Dta")
 B = DwPfx(A, "T1", "Stru.") 'T1 Dta
 For Each Dr In Itr(B.Dy)
     T1 = Dr(0)
@@ -123,7 +123,7 @@ For Each I In Dic_T_Stru.Keys
     Stru = Dic_T_Stru(I)
        T = ">" & I
     Into = "#I" & I
-       A = DwEQSel(DStru, "Stru", Stru, "F Ty E")
+       A = DwEqSel(DStru, "Stru", Stru, "F Ty E")
      Fny = StrCol(A, "F")
       Ey = RmvSqBktzSy(StrCol(A, "E"))
    Bexp = VzDicIf(Dic_T_Bexp, I)

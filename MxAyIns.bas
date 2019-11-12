@@ -51,6 +51,7 @@ For J = 100 To 109
     Debug.Assert Act(J) = J - 100
 Next
 End Sub
+
 Function ReBase(Ay, FmIx)
 'Fm Ay : assume Ay-LBound is 0
 'Ret   : new re-based ay of LBound is @FmIx preserve.  Note standard redim preserve X(F To T) does not work  @@

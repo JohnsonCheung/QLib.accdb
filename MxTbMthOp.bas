@@ -29,7 +29,3 @@ Dim N, J&: For Each N In Itr(MdNy)
 Next
 End Sub
 
-Sub A()
-Z_RfhTbMth
-End Sub
-

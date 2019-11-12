@@ -75,12 +75,12 @@ GoSub T1
 Exit Sub
 T0:
     Dy = DyzVbl("2 a C|1 c B|3 b A")
-    Ept = LngAp(1, 0, 2)
+    Ept = LngAy(1, 0, 2)
     Erase IsDesAy
     GoTo Tst
 T1:
     Dy = DyzVbl("2 a C|1 c B|3 b A")
-    Ept = LngAp(2, 0, 1)
+    Ept = LngAy(2, 0, 1)
     IsDesAy = BoolAyzTDot("t..")
     GoTo Tst
 Tst:

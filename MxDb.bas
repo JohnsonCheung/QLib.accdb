@@ -124,16 +124,16 @@ End Function
 
 Function FmtNRec(D As Database) As String()
 Dim T$(): T = Tny(D)
-Erase XX
-X "Fb   " & D.Name
-X "NTbl " & Si(T)
+With New Bfr
+.X "Fb   " & D.Name
+.X "NTbl " & Si(T)
 Dim I, J%
 For Each I In Itr(T)
     J = J + 1
-    X AlignR(J, 3) & " " & AlignR(NReczT(D, I), 7) & " " & I
+    .X AlignR(J, 3) & " " & AlignR(NReczT(D, I), 7) & " " & I
 Next
-FmtNRec = XX
-Erase XX
+FmtNRec = .Ly
+End With
 End Function
 
 Function HasFF(D As Database, T, FF$) As Boolean

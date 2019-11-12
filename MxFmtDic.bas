@@ -17,8 +17,8 @@ Sub BrwDic(A As Dictionary, Optional InclValTy As Boolean, Optional ExlIx As Boo
 BrwAy FmtDic(A, InclValTy), OupTy:=OupTy
 End Sub
 
-Sub DmpDic(A As Dictionary, Optional InclDicValOptTy As Boolean, Optional Tit$ = "Key Val")
-D FmtDic(A, InclDicValOptTy, Tit)
+Sub DmpDic(A As Dictionary, Optional InclValTy As Boolean, Optional Tit$ = "Key Val")
+D FmtDic(A, InclValTy, Tit)
 End Sub
 
 Function S12szDiT1qLy(A As Dictionary) As S12s

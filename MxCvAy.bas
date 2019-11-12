@@ -2,8 +2,7 @@ Attribute VB_Name = "MxCvAy"
 Option Compare Text
 Option Explicit
 Const CLib$ = "QVb."
-Const CMod$ = CLib & "MxSeq."
-
+Const CMod$ = CLib & "MxCvAy."
 
 Function CvBytAy(A) As Byte()
 CvBytAy = A
@@ -18,12 +17,14 @@ Function CvLngAy(A) As Long()
 On Error Resume Next
 CvLngAy = A
 End Function
+
 Function CvAv(A) As Variant()
 If VarType(A) = vbArray + vbVariant Then
     If Si(A) = -1 Then Exit Function
 End If
 CvAv = A
 End Function
+
 Function CvObj(A) As Object
 Set CvObj = A
 End Function

@@ -113,7 +113,7 @@ Tst:
     Return
 End Sub
 Sub RmvPrpOnEoM(M As CodeModule, Optional Upd As EmUpd)
-'Dim L&(): L = LngAp( _
+'Dim L&(): L = LngAy( _
 IxOfExit(PurePrpLy), _
 IxOfOnEr(PurePrpLy), _
 IxOfLblX(PurePrpLy))

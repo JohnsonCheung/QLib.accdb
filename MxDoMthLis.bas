@@ -29,31 +29,24 @@ End Sub
 
 
 Sub LisPFunRetAs(RetAsPatn$)
-Dim RetSfx As Drs: RetSfx = AddColzRetAs(DoPubFun)
+Dim RetSfx As Drs: RetSfx = AddMthColRetAs(DoPubFun)
 Dim Patn As Drs: Patn = DwPatn(RetSfx, "RetSfx", RetAsPatn)
 Dim T50 As Drs: T50 = DwTopN(Patn)
 BrwDrs T50
 End Sub
 
-Sub LisRetAs(RetAsPatn$, Optional N = 50)
-Dim RetSfx As Drs: RetSfx = AddColzRetAs(DoPubFun)
-Dim Patn As Drs: Patn = DwPatn(RetSfx, "RetSfx", RetAsPatn)
-Dim T50 As Drs: T50 = DwTopN(Patn, N:=N)
-BrwDrs T50
-End Sub
-
 Sub LisPPrpRetAs(RetAsPatn$)
 Dim S As Drs: S = DoPubFun
-Dim RetSfx As Drs: RetSfx = AddColzRetAs(S)
-Dim Pub As Drs: Pub = DwEQExl(RetSfx, "Mdy", "Pub")
-Dim Fun As Drs: Fun = DwEQExl(Pub, "Ty", "Get")
+Dim RetSfx As Drs: RetSfx = AddMthColRetAs(S)
+Dim Pub As Drs: Pub = DwEqExl(RetSfx, "Mdy", "Pub")
+Dim Fun As Drs: Fun = DwEqExl(Pub, "Ty", "Get")
 Dim Patn As Drs: Patn = DwPatn(Fun, "RetSfx", RetAsPatn)
 Dim T50 As Drs: T50 = DwTopN(Patn)
 BrwDrs T50
 End Sub
 
 Sub LisMthCntzQIde()
-DmpDrs SrtDrs(DwEQ(DoMthCntP, "Lib", "QIde")), Fmt:=EiSSFmt, IsSum:=True
+DmpDrs SrtDrs(DwEq(DoMthCntP, "Lib", "QIde")), Fmt:=EiSSFmt, IsSum:=True
 End Sub
 
 Function JSrc$(Mdn$, Lno&, C1%, C2%, Lin)
@@ -121,28 +114,29 @@ For J = 0 To Min(U1, U2)
 Next
 End Sub
 
-Sub LisMthzP(Optional PatnSS3$, Optional ShtMdySS$, Optional ShtMthTySS$, _
-Optional TyChr$, Optional RetAsPatn$, Optional RetAy As EmTriSte, _
+Sub LisMthzP(Optional PatnSS3$, Optional ExlPatn$, Optional ShtMdySS$, Optional ShtMthTySS$, _
+Optional TyChr$, Optional RetAsPatn$, Optional ShouldRetAy As EmTriSte, _
 Optional NPm% = -1, Optional ShtPmPatn$, Optional HasAp As EmTriSte, _
 Optional MdnPatn$, Optional ShtMdTySS$, _
 Optional OupTy As EmOupTy, Optional Top% = 50)
 Dim P$, P1$, P2$: AsgPatn123 PatnSS3, P, P1, P2
-LisMth P, P1, P2, ShtMdySS, ShtMthTySS, _
-        TyChr, RetAsPatn, RetAy, _
+LisMth P, P1, P2, ShtMdySS, ExlPatn, ShtMthTySS, _
+        TyChr, RetAsPatn, ShouldRetAy, _
         NPm, ShtPmPatn, HasAp, _
         MdnPatn, ShtMdTySS
 End Sub
 
-Sub LisMth(Optional Patn$, Optional Patn1$, Optional Patn2$, Optional ShtMdySS$, Optional ShtMthTySS$, _
-Optional TyChr$, Optional RetAsPatn$, Optional RetAy As EmTriSte, _
+Sub LisMth(Optional Patn$, Optional Patn1$, Optional Patn2$, Optional ExlPatn$, Optional ShtMdySS$, Optional ShtMthTySS$, _
+Optional TyChr$, Optional RetAsPatn$, Optional ShouldRetAy As EmTriSte, _
 Optional NPm% = -1, Optional ShtPmPatn$, Optional HasAp As EmTriSte, _
 Optional MdnPatn$, Optional ShtMdTySS$, _
 Optional OupTy As EmOupTy, Optional Top% = 50)
 Dim D As Drs:
     D = DwDoMthLis(DoMthLisP, Patn, Patn1, Patn2, ShtMdySS, ShtMthTySS, _
-        TyChr, RetAsPatn, RetAy, _
+        TyChr, RetAsPatn, ShouldRetAy, _
         NPm, ShtPmPatn, HasAp, _
         MdnPatn, ShtMdTySS)
+    D = DePatn(D, "Mthn", ExlPatn)
 Dim D1 As Drs: D1 = DwTopN(D, Top)
 Brw FmtDrs(D1, , , , EiBeg1, EiSSFmt), OupTy:=OupTy
 End Sub
@@ -187,7 +181,7 @@ Dim PnTy$:               PnTy = PatnzSS(ShtMthTySS, ShtMthTyAy)
 '- Pfx-I = Inp-Do-Fm-DoMthLis
 Dim IMdy     As Drs:     IMdy = DwPatn(DoMthLisP, "Mdy", PnMdy)
 Dim ITy      As Drs:      ITy = DwPatn(IMdy, "Ty", PnTy)
-Dim ITyChr As Drs:     ITyChr = DwEQStr(ITy, "TyChr", TyChr)
+Dim ITyChr As Drs:     ITyChr = DwEqStr(ITy, "TyChr", TyChr)
 Dim IPatn    As Drs:    IPatn = DwPatn(ITyChr, "Mthn", Patn, Patn1, Patn2)
 Dim IHasAp   As Drs:   IHasAp = DwHasAp(IPatn, HasAp)
 Dim INPm     As Drs:     INPm = DwNPm(IHasAp, NPm)
@@ -242,26 +236,5 @@ Dim ODy(), Dr, Pm$: For Each Dr In Itr(D.Dy)
     If Si(SplitComma(Pm)) = NPm Then PushI ODy, Dr
 Next
 DwNPm = Drs(D.Fny, ODy)
-End Function
-
-Function AddMthColRetAs(WiMthLin As Drs) As Drs
-Dim I%: I = IxzAy(WiMthLin.Fny, "MthLin")
-Dim Dr, Dy(): For Each Dr In Itr(WiMthLin.Dy)
-    Dim MthLin$: MthLin = Dr(I)
-    Dim Ret$: Ret = RetAs(MthLin)
-    PushI Dr, Ret
-    PushI Dy, Dr
-Next
-AddMthColRetAs = AddColzFFDy(WiMthLin, "RetAs", Dy)
-End Function
-
-Function AddMthColRmk(WiMthl As Drs) As Drs
-Dim I%: I = IxzAy(WiMthl.Fny, "Mthl")
-Dim Dr, Dy(): For Each Dr In Itr(WiMthl.Dy)
-    Dim Mthl$: Mthl = Dr(I)
-    PushI Dr, MthRmkzMthLy(SplitCrLf(Mthl))
-    PushI Dy, Dr
-Next
-AddMthColRmk = AddColzFFDy(WiMthl, "Rmk", Dy)
 End Function
 

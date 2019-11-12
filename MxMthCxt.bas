@@ -165,7 +165,7 @@ End Function
 
 
 Function DoMthnzM(M As CodeModule) As Drs
-DoMthnzM = DwEQ(SelDrs(DoMthnP, FFoMthn), "Mthn", Mdn(M))
+DoMthnzM = DwEq(SelDrs(DoMthnP, FFoMthn), "Mthn", Mdn(M))
 End Function
 
 Function AddColzBetBkt(D As Drs, ColnAs$, Optional IsDrp As Boolean) As Drs
@@ -179,29 +179,6 @@ Next
 Dim O As Drs: O = AddColzFFDy(D, NewC, Dy)
 If IsDrp Then O = DrpCol(O, BetColn)
 AddColzBetBkt = O
-End Function
-
-
-Function IsRetObj(RetSfx$) As Boolean
-':IsRetObj: :B ! False if @RetSfx (isBlnk | IsAy | IsPrimTy | Is in TyNyP)
-If RetSfx = "" Then Exit Function
-If HasSfx(RetSfx, "()") Then Exit Function
-If IsPrimTy(RetSfx) Then Exit Function
-If HasEle(TyNyP, RetSfx) Then Exit Function
-IsRetObj = True
-End Function
-
-Function AddColzRetAs(DoMthLin As Drs) As Drs
-'Fm DoMthLin : ..MthLin..
-'Ret        : ..RetSfx  @@
-Dim IxMthLin%: IxMthLin = IxzAy(DoMthLin.Fny, "MthLin")
-Dim Dr, Dy(): For Each Dr In Itr(DoMthLin.Dy)
-    Dim MthLin$: MthLin = Dr(IxMthLin)
-    Dim R$: R = RetSfx(MthLin)
-    PushI Dr, R
-    PushI Dy, Dr
-Next
-AddColzRetAs = AddColzFFDy(DoMthLin, "RetSfx", Dy)
 End Function
 
 Function DoMthCxtzML(M As CodeModule, MthLno&) As Drs

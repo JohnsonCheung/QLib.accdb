@@ -140,16 +140,6 @@ Function BetLng(L&, A&, B&) As Boolean
 BetLng = A <= L And L <= B
 End Function
 
-Function NBet(X, A, B) As Boolean
-NBet = Not Bet(X, A, B)
-End Function
-
-Function Bet(X, A, B) As Boolean
-If A > X Then Exit Function
-If X > B Then Exit Function
-Bet = True
-End Function
-
 Function BetStr$(S, S1$, S2$, Optional NoTrim As Boolean, Optional InclMarker As Boolean)
 With Brk1(S, S1, NoTrim)
    If .S2 = "" Then Exit Function
@@ -223,7 +213,7 @@ Exit Sub
 Tst:
     Dim FmStr$, ToStr$
     AsgAp AmTrim(SplitVBar(Lin)), Lin, FmStr, ToStr, Ept
-    Act = Bet(Lin, FmStr, ToStr)
+    Act = IsBet(Lin, FmStr, ToStr)
     C
     Return
 End Sub

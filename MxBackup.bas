@@ -10,6 +10,7 @@ End Sub
 
 Function BackupFfn$(Ffn, Optional Msg$ = "Backup")
 ':XBUF: :X-Pfx #Back-Up-Ffn#
+Const CSub$ = CMod & "BackupFfn"
 Dim Tmpn$:       Tmpn = TmpNm
 Dim TarFfn$:   TarFfn = BkFfn(Ffn)
 Dim MsgFfn$:   MsgFfn = Pth(TarFfn) & "Msg.txt"

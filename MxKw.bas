@@ -2,7 +2,7 @@ Attribute VB_Name = "MxKw"
 Option Compare Text
 Option Explicit
 Const CLib$ = "QIde."
-Const CMod$ = CLib & "MxConstAy."
+Const CMod$ = CLib & "MxKw."
 
 Const C_Enm$ = "Enum"
 Const C_Prp$ = "Property"

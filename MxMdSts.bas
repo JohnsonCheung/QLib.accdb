@@ -27,3 +27,12 @@ End Function
 Function MdSts(Src$()) As MdSts
 MdSts = MdStszL(MthLinAy(Src), Si(Src))
 End Function
+
+Function MdStsM() As MdSts
+MdStsM = MdStszM(CMd)
+End Function
+
+Function MdStszM(M As CodeModule) As MdSts
+MdStszM = MdSts(SrczM(M))
+End Function
+

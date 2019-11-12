@@ -65,7 +65,7 @@ Dim I, S$, NewFld$, Fun$, FmFld$
 For Each I In SyzSS(NewFldEqFunQteFmFldSsl)
     S = I
     NewFld = Bef(S, "=")
-    Fun = Bet(S, "=", "(")
+    Fun = IsBet(S, "=", "(")
     FmFld = BetBkt(S)
     FmVy = ColzDrs(A, FmFld)
     NewColVy = MapAy(FmVy, Fun)
@@ -96,7 +96,7 @@ Next
 CntColNe = O
 End Function
 Function ColNoSng(A As Drs, C$) As Drs
-'Fm  A : has a column-C
+'@A : has a column-C
 'Ret   : sam stru as A and som row removed.  rmv row are its col C value is Single. @@
 Dim Col(): Col = ColzDrs(A, C)
 Dim Sng(): Sng = AwSng(Col)
@@ -183,59 +183,15 @@ If N <= 0 Then DwTopN = A: Exit Function
 DwTopN = Drs(A.Fny, CvAv(FstNEle(A.Dy, N)))
 End Function
 
-Function VzColEqSel(A As Drs, C$, V, ColNm$)
+Function ValzDrs(A As Drs, C$, V, ColNm$)
 Dim Dr, Ix%, IxRet%
 Ix = IxzAy(A.Fny, C)
 IxRet = IxzAy(A.Fny, ColNm)
 For Each Dr In Itr(A.Dy)
     If Dr(Ix) = V Then
-        VzColEqSel = Dr(IxRet)
+        ValzDrs = Dr(IxRet)
         Exit Function
     End If
 Next
 Thw CSub, "In Drs, there is no record with Col-A eq Value-B, so no Col-C is returened", "Col-A Value-B Col-C Drs-Fny Drs-NRec", C, V, ColNm, A.Fny, NReczDrs(A)
-End Function
-
-Function FstStrCol(A As Drs) As String()
-FstStrCol = StrColzDy(A.Dy, 0)
-End Function
-
-Function SndStrCol(A As Drs) As String()
-SndStrCol = StrColzDy(A.Dy, 1)
-End Function
-
-Function StrCol(A As Drs, C) As String()
-StrCol = StrColzDy(A.Dy, IxzAy(A.Fny, C))
-End Function
-
-Function StrColLines$(A As Drs, C)
-StrColLines = JnCrLf(StrCol(A, C))
-End Function
-
-Function DblCol(A As Drs, C) As Double()
-DblCol = DblColzDy(A.Dy, IxzAy(A.Fny, C))
-End Function
-
-Function BoolCol(A As Drs, C) As Boolean()
-BoolCol = BoolColzDy(A.Dy, IxzAy(A.Fny, C))
-End Function
-
-Function FstColzDy(Dy()) As Variant()
-FstColzDy = ColzDy(Dy, 0)
-End Function
-
-Function Fst3ColzDy(Dy()) As Variant()
-Dim Dr: For Each Dr In Itr(Dy)
-    PushI Fst3ColzDy, FstNEle(Dr, 3)
-Next
-End Function
-
-Function FstCol(A As Drs) As Variant()
-FstCol = FstColzDy(A.Dy)
-End Function
-
-Function StrColzEq(A As Drs, Col$, V, ColNm$) As String()
-Dim B As Drs
-B = DwEQSel(A, Col, V, ColNm)
-StrColzEq = StrCol(B, ColNm)
 End Function

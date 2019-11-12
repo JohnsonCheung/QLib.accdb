@@ -6,7 +6,7 @@ Const CMod$ = CLib & "MxLDta."
 Public Const FFoLDta$ = "L Dta"
 Type TDoLDta: D As Drs: End Type
 Private Function DoLDtazT1(DoLTD As Drs, T1$) As Drs
-DoLDtazT1 = DwEQExl(DoLTD, "T1", T1)
+DoLDtazT1 = DwEqExl(DoLTD, "T1", T1)
 End Function
 
 Function TDoLDtazT1(A As TDoLTD, T1$) As TDoLDta

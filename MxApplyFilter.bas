@@ -107,7 +107,7 @@ Set XCriRgzFL = RgRCRC(FCell, 2, 1, R2, C2)
 End Function
 
 Sub ApplyFilter(ByVal Tar As Range)
-'Fm  Tar :            ! It is the-cur-active-cell just moved to by user.
+'@ Tar :            ! It is the-cur-active-cell just moved to by user.
 'Ret     : do-the-cmd ! cmd comes from the @Tar.value and @Tar comes from %Sub:Worksheet_ChangeSeletion%.
 '                     ! If the @Tar is a Filt-cmd-cell, carry the cmd else nop
 '-- Fnd L & CriRg ---
@@ -283,7 +283,7 @@ Sub CmdTglFilt(CriRg As Range)
 End Sub
 
 Function XFCellzT(Tar As Range) As Range
-'Fm  : :TarCell: is the cell with one of this value: Filter Apply Clear Ins_Row_At Rmv_NRow_At Load, otherwise, don't return :FCell
+'@ : :TarCell: is the cell with one of this value: Filter Apply Clear Ins_Row_At Rmv_NRow_At Load, otherwise, don't return :FCell
 'Ret : :FCell: is #Filter-Cell ! the cell with str-"Filter" @@
     If Tar.Count <> 1 Then Exit Function
     Dim V:        V = Tar.Value
@@ -351,10 +351,10 @@ Dim Fny$():             Fny = FnyzLo(Lo)           ' from Lo
 Dim CriCell As Drs: CriCell = XCriCell(Fny, CriRg) ' F R C CriCell ! *CriCell is cri-cell-val
 
 Dim CriBrk As Drs: CriBrk = XCriBrk(CriCell)                                    ' F R C Op V1 V2 Patn IsEr Msg
-Dim Cri    As Drs:    Cri = DwEQSel(CriBrk, "IsEr", False, "Op V1 V2 Patn C F") ' Op V1 V2 Patn C F            ! All-IsEr = false
+Dim Cri    As Drs:    Cri = DwEqSel(CriBrk, "IsEr", False, "Op V1 V2 Patn C F") ' Op V1 V2 Patn C F            ! All-IsEr = false
 
 '== Set Cmt & BdrEr to those cri cell with CriStr has err ==============================================================
-Dim Er       As Drs:       Er = DwEQSel(CriBrk, "IsEr", True, "R C Msg") ' R C Msg
+Dim Er       As Drs:       Er = DwEqSel(CriBrk, "IsEr", True, "R C Msg") ' R C Msg
 Dim CellAy() As Range: CellAy = RgAy(CriRg, Er)                          ' Cell with er need to BdrEr and set cmt with msg
 Dim Msg$():               Msg = StrCol(Er, "Msg")
 
@@ -396,7 +396,7 @@ Dim OupVisHid:                SetVis Ws, Vis ' ! <== Turn on or off the row
 'Dim NsFny$(): NsFny = XNsFny(CSel, CFny) '  ! What CFny selecting no rec
 'If Si(NsFny) > 0 Then
 '    Dim NsCri    As Drs:     NsCri = DwIn(CriBrk, "F", NsFny) ' Cri causing the no sel
-'    Dim NsExlEr  As Drs:   NsExlEr = DwEQ(NsCri, "IsEr", False) ' Xls those already @IsEr
+'    Dim NsExlEr  As Drs:   NsExlEr = DwEq(NsCri, "IsEr", False) ' Xls those already @IsEr
 '    Dim NsRpt    As Drs:     NsRpt = SelDrs(NsExlEr, "R C")     ' Need to report ns cri
 '    Dim NsCell() As Range:  NsCell = RgAy(CriRg, NsRpt)
 '    Dim OupBdrNoRec:                 BdrEoAy NsCell, "Red"      ' <== Bdr the Cri cell which does not sel and record
@@ -866,7 +866,7 @@ Function XCCri(Cri As Drs, CCny%())
 'Insp "QXls_Cmd_ApplyFilter.XCCriAy", "Inspect", "Oup(XCCriAy) Cri CCny", XCCriAy, FmtDrszNoRdu(Cri), CCny: Stop
 Dim O()
     Dim C: For Each C In CCny
-        PushI O, DwEQ(Cri, "C", C).Dy
+        PushI O, DwEq(Cri, "C", C).Dy
     Next
 XCCri = O
 'Insp "QXls_Cmd_ApplyFilter.XCCri", "Inspect", "Oup(XCCri) Cri CCny", XCCri, FmtDrszNoRdu(Cri), CCny: Stop

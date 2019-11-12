@@ -9,11 +9,11 @@ Set SampRel = Rel(SampRelLy)
 End Property
 
 Property Get SampRelLy() As String()
-Erase XX
-X "A B"
-X "B A"
-SampRelLy = XX
-Erase XX
+With New Bfr
+.Var "A B"
+.Var "B A"
+SampRelLy = .Ly
+End With
 End Property
 
 Property Get SamPubMthRel() As Rel

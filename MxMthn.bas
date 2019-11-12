@@ -396,21 +396,6 @@ Sub BrwMthnP()
 BrwDrs SrtDrs(DoMthnP)
 End Sub
 
-Function DoMthnP() As Drs
-DoMthnP = SelDrs(DoMthcP, FFoMthn)
-End Function
-
-Function DoMthnzV(V As Vbe) As Drs
-
-End Function
-
-Function DoMthnV() As Drs
-DoMthnV = DoMthnzV(CVbe)
-End Function
-
-Function DoMthnM() As Drs
-DoMthnM = DoMthnzM(CMd)
-End Function
 
 Function PrpNyzCmp(A As VBComponent) As String()
 PrpNyzCmp = Itn(A.Properties)
@@ -420,3 +405,20 @@ Function MthRetTy$(Lin)
 Dim A$: A = AftBkt(Lin)
 If ShfTerm(A, "As") Then MthRetTy = T1(A)
 End Function
+Function MthQnzMthn$(Mthn)
+Dim D As Drs: D = DwEq(DoMthP, "Mthn", Mthn)
+Select Case Si(D.Dy)
+Case 0: InfLin CSub, "No such Mthn[" & Mthn & "]"
+Case 1:
+    Dim IxMdn%: IxMdn = IxzAy(D.Fny, "Mdn")
+    MthQnzMthn = D.Dy(0)(IxMdn) & "." & Mthn
+Case Else
+    InfLin CSub, "No then one Md has Mthn[" & Mthn & "]"
+    IxMdn = IxzAy(D.Fny, "Mdn")
+    Dim Dr: For Each Dr In D.Dy
+        Debug.Print Dr(IxMdn) & "." & Mthn
+    Next
+End Select
+End Function
+
+

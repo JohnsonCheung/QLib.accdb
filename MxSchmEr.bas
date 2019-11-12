@@ -41,89 +41,89 @@ Const FFoLE$ = "L E"
 Const FFoLTF$ = "L T F"
 Const FFo_L_E_EleStr_Er = "L E EleStr Er"
 
-Private Function Er_DesMis(L%(), T_or_F_or_TF$(), D$(), FF$, Msg$) As String()
+Private Function EoDesMis(L%(), T_or_F_or_TF$(), D$(), FF$, Msg$) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If D(J) = "" Then
         PushI Dy, Array(L(J), T_or_F_or_TF(J))
     End If
 Next
-Er_DesMis = MsgzDrs(Msg, DrszFF(FF, Dy))
+EoDesMis = MsgzDrs(Msg, DrszFF(FF, Dy))
 End Function
 
-Private Function Er_DF_DesMis(L%(), F$(), D$()) As String()
-Er_DF_DesMis = Er_DesMis(L, F, D, FFoLF, Msg_DF_DesMis)
+Private Function EoDF_DesMis(L%(), F$(), D$()) As String()
+EoDF_DesMis = EoDesMis(L, F, D, FFoLF, Msg_DF_DesMis)
 End Function
 
-Private Function Er_DF_FldNotUse(L%(), F$(), AllFny$()) As String()
+Private Function EoDF_FldNotUse(L%(), F$(), AllFny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(AllFny, F(J)) Then
         PushI Dy, Array(L(J), F(J))
     End If
 Next
-Er_DF_FldNotUse = MsgzDrs(Msg_DF_FldNotUse, DrszFF(FFoLF, Dy))
+EoDF_FldNotUse = MsgzDrs(Msg_DF_FldNotUse, DrszFF(FFoLF, Dy))
 End Function
 
-Private Function Er_DT_DesMis(L%(), T$(), D$()) As String()
-Er_DT_DesMis = Er_DesMis(L, T, D, FFoLT, Msg_DT_DesMis)
+Private Function EoDT_DesMis(L%(), T$(), D$()) As String()
+EoDT_DesMis = EoDesMis(L, T, D, FFoLT, Msg_DT_DesMis)
 End Function
 
-Private Function Er_DT_TblNDef(L%(), T$(), AllTny$()) As String()
+Private Function EoDT_TblNDef(L%(), T$(), AllTny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(AllTny, T(J)) Then
         PushI Dy, Array(L(J), T(J))
     End If
 Next
-Er_DT_TblNDef = MsgzDrs(Msg_DT_TblNDef, DrszFF(FFoLT, Dy))
+EoDT_TblNDef = MsgzDrs(Msg_DT_TblNDef, DrszFF(FFoLT, Dy))
 End Function
 
-Private Function Er_DTF_DesMis(L%(), TF$(), D$()) As String()
-Er_DTF_DesMis = Er_DesMis(L, TF, D, FFo_L_TF, Msg_DTF_DesMis)
+Private Function EoDTF_DesMis(L%(), TF$(), D$()) As String()
+EoDTF_DesMis = EoDesMis(L, TF, D, FFo_L_TF, Msg_DTF_DesMis)
 End Function
 
-Private Function Er_DTF_FldNDef(L%(), T$(), F$(), AllFny$()) As String()
+Private Function EoDTF_FldNDef(L%(), T$(), F$(), AllFny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(AllFny, F(J)) Then
         PushI Dy, Array(L(J), T(J), F(J))
     End If
 Next
-Er_DTF_FldNDef = MsgzDrs(Msg_DTF_FldNDef, DrszFF(FFoLTF, Dy))
+EoDTF_FldNDef = MsgzDrs(Msg_DTF_FldNDef, DrszFF(FFoLTF, Dy))
 End Function
 
-Private Function Er_DTF_TblNDef(L%(), T$(), AllTny$()) As String()
+Private Function EoDTF_TblNDef(L%(), T$(), AllTny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(AllTny, T(J)) Then
         PushI Dy, Array(L(J), T(J))
     End If
 Next
-Er_DTF_TblNDef = MsgzDrs(Msg_DTF_TblNDef, DrszFF(FFoLT, Dy))
+EoDTF_TblNDef = MsgzDrs(Msg_DTF_TblNDef, DrszFF(FFoLT, Dy))
 End Function
 
-Private Function Er_E_EleNoEleStr(L%(), E$(), EleStr$()) As String()
+Private Function EoE_EleNoEleStr(L%(), E$(), EleStr$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If EleStr(J) = "" Then
         PushI Dy, Array(L(J), E(J))
     End If
 Next
-Er_E_EleNoEleStr = MsgzDrs(Msg_E_EleNoEleStr, DrszFF(FFo_L_E_EleStr_Er, Dy))
+EoE_EleNoEleStr = MsgzDrs(Msg_E_EleNoEleStr, DrszFF(FFo_L_E_EleStr_Er, Dy))
 End Function
 
-Private Function Er_E_EleNotUse(L%(), E$(), InUseEny$()) As String()
+Private Function EoE_EleNotUse(L%(), E$(), InUseEny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(InUseEny, E(J)) Then
         PushI Dy, Array(L(J), E(J))
     End If
 Next
-Er_E_EleNotUse = MsgzDrs(Msg_E_EleNotUse, DrszFF(FFoLE, Dy))
+EoE_EleNotUse = MsgzDrs(Msg_E_EleNotUse, DrszFF(FFoLE, Dy))
 End Function
 
-Private Function Er_E_EleStrEr(L%(), E$(), EleStr$()) As String()
+Private Function EoE_EleStrEr(L%(), E$(), EleStr$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim Er$: Er = ErzEleStr(EleStr(J))
@@ -131,12 +131,12 @@ Dim J%: For J = 0 To UB(L)
         PushI Dy, Array(L(J), E(J), EleStr(J), Er)
     End If
 Next
-Er_E_EleStrEr = MsgzDrs(Msg_E_EleStrEr, DrszFF(FFo_L_E_EleStr_Er, Dy))
+EoE_EleStrEr = MsgzDrs(Msg_E_EleStrEr, DrszFF(FFo_L_E_EleStr_Er, Dy))
 End Function
 
-Private Function Er_EF_EleNoFld(L%(), E$(), E_FldLikAy()) As String()
+Private Function EoEF_EleNoFld(L%(), E$(), E_FldLikAy()) As String()
 Dim Dy()
-Er_EF_EleNoFld = MsgzDrs(Msg_EF_EleNoFld, DrszFF(FFoLT, Dy))
+EoEF_EleNoFld = MsgzDrs(Msg_EF_EleNoFld, DrszFF(FFoLT, Dy))
 End Function
 
 Function HasLik(Ay, Lik) As Boolean
@@ -145,7 +145,7 @@ Dim V: For Each V In Itr(Ay)
 Next
 End Function
 
-Private Function Er_EF_EleNotUse(L%(), E$(), FldLikAy(), AllFny$()) As String()
+Private Function EoEF_EleNotUse(L%(), E$(), FldLikAy(), AllFny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim I%: For I = 0 To UB(FldLikAy)
@@ -154,10 +154,10 @@ Dim J%: For J = 0 To UB(L)
     PushI Dy, Array(L(J), E(J))
 X:
 Next
-Er_EF_EleNotUse = MsgzDrs(Msg_EF_EleNotUse, DrszFF(FFoLE, Dy))
+EoEF_EleNotUse = MsgzDrs(Msg_EF_EleNotUse, DrszFF(FFoLE, Dy))
 End Function
 
-Private Function Er_EF_LikfNotUsed(L%(), E$(), FldLikAy(), AllFny$()) As String()
+Private Function EoEF_LikfNotUsed(L%(), E$(), FldLikAy(), AllFny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim LikAy$(): LikAy = FldLikAy(J)
@@ -168,10 +168,10 @@ Dim J%: For J = 0 To UB(L)
         End If
     Next
 Next
-Er_EF_LikfNotUsed = MsgzDrs(Msg_EF_LikfNotUsed, DrszFF(FFoLEF, Dy))
+EoEF_LikfNotUsed = MsgzDrs(Msg_EF_LikfNotUsed, DrszFF(FFoLEF, Dy))
 End Function
 
-Private Function Er_Sk_FldNDef(L%(), T$(), SkFny(), AllFny$()) As String()
+Private Function EoSk_FldNDef(L%(), T$(), SkFny(), AllFny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim Fny$(): Fny = SkFny(J)
@@ -181,10 +181,10 @@ Dim J%: For J = 0 To UB(L)
         End If
     Next
 Next
-Er_Sk_FldNDef = MsgzDrs(Msg_Sk_FldNDef, DrszFF(FFoLTF, Dy))
+EoSk_FldNDef = MsgzDrs(Msg_Sk_FldNDef, DrszFF(FFoLTF, Dy))
 End Function
 
-Private Function Er_FldDup(L%(), T$(), Fny(), Msg$) As String()
+Private Function EoFldDup(L%(), T$(), Fny(), Msg$) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim TFny$(): TFny = Fny(J)
@@ -193,24 +193,24 @@ Dim J%: For J = 0 To UB(L)
         PushI Dy, Array(L(J), T(J), F)
     Next
 Next
-Er_FldDup = MsgzDrs(Msg, DrszFF(FFoLTF, Dy))
+EoFldDup = MsgzDrs(Msg, DrszFF(FFoLTF, Dy))
 End Function
 
-Private Function Er_Sk_FldDup(L%(), T$(), SkFny()) As String()
-Er_Sk_FldDup = Er_FldDup(L, T, SkFny, Msg_Sk_FldDup)
+Private Function EoSk_FldDup(L%(), T$(), SkFny()) As String()
+EoSk_FldDup = EoFldDup(L, T, SkFny, Msg_Sk_FldDup)
 End Function
 
-Private Function Er_Sk_TblNDef(L%(), T$(), AllTny$()) As String()
+Private Function EoSk_TblNDef(L%(), T$(), AllTny$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     If Not HasEle(AllTny, T(J)) Then
         PushI Dy, Array(L(J), T(J))
     End If
 Next
-Er_Sk_TblNDef = MsgzDrs(Msg_Sk_TblNDef, DrszFF(FFoLT, Dy))
+EoSk_TblNDef = MsgzDrs(Msg_Sk_TblNDef, DrszFF(FFoLT, Dy))
 End Function
 
-Private Function Er_Sk_TblDup(L%(), T$()) As String()
+Private Function EoSk_TblDup(L%(), T$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim Dup$(): Dup = AwDup(T)
@@ -218,10 +218,10 @@ Dim J%: For J = 0 To UB(L)
         PushI Dy, Array(L(J), D)
     Next
 Next
-Er_Sk_TblDup = MsgzDrs(Msg_Sk_TblDup, DrszFF(FFoLT, Dy))
+EoSk_TblDup = MsgzDrs(Msg_Sk_TblDup, DrszFF(FFoLT, Dy))
 End Function
 
-Private Function Er_Sk_TblNoFld(L%(), T$(), SkFny()) As String()
+Private Function EoSk_TblNoFld(L%(), T$(), SkFny()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim Fny$(): Fny = SkFny(J)
@@ -229,14 +229,14 @@ Dim J%: For J = 0 To UB(L)
         PushI Dy, Array(L(J), T(J))
     End If
 Next
-Er_Sk_TblNoFld = MsgzDrs(Msg_Sk_TblNoFld, DrszFF(FFoLT, Dy))
+EoSk_TblNoFld = MsgzDrs(Msg_Sk_TblNoFld, DrszFF(FFoLT, Dy))
 End Function
 
-Private Function Er_T_FldDup(L%(), T$(), Fny()) As String()
-Er_T_FldDup = Er_FldDup(L, T, Fny, Msg_T_FldDup)
+Private Function EoT_FldDup(L%(), T$(), Fny()) As String()
+EoT_FldDup = EoFldDup(L, T, Fny, Msg_T_FldDup)
 End Function
 
-Private Function Er_T_FldDupMulLin(L%(), T$(), Fny()) As String()
+Private Function EoT_FldDupMulLin(L%(), T$(), Fny()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim TFny$(): TFny = Fny(J)
@@ -251,10 +251,10 @@ Dim J%: For J = 0 To UB(L)
         Next
     Next
 Next
-Er_T_FldDupMulLin = MsgzDrs(Msg_T_FldDupMulLin, DrszFF(FFoLTFL, Dy))
+EoT_FldDupMulLin = MsgzDrs(Msg_T_FldDupMulLin, DrszFF(FFoLTFL, Dy))
 End Function
 
-Private Function Er_T_FldNoEleNorStd(L%(), T$(), Fny(), AllFnyWithEle$()) As String()
+Private Function EoT_FldNoEleNorStd(L%(), T$(), Fny(), AllFnyWithEle$()) As String()
 Dim Dy()
 Dim J%: For J = 0 To UB(L)
     Dim IFny$(): IFny = Fny(J)
@@ -266,11 +266,11 @@ Dim J%: For J = 0 To UB(L)
         End If
     Next
 Next
-Er_T_FldNoEleNorStd = MsgzDrs(Msg_T_FldNoEleNorStd, DrszFF(FFoLTF, Dy))
+EoT_FldNoEleNorStd = MsgzDrs(Msg_T_FldNoEleNorStd, DrszFF(FFoLTF, Dy))
 End Function
 
-Private Function Er_T_LinMis$(T$())
-If Si(T) = 0 Then Er_T_LinMis = Msg_T_LinMis
+Private Function EoT_LinMis$(T$())
+If Si(T) = 0 Then EoT_LinMis = Msg_T_LinMis
 End Function
 
 Function ErlzSchml$(Schml$)
@@ -316,28 +316,28 @@ Dim X_AllFny$(): X_AllFny = AwDist(AyzAyOfAy(.T_Fny))
 Dim X_AllFnyWithEle$(): X_AllFnyWithEle = Fnd_AllFnyWithEle(X_AllFny, .EF_FldLikAy) 'AllFny in T has ele
 Dim X_InUseEny$(): X_InUseEny = Fnd_InUseEny(X_AllFnyWithEle, .E_E, .EF_FldLikAy)  'T use F, F use E, all E is in use
 
-Dim DF1$():   DF1 = Er_DF_DesMis(.DF_L, .DF_F, .DF_D)
-Dim DF2$():   DF2 = Er_DF_FldNotUse(.DF_L, .DF_F, X_AllFny)
-Dim DT1$():   DT1 = Er_DT_DesMis(.DT_L, .DT_T, .DT_D)
-Dim DT2$():   DT2 = Er_DT_TblNDef(.DT_L, .DT_T, .T_T)
-Dim DTF1$(): DTF1 = Er_DTF_DesMis(.DTF_L, .DTF_TF, .DTF_D)
-Dim DTF2$(): DTF2 = Er_DTF_FldNDef(.DTF_L, .DTF_T, .DTF_F, X_AllFny)
-Dim DTF3$(): DTF3 = Er_DTF_TblNDef(.DTF_L, .DTF_T, .T_T)
-Dim E1$():     E1 = Er_E_EleNoEleStr(.E_L, .E_E, .E_EleStr)
-Dim E2$():     E2 = Er_E_EleNotUse(.E_L, .E_E, X_InUseEny)
-Dim E3$():     E3 = Er_E_EleStrEr(.E_L, .E_E, .E_EleStr)
-Dim EF1$():   EF1 = Er_EF_EleNoFld(.EF_L, .EF_E, .EF_FldLikAy)
-Dim EF2$():   EF2 = Er_EF_EleNotUse(.EF_L, .EF_E, .EF_FldLikAy, X_AllFny)
-Dim EF3$():   EF3 = Er_EF_LikfNotUsed(.EF_L, .EF_E, .EF_FldLikAy, X_AllFny)
-Dim Sk1$():   Sk1 = Er_Sk_FldNDef(.Sk_L, .Sk_T, .Sk_Fny, X_AllFny)
-Dim Sk2$():   Sk2 = Er_Sk_FldDup(.Sk_L, .Sk_T, .Sk_Fny)
-Dim Sk3$():   Sk3 = Er_Sk_TblNDef(.Sk_L, .Sk_T, .T_T)
-Dim Sk4$():   Sk4 = Er_Sk_TblDup(.Sk_L, .Sk_T)
-Dim Sk5$():   Sk5 = Er_Sk_TblNoFld(.Sk_L, .Sk_T, .Sk_Fny)
-Dim T1$():     T1 = Er_T_FldDup(.T_L, .T_T, .T_Fny)
-Dim T2$():     T2 = Er_T_FldDupMulLin(.T_L, .T_T, .T_Fny)
-Dim T3$():     T3 = Er_T_FldNoEleNorStd(.T_L, .T_T, .T_Fny, X_AllFnyWithEle)
-Dim T4$:       T4 = Er_T_LinMis(.T_T)
+Dim DF1$():   DF1 = EoDF_DesMis(.DF_L, .DF_F, .DF_D)
+Dim DF2$():   DF2 = EoDF_FldNotUse(.DF_L, .DF_F, X_AllFny)
+Dim DT1$():   DT1 = EoDT_DesMis(.DT_L, .DT_T, .DT_D)
+Dim DT2$():   DT2 = EoDT_TblNDef(.DT_L, .DT_T, .T_T)
+Dim DTF1$(): DTF1 = EoDTF_DesMis(.DTF_L, .DTF_TF, .DTF_D)
+Dim DTF2$(): DTF2 = EoDTF_FldNDef(.DTF_L, .DTF_T, .DTF_F, X_AllFny)
+Dim DTF3$(): DTF3 = EoDTF_TblNDef(.DTF_L, .DTF_T, .T_T)
+Dim E1$():     E1 = EoE_EleNoEleStr(.E_L, .E_E, .E_EleStr)
+Dim E2$():     E2 = EoE_EleNotUse(.E_L, .E_E, X_InUseEny)
+Dim E3$():     E3 = EoE_EleStrEr(.E_L, .E_E, .E_EleStr)
+Dim EF1$():   EF1 = EoEF_EleNoFld(.EF_L, .EF_E, .EF_FldLikAy)
+Dim EF2$():   EF2 = EoEF_EleNotUse(.EF_L, .EF_E, .EF_FldLikAy, X_AllFny)
+Dim EF3$():   EF3 = EoEF_LikfNotUsed(.EF_L, .EF_E, .EF_FldLikAy, X_AllFny)
+Dim Sk1$():   Sk1 = EoSk_FldNDef(.Sk_L, .Sk_T, .Sk_Fny, X_AllFny)
+Dim Sk2$():   Sk2 = EoSk_FldDup(.Sk_L, .Sk_T, .Sk_Fny)
+Dim Sk3$():   Sk3 = EoSk_TblNDef(.Sk_L, .Sk_T, .T_T)
+Dim Sk4$():   Sk4 = EoSk_TblDup(.Sk_L, .Sk_T)
+Dim Sk5$():   Sk5 = EoSk_TblNoFld(.Sk_L, .Sk_T, .Sk_Fny)
+Dim T1$():     T1 = EoT_FldDup(.T_L, .T_T, .T_Fny)
+Dim T2$():     T2 = EoT_FldDupMulLin(.T_L, .T_T, .T_Fny)
+Dim T3$():     T3 = EoT_FldNoEleNorStd(.T_L, .T_T, .T_Fny, X_AllFnyWithEle)
+Dim T4$:       T4 = EoT_LinMis(.T_T)
 End With
 
 Dim D$(): D = SyzAp(DT1, DT2, DF1, DF2, DTF2, DTF2, DTF3)

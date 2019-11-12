@@ -44,9 +44,24 @@ Dim I: For Each I In Itr(AvOf_Itm_or_Ay)
 Next
 End Function
 
+Function SyzAvNB(AvOf_Itm_or_Ay()) As String()
+Dim I: For Each I In Itr(AvOf_Itm_or_Ay)
+    If IsArray(I) Then
+        PushNBAy SyzAvNB, I
+    Else
+        PushNB SyzAvNB, I
+    End If
+Next
+End Function
+
 Function SyzAp(ParamArray ApOf_Itm_Or_Ay()) As String()
 Dim Av(): Av = ApOf_Itm_Or_Ay
 SyzAp = SyzAv(Av)
+End Function
+
+Function SyzApNB(ParamArray ApOf_Itm_Or_Ay()) As String()
+Dim Av(): Av = ApOf_Itm_Or_Ay
+SyzApNB = SyzAvNB(Av)
 End Function
 
 Function Sy(ParamArray ApOf_Itm_Or_Ay()) As String()
@@ -59,16 +74,17 @@ Dim Av(): If UBound(Ap) >= 0 Then Av = Ap
 DteAy = IntozAy(DteAy, Av)
 End Function
 
-Function IntAyzLngAy(LngAp&()) As Integer()
+Function IntAyzLngAy(LngAy&()) As Integer()
 Dim I
-For Each I In Itr(LngAp)
+For Each I In Itr(LngAy)
     PushI IntAyzLngAy, I
 Next
 End Function
-Function IntAySS(IntSS$) As Integer()
+
+Function IntAyzSS(IntSS$) As Integer()
 Dim I
 For Each I In Itr(SyzSS(IntSS))
-    PushI IntAySS, I
+    PushI IntAyzSS, I
 Next
 End Function
 
@@ -77,9 +93,9 @@ Dim Av(): If UBound(Ap) >= 0 Then Av = Ap
 IntAy = IntozAy(EmpIntAy, Av)
 End Function
 
-Function LngAp(ParamArray Ap()) As Long()
+Function LngAy(ParamArray Ap()) As Long()
 Dim Av(): If UBound(Ap) >= 0 Then Av = Ap
-LngAp = IntozAy(EmpLngAy, Av)
+LngAy = IntozAy(EmpLngAy, Av)
 End Function
 
 Function SngAy(ParamArray Ap()) As Single()

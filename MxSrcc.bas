@@ -3,6 +3,7 @@ Option Compare Text
 Option Explicit
 Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxSrcc."
+
 ':Srcc: :Src #Src-Cleaned# ! Src without blank/rmk-Line
 Function SrccP() As String()
 SrccP = SrcczP(CPj)
@@ -59,7 +60,7 @@ GoTo X
 End Function
 
 Function Srcc(Src$()) As String()
-':Srcc: :Src #Cleared-Empty-Lin/Rmk-Src# ! all empty-lin and rmk-lin are removed.
+':Srcc: :Src #Cleared-Empty-Lin/Rmk-Src/# ! all empty-lin and rmk-lin are removed.
 Dim L: For Each L In Itr(Src)
     If IsLinCd(L) Then PushI Srcc, L
 Next
@@ -68,6 +69,7 @@ End Function
 Function IsLinNCd(L) As Boolean
 IsLinNCd = Not IsLinCd(L)
 End Function
+
 Function IsLinCd(L) As Boolean
 Dim A$: A = Trim(L)
 If A = "" Then Exit Function

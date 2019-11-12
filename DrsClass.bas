@@ -27,6 +27,7 @@ Sub Init(Fny$(), Dy())
 A.Fny = Fny
 A.Dy = Dy
 End Sub
+
 Sub IniByDrs(D As Drs)
 A.Fny = D.Fny
 A.Dy = D.Dy

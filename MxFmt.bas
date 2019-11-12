@@ -21,7 +21,7 @@ Dim O$, I, Cnt
 O = Replace(QQVbl, "|", vbCrLf)
 Cnt = SubStrCnt(QQVbl, "?")
 If Cnt <> Si(Av) Then
-    Thw CSub, "[QQVbl-?-Cnt] <> Av-Si", "QQVbl-?-Cnt AvSz QQVbl Av", Cnt, Si(Av), QQVbl, Av
+    Thw CSub, "QMrkCnt-in-QQVbl <> Av-Si", "QMrkCnt-in-QQVbl AvSz QQVbl Av", Cnt, Si(Av), QQVbl, Av
     Exit Function
 End If
 Dim P&

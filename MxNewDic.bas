@@ -91,11 +91,11 @@ For Each I In Itr(Ly)
 Next
 End Function
 
-Function DiKqABC(Ay) As Dictionary
-'Ret : :DiKqABC: is a dic wi v running fm A-Z at most 26 ele.  The k is CStr fm @Ay-ele.
-If Si(Ay) > 26 Then Thw CSub, "Si-@Ay cannot >26", "Si-@Ay", Si(Ay)
+Function DiKqABC(AyOfSi26OrLess) As Dictionary
+'Ret : :DiKqABC: is a dic wi v running fm A-Z at most 26 ele.  The k is CStr fm @AyOfSi26OrLess-ele.
+If Si(AyOfSi26OrLess) > 26 Then Thw CSub, "Si-@AyOfSi26OrLess cannot >26", "Si-@AyOfSi26OrLess", Si(AyOfSi26OrLess)
 Dim O As New Dictionary
-Dim V, J&: For Each V In Itr(Ay)
+Dim V, J&: For Each V In Itr(AyOfSi26OrLess)
     V = CStr(V)
     If Not O.Exists(V) Then
         O.Add V, Chr(65 + J)

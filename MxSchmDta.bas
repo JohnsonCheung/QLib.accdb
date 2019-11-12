@@ -17,7 +17,7 @@ Type SchmDta
     E_EleStr() As String
     
     DT_L() As Integer ' ! Each Ele is Lno
-    DT_T() As String ' ! Each Ele is T Des
+    DT_T() As String  ' ! Each Ele is T Des
     DT_D() As String
     
     DF_L() As Integer
@@ -45,7 +45,7 @@ Private Const C_Sk$ = "Sk"
 Private Function DoL2c(A As TDoLTD, T1$, SplitDtaCol_ToCC$) As Drs
 'Ret : Drs-L-<@SplitDtaCol_ToCC>
 Dim D As Drs: D = A.D
-Dim D1 As Drs: D1 = DwEQExl(D, "T1", T1)
+Dim D1 As Drs: D1 = DwEqExl(D, "T1", T1)
 Dim Dr, Dy(): For Each Dr In Itr(D1.Dy)
     Dim Dta$: Dta = Dr(1)
     PushI Dy, Array(Dr(0), T1zS(Dta), RmvT1(Dta))
@@ -53,45 +53,7 @@ Next
 DoL2c = DrszFF("L " & SplitDtaCol_ToCC$, Dy)
 End Function
 
-Sub Unzip(Dy2(), OAy1, OAy2)
-Erase OAy1, OAy2
-Dim U&: U = UB(Dy2): If U = -1 Then Exit Sub
-ReDim OAy1(U)
-ReDim OAy2(U)
-Dim Dr, J&:: For Each Dr In Dy2
-    OAy1(J) = Dr(0)
-    OAy2(J) = Dr(1)
-Next
-End Sub
 
-Sub Unzip3(Dy3(), OAy1, OAy2, OAy3)
-Erase OAy1, OAy2, OAy3
-Dim U&: U = UB(Dy3): If U = -1 Then Exit Sub
-ReDim OAy1(U)
-ReDim OAy2(U)
-ReDim OAy3(U)
-Dim Dr, J&: For Each Dr In Dy3
-    OAy1(J) = Dr(0)
-    OAy2(J) = Dr(1)
-    OAy3(J) = Dr(2)
-    J = J + 1
-Next
-End Sub
-
-Sub Unzip4(Dy4(), OAy1, OAy2, OAy3, OAy4)
-Erase OAy1, OAy2, OAy3, OAy4
-Dim U&: U = UB(Dy4): If U = -1 Then Exit Sub
-ReDim OAy1(U)
-ReDim OAy2(U)
-ReDim OAy3(U)
-ReDim OAy4(U)
-Dim Dr, J&: For Each Dr In Dy4
-    OAy1(J) = Dr(0)
-    OAy2(J) = Dr(1)
-    OAy3(J) = Dr(2)
-    OAy4(J) = Dr(3)
-Next
-End Sub
 Function SchmDta(Schm$()) As SchmDta
 Dim D As TDoLTD:      D = TDoLTDzInd(Schm)
 Dim DoDF As Drs:   DoDF = DoL2c(D, C_DF, "F Des")

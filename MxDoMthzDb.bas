@@ -9,11 +9,11 @@ Stop
 End Function
 
 Function DoPubSub() As Drs
-DoPubSub = DwEQ(DoFun, "Ty", "Sub")
+DoPubSub = DwEq(DoFun, "Ty", "Sub")
 End Function
 
 Function DoPubFun() As Drs
-DoPubFun = DwEQExl(DoFun, "Ty", "Fun")
+DoPubFun = DwEqExl(DoFun, "Ty", "Fun")
 End Function
 
 Function DoPubFunwPatn(PatnSS3$) As Drs
@@ -25,8 +25,8 @@ DoPubPrp = DwIn(DoPubFun, "Ty", SyzSS("Get Let Set"))
 End Function
 
 Function DoPubPrpWiPm() As Drs
-Dim A As Drs: A = AddMthColHasPm(DoPubPrpWiPm)
-DoPubPrpWiPm = DwEQExl(A, "HasPm", True)
+Dim A As Drs: A = AddMthColMthPm(DoPubPrpWiPm)
+DoPubPrpWiPm = DwEqExl(A, "MthPm", "")
 End Function
 
 Function IsPurePrp(MdTy$, MthPm$) As Boolean

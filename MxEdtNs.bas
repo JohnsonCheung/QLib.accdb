@@ -5,7 +5,7 @@ Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxEdtNs."
 
 Sub EdtNs()
-WrtDrsXls DoMdP, ResFcsv("DoMdP")
+WrtDrsAsXls DoMdP, ResFcsv("DoMdP")
 BrwNs
 End Sub
 

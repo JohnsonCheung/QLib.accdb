@@ -19,7 +19,7 @@ End Function
 Function DoTbMthzN(D As Database, Pjn$, MdNy$()) As Drs
 ':$$Mth:  ! Pjn MdTy Mdn Mdy Ty Mthn L E MthLin TyChr RetAs ShtPm Mthl Rmk @@
 'FFoMthc  = Pjn MdTy Mdn Mdy Ty Mthn L E MthLin Mthl
-DoTbMthzN = Add5MthCol(DoMthczDbTbMd(D, Pjn$, MdNy))
+DoTbMthzN = Add6MthCol(DoMthczDbTbMd(D, Pjn$, MdNy))
 End Function
 
 Function DoMthczDbTbMd(D As Database, Pjn$, MdNy$()) As Drs
