@@ -31,30 +31,30 @@ D ""
 M.DeleteLines Lno, Cnt
 End Sub
 
-Sub DltLinzF(M As CodeModule, B As Feis)
-If Not IsFeisInOrd(B) Then Thw CSub, "Given Feis is not in order", "Feis", LyzFeis(B)
+Sub DltLinzF(M As CodeModule, b As Feis)
+If Not IsFeisInOrd(b) Then Thw CSub, "Given Feis is not in order", "Feis", LyzFeis(b)
 Dim J%
-For J = B.N - 1 To 0 Step -1
-    With FCntzFei(B.Ay(J))
+For J = b.N - 1 To 0 Step -1
+    With FCntzFei(b.Ay(J))
         M.DeleteLines .FmLno, .Cnt
     End With
 Next
 End Sub
 
-Sub DltLinzFei(M As CodeModule, B As Fei, OldLines$)
+Sub DltLinzFei(M As CodeModule, b As Fei, OldLines$)
 Stop
 Dim FstLin
 'FstLin = A.Lines(Fei.FmNo, 1)
-With B
+With b
 '    If .Cnt = 0 Then Exit Sub
 '    A.DeleteLines .FmNo, .Cnt
 End With
 End Sub
 
-Sub DltLinzFeis(M As CodeModule, B As Feis)
-If Not IsFeisInOrd(B) Then Stop
+Sub DltLinzFeis(M As CodeModule, b As Feis)
+If Not IsFeisInOrd(b) Then Stop
 Dim J&
-For J = B.N - 1 To 0 Step -1
+For J = b.N - 1 To 0 Step -1
 '    DltLinzFEITx B.Ay(J)
 Next
 End Sub
@@ -79,10 +79,10 @@ End Function
 Sub DltLinzD(M As CodeModule, L_OldL As Drs)
 If JnSpc(L_OldL.Fny) <> "L OldL" Then Stop: Exit Sub
 Stop
-Dim B As Drs: B = SrtDrs(L_OldL, "-L")
+Dim b As Drs: b = SrtDrs(L_OldL, "-L")
 Dim Dr
 Stop
-For Each Dr In Itr(B.Dy)
+For Each Dr In Itr(b.Dy)
     Dim L&: L = Dr(0)
     Dim OldL$: OldL = Dr(2)
     Dim NewL$: NewL = Dr(1)
@@ -94,10 +94,10 @@ End Sub
 Sub InsLinzD(M As CodeModule, L_NewL As Drs)
 If JnSpc(L_NewL.Fny) <> "L NewL" Then Stop: Exit Sub
 Stop
-Dim B As Drs: B = SrtDrs(L_NewL, "-L")
+Dim b As Drs: b = SrtDrs(L_NewL, "-L")
 Dim Dr
 Stop
-For Each Dr In Itr(B.Dy)
+For Each Dr In Itr(b.Dy)
     Dim L&: L = Dr(0)
     Dim OldL$: OldL = Dr(2)
     Dim NewL$: NewL = Dr(1)
@@ -105,18 +105,19 @@ For Each Dr In Itr(B.Dy)
     M.ReplaceLine L, NewL
 Next
 End Sub
+
 Sub InsLinzDcl(M As CodeModule, Ly$())
-Dim Lno&: Lno = LnozFstDcl(M)
+Dim Lno&: Lno = FstDclLno(M)
 Dim L: For Each L In Itr(Ly)
     M.InsertLines Lno, L
 Next
 End Sub
 
 Sub InsLin(M As CodeModule, L_NewL As Drs)
-Dim B As Drs: B = L_NewL
-If JnSpc(B.Fny) <> "L NewL" Then Stop: Exit Sub
+Dim b As Drs: b = L_NewL
+If JnSpc(b.Fny) <> "L NewL" Then Stop: Exit Sub
 Dim Dr
-For Each Dr In Itr(B.Dy)
+For Each Dr In Itr(b.Dy)
     Dim L&: L = Dr(0)
     Dim NewL$: NewL = Dr(1)
     M.InsertLines L, NewL
@@ -124,10 +125,10 @@ Next
 End Sub
 
 Sub RplLin(M As CodeModule, L_NewL_OldL As Drs)
-Dim B As Drs: B = L_NewL_OldL
-If JnSpc(B.Fny) <> "L NewL OldL" Then Stop: Exit Sub
+Dim b As Drs: b = L_NewL_OldL
+If JnSpc(b.Fny) <> "L NewL OldL" Then Stop: Exit Sub
 Dim Dr
-For Each Dr In Itr(B.Dy)
+For Each Dr In Itr(b.Dy)
     Dim L&: L = Dr(0)
     Dim OldL$: OldL = Dr(2)
     Dim NewL$: NewL = Dr(1)

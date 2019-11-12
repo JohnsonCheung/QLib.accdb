@@ -1,7 +1,8 @@
 Attribute VB_Name = "MxUtfSig"
 Option Explicit
 Option Compare Text
-Const CMod$ = CLib & "MxUtfSig." '?CHr(239);Chr(187);Chr(191),Chr(&HEF);Chr(&HBB);Chr(&HBF)
+Const CLib$ = "QVb."
+Const CMod$ = CLib & "MxUtfSig."
 Public Const Utf8Sig$ = "﻿"
 
 Function RmvUtf8Sig$(S$)

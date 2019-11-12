@@ -18,9 +18,9 @@ End Function
 
 Sub Z_InspStmtzL()
 Dim A As Drs: A = DoMthzM(CMd)
-Dim B$(): B = StrCol(A, "MthLin")
+Dim b$(): b = StrCol(A, "MthLin")
 Dim L, ODy()
-For Each L In B
+For Each L In b
     PushI ODy, Array(L, InspStmtzL(L, "Md"))
 Next
 Dim C As Drs: C = DrszFF("MthLin InspStmt", ODy)

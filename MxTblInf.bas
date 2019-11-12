@@ -333,18 +333,18 @@ Function LofVblzDbt$(D As Database, T)
 LofVblzDbt = DbtPrp(D, T, "LofVbl")
 End Function
 
-Function MaxNumVbTy(A As VbVarType, B As VbVarType) As VbVarType
-If A = B Then MaxNumVbTy = A: Exit Function
-If Not IsNumzVbTy(B) Then Thw CSub, "Given B is not NumVbTy", "B-VarType", B
+Function MaxNumVbTy(A As VbVarType, b As VbVarType) As VbVarType
+If A = b Then MaxNumVbTy = A: Exit Function
+If Not IsNumzVbTy(b) Then Thw CSub, "Given B is not NumVbTy", "B-VarType", b
 Dim O As VbVarType
 Select Case A
-Case VbVarType.vbByte:      O = B
-Case VbVarType.vbInteger:   O = IIf(B = vbByte, A, B)
-Case VbVarType.vbLong:      O = IIf((B = vbByte) Or (B = vbInteger), A, B)
-Case VbVarType.vbSingle:    O = IIf((B = vbByte) Or (B = vbInteger) Or (B = vbLong), A, B)
-Case VbVarType.vbDecimal:   O = IIf((B = vbByte) Or (B = vbInteger) Or (B = vbLong) Or (B = vbSingle), A, B)
-Case VbVarType.vbDouble:    O = IIf((B = vbByte) Or (B = vbInteger) Or (B = vbLong) Or (B = vbSingle) Or (B = vbDecimal), A, B)
-Case VbVarType.vbCurrency:  O = IIf((B = vbByte) Or (B = vbInteger) Or (B = vbLong) Or (B = vbSingle) Or (B = vbDecimal) Or (B = vbDouble), A, B)
+Case VbVarType.vbByte:      O = b
+Case VbVarType.vbInteger:   O = IIf(b = vbByte, A, b)
+Case VbVarType.vbLong:      O = IIf((b = vbByte) Or (b = vbInteger), A, b)
+Case VbVarType.vbSingle:    O = IIf((b = vbByte) Or (b = vbInteger) Or (b = vbLong), A, b)
+Case VbVarType.vbDecimal:   O = IIf((b = vbByte) Or (b = vbInteger) Or (b = vbLong) Or (b = vbSingle), A, b)
+Case VbVarType.vbDouble:    O = IIf((b = vbByte) Or (b = vbInteger) Or (b = vbLong) Or (b = vbSingle) Or (b = vbDecimal), A, b)
+Case VbVarType.vbCurrency:  O = IIf((b = vbByte) Or (b = vbInteger) Or (b = vbLong) Or (b = vbSingle) Or (b = vbDecimal) Or (b = vbDouble), A, b)
 Case Else:                  Thw CSub, "Given A is not NumVbTy", "A-VarType", A
 End Select
 MaxNumVbTy = O

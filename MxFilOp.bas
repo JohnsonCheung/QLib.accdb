@@ -38,17 +38,17 @@ CpyFfn Ffn, O
 CpyFfnzToNxt = O
 End Function
 
-Sub CpyFfnzToPthIfDif(Ffn, ToPth$, Optional B As EmFilCmp = EmFilCmp.EiCmpEq)
+Sub CpyFfnzToPthIfDif(Ffn, ToPth$, Optional b As EmFilCmp = EmFilCmp.EiCmpEq)
 Dim Fn$: Fn = FnzFfn(Ffn)
 Dim ToFfn$: ToFfn = FfnzPthFn(ToPth, Fn)
-If IsEqFfn(Ffn, ToFfn, B) Then Exit Sub
+If IsEqFfn(Ffn, ToFfn, b) Then Exit Sub
 CpyFfnzToPth Ffn, ToPth, OvrWrt:=True
 End Sub
 
-Sub CpyFfnAyzIfDif(FfnAy$(), ToPth$, Optional B As EmFilCmp = EmFilCmp.EiCmpEq)
+Sub CpyFfnAyzIfDif(FfnAy$(), ToPth$, Optional b As EmFilCmp = EmFilCmp.EiCmpEq)
 Dim I
 For Each I In FfnAy
-    CpyFfnzIfDif CStr(I), ToPth, B
+    CpyFfnzIfDif CStr(I), ToPth, b
 Next
 End Sub
 
@@ -68,9 +68,9 @@ Function CpyFfnzToPth$(Ffn, ToPth$, Optional OvrWrt As Boolean)
 CpyFfn Ffn, FfnzPthFn(ToPth, Fn(Ffn)), OvrWrt
 End Function
 
-Sub CpyFfnzIfDif(Ffn, ToFfn$, Optional B As EmFilCmp)
-If IsEqFfn(Ffn, ToFfn, B) Then
-    Dim M$: M = FmtQQ("? file", IIf(B = EiCmpEq, "Eq", "Same"))
+Sub CpyFfnzIfDif(Ffn, ToFfn$, Optional b As EmFilCmp)
+If IsEqFfn(Ffn, ToFfn, b) Then
+    Dim M$: M = FmtQQ("? file", IIf(b = EiCmpEq, "Eq", "Same"))
     D LyzFunMsgNap(CSub, M, "FmFfn ToFfn", Ffn, ToFfn)
     Exit Sub
 End If

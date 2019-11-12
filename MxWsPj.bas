@@ -12,8 +12,8 @@ Function CmpzWs(S As Worksheet) As VBComponent
 Set CmpzWs = FstzItn(PjzWs(S).VBComponents, S.CodeName)
 End Function
 
-Function PjzWb(B As Workbook) As VBProject
-Set PjzWb = B.VBProject
+Function PjzWb(b As Workbook) As VBProject
+Set PjzWb = b.VBProject
 End Function
 
 Function PjzWs(S As Worksheet) As VBProject

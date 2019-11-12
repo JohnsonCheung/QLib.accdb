@@ -2,6 +2,7 @@ Attribute VB_Name = "MxAlignMth"
 Option Explicit
 Option Compare Text
 Const CLib$ = "QIde."
+Const CNs$ = "AlignMth"
 Const CMod$ = CLib & "MxAlignMth."
 
 Sub AlignMthzLno(M As CodeModule, MthLno&, Optional Upd As EmUpd, Optional IsUpdSelf As Boolean)
@@ -231,8 +232,8 @@ Function XMcFill(McR123 As Drs) As Drs
 Dim Gpno%(): Gpno = AwDist(IntCol(McR123, "Gpno"))
 Dim IGpno: For Each IGpno In Itr(Gpno)
     Dim A As Drs: A = DwEq(McR123, "Gpno", IGpno) ' ..McLin.. ! Sam *Gpno
-    Dim B As Drs: B = XAddColzF0(A)               ' ..F0      ! *F0 is len of spc of fst dr of @A
-    Dim C As Drs: C = AddColzFiller(B, "Dcl LHS RHS R1 R2")
+    Dim b As Drs: b = XAddColzF0(A)               ' ..F0      ! *F0 is len of spc of fst dr of @A
+    Dim C As Drs: C = AddColzFiller(b, "Dcl LHS RHS R1 R2")
     Dim O As Drs: O = AddDrs(O, C)
 Next
 XMcFill = O
@@ -278,12 +279,12 @@ Function XMcTRmk(McRmk As Drs) As Drs
 'Fm McRmk : L McLin Gpno IsColon IsRmk ! Add ^IsRmk   wh-LTrim-FstChr-^McLin='
 'Ret      : L *Rmk                     ! RmvRec wh-TopRmk.  Each gp, the above rmk lines are TopRmk, rmv them.
 '                                      ! [*Rmk McLin Gpno IsRmk] @@
-Dim IGpno%, MaxGpno, A As Drs, B As Drs, O As Drs
+Dim IGpno%, MaxGpno, A As Drs, b As Drs, O As Drs
 MaxGpno = AyMax(IntCol(McRmk, "Gpno"))
 For IGpno = 1 To MaxGpno
     A = DwEq(McRmk, "Gpno", IGpno)
-    B = XMcTRmkI(A)
-    O = AddDrs(O, B)
+    b = XMcTRmkI(A)
+    O = AddDrs(O, b)
 Next
 XMcTRmk = O
 'Insp "QIde_B_AlignMth.XMcTRmk", "Inspect", "Oup(XMcTRmk) McRmk", FmtDrszNoRdu(XMcTRmk), FmtDrszNoRdu(McRmk): Stop
@@ -413,14 +414,14 @@ Function XMcNew(Mc As Drs, McDim As Drs) As String()
 'BrwDrs2 Mc, Mc, NN:="Mc McDim", Tit:="Use McDim to Upd Mc to become NewL": Stop
 If JnSpc(McDim.Fny) <> "L OldL NewL" Then Stop
 Dim A As Drs: A = SelDrs(McDim, "L NewL")
-Dim B As Dictionary: Set B = DiczDrsCC(A)
+Dim b As Dictionary: Set b = DiczDrsCC(A)
 Dim O$()
     Dim Dr, L&, MthLin$
     For Each Dr In Mc.Dy
         L = Dr(0)
         MthLin = Dr(1)
-        If B.Exists(L) Then
-            PushI O, B(L)
+        If b.Exists(L) Then
+            PushI O, b(L)
         Else
             PushI O, MthLin
         End If
@@ -479,8 +480,8 @@ End Function
 Function XMbAct(Cm$(), M As CodeModule) As Drs
 'Ret : L Mthn OldL ! OldL is MbStmt @@
 Dim A As Drs: A = DoMthezM(M)             ' L E CmMdy Ty Mthn MthLin
-Dim B As Drs: B = DwIn(A, "Mthn", Cm)
-Dim Dr, Dy(): For Each Dr In Itr(B.Dy)
+Dim b As Drs: b = DwIn(A, "Mthn", Cm)
+Dim Dr, Dy(): For Each Dr In Itr(b.Dy)
     Dim E&:           E = Dr(1)
     Dim L&:           L = E - 1          ' ! The Lno of MbStmt
     Dim Mthn$:     Mthn = Dr(4)
@@ -515,8 +516,8 @@ If NoReczDrs(McFill) Then Stop
 Dim A As Drs: A = SelDrs(McFill, "L McLin Gpno Dcl IsColon LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2")
 Dim Gpno: Gpno = DistCol(McFill, "Gpno")
 Dim IGpno: For Each IGpno In Itr(Gpno)
-    Dim B As Drs: B = DwEq(A, "Gpno", IGpno) ' L McLin Gpno Dcl LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2
-    Dim C As Drs: C = XDoAlign(B)
+    Dim b As Drs: b = DwEq(A, "Gpno", IGpno) ' L McLin Gpno Dcl LHS RHS R1 R2 R3 F0 FDcl FLHS FRHS FR1 FR2
+    Dim C As Drs: C = XDoAlign(b)
     Dim O As Drs: O = AddDrs(O, C)
 Next
 XMcAlign = O
@@ -684,17 +685,17 @@ Case P = 0 And E = 0:           O.A = L
 Case E > 0 And P > 0 And P > E: O.A = Bef(L, "!"): O.C = Aft(L, "!") 'If ! is in front of #, don't treat # of a rmk, so no-B, but only-A-and-C
 Case E > 0 And P > 0:           O = BrkBet(L, "#", "!")
 Case E > 0:                     O.A = Bef(L, "!"): O.C = Aft(L, "!")
-Case P > 0:                     O.A = Bef(L, "#"): O.B = Aft(L, "#")
+Case P > 0:                     O.A = Bef(L, "#"): O.b = Aft(L, "#")
 Case Else:                      O.A = L
 End Select
 If O.A = "" Then
-    If O.B <> "" Or O.C <> "" Then
+    If O.b <> "" Or O.C <> "" Then
 O.A = " ' "
     End If
 Else
 O.A = " ' " & O.A
 End If
-If O.B <> "" Then O.B = " #" & O.B
+If O.b <> "" Then O.b = " #" & O.b
 If O.C <> "" Then O.C = " ! " & O.C
 BrkRmk = O
 End Function
@@ -704,7 +705,7 @@ Function XMcR123(McLREmp As Drs) As Drs
 'Ret        : L *Rmk *V *LRC R1 R2 R3       ! Add ^R1-R2-R3 from ^Rst @@
 Dim Dr: For Each Dr In Itr(McLREmp.Dy)
     Dim R As S3: R = BrkRmk(LasEle(Dr))
-    Dim Dy():               PushI Dy, AddAy(AeLasEle(Dr), Array(R.A, R.B, R.C))
+    Dim Dy():               PushI Dy, AddAy(AeLasEle(Dr), Array(R.A, R.b, R.C))
 Next
 Dim Fny$(): Fny = AddAy(AeLasEle(McLREmp.Fny), SyzSS("R1 R2 R3"))
 XMcR123 = Drs(Fny, Dy)
@@ -864,8 +865,8 @@ Dim McLin$, IxMcLin%, Dr, Dy(), IGpno
 AsgIx McVSfx, "McLin", IxMcLin
 For Each IGpno In AwDist(IntCol(McVSfx, "Gpno"))
     Dim A As Drs: A = DwEq(McVSfx, "Gpno", IGpno) ' L McLin Gpno IsRmk V Sfx Rst ! Sam Gpno
-    Dim B As Drs: B = XDcl(A) ' L McLin Gpno IsRmk V Sfx Dcl Rst ! Adding Dcl using V Sfx
-    Dim O As Drs: O = AddDrs(O, B)
+    Dim b As Drs: b = XDcl(A) ' L McLin Gpno IsRmk V Sfx Dcl Rst ! Adding Dcl using V Sfx
+    Dim O As Drs: O = AddDrs(O, b)
 Next
 XMcDcl = O
 'Insp "QIde_B_AlignMth.XMcDcl", "Inspect", "Oup(XMcDcl) McVSfx", FmtDrszNoRdu(XMcDcl), FmtDrszNoRdu(McVSfx): Stop

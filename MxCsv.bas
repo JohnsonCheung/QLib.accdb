@@ -5,7 +5,7 @@ Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxCsv."
 
 Function DrzCsvLin(CsvLin) As Variant()
-If Not HasDblQ(CsvLin) Then DrzCsvLin = SplitComma(CsvLin): Exit Function
+'If Not HasDblQ(CsvLin) Then DrzCsvLin = SplitComma(CsvLin): Exit Function
 Stop
 End Function
 

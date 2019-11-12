@@ -182,9 +182,9 @@ Function LoHdrCell(L As ListObject, C) As Range
 Set LoHdrCell = A1zRg(CellAbove(L.ListColumns(C).Range))
 End Function
 
-Sub FmtLoBStd(B As Workbook)
+Sub FmtLoBStd(b As Workbook)
 Dim S As Worksheet
-For Each S In B.Sheets
+For Each S In b.Sheets
     FmtLoSStd S
 Next
 End Sub

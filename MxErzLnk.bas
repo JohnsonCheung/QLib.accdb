@@ -83,7 +83,7 @@ Dim EbFbnMis$():   EbFbnMis = XEbFbnMis(Ipb, IpbFb)
 Dim EbTblDup$():   EbTblDup = XEbTblDup(Ipb)
 Dim EbTblMis$():   EbTblMis = XEbTblMis(Ipb)
 Dim EbStruMis$(): EbStruMis = XEbStruMis(IpbTny, IpsStru)                           ' Use IpbTny stru to find in IpsStru
-Dim B$():                 B = Sy(EbFbnDup, EbFbnMis, EbTblDup, EbTblMis, EbStruMis)
+Dim b$():                 b = Sy(EbFbnDup, EbFbnMis, EbTblDup, EbTblMis, EbStruMis)
 
 '== Er Stru (Es)========================================================================================================
 Dim IpsHdStru$():
@@ -107,7 +107,7 @@ Dim EoNoFxAndNoFb$: EoNoFxAndNoFb = XEoNoFxAndNoFb(Ipx, Ipb)
 Dim EoHdrEr$():           EoHdrEr = XEoHdrEr(Ip)
 Dim O$():                       O = Sy(EoNoFxAndNoFb, EoHdrEr)
 
-EoLnk = Sy(I, X, B, S, W, O)
+EoLnk = Sy(I, X, b, S, W, O)
 End Function
 
 Function XIpx(Ip As TDoLTD) As Drs
@@ -321,8 +321,8 @@ Function XEiFfnMis(Ipf As Drs) As String()
 '@Ipf : L Inpn Ffn IsFx HasFfn @@
 If NoReczDrs(Ipf) Then Exit Function
 Dim A As Drs: A = DwEq(Ipf, "HasFfn", True) '! L Inp Ffn IsFx HasFfn
-Dim B As Drs: B = XEi_AddCol_Pth_Fn(A)
-Dim C As Drs: C = SelDrs(B, "L Inpn Pth Fn")
+Dim b As Drs: b = XEi_AddCol_Pth_Fn(A)
+Dim C As Drs: C = SelDrs(b, "L Inpn Pth Fn")
       XEiFfnMis = LyzNmDrs("File missing: ", C, MaxColWdt:=200)
 
 'Insp "QDao_Lnk_EoLnk.EoLnk", "Inspect", "Oup(XEiFfnMis) EiFfnMis Ipf",EiFfnMis, EiFfnMis, FmtDrszNoRdu(Ipf): Stop
@@ -408,17 +408,17 @@ End Function
 
 Function XEbTblDup(Ipb As Drs) As String()
 '@Ipb : L Fbn Fbtt @@
-Dim J&, OL&(), OFbtt$(), Fbtt$, L&, IxL%, IxFbtt%, Ix As Dictionary, B$, Dr, O$()
+Dim J&, OL&(), OFbtt$(), Fbtt$, L&, IxL%, IxFbtt%, Ix As Dictionary, b$, Dr, O$()
 Set Ix = DiKqIx(Ipb.Fny)
 IxL = Ix("L")
 IxFbtt = Ix("Fbtt")
 For Each Dr In Itr(Ipb.Dy)
     Fbtt = Dr(IxFbtt)
-    B = Termss(AwDup(TermAy(Fbtt)))
-    If B <> "" Then
+    b = Termss(AwDup(TermAy(Fbtt)))
+    If b <> "" Then
         L = Dr(IxL)
         PushI OL, L
-        PushI OFbtt, B
+        PushI OFbtt, b
     End If
 Next
 '===
@@ -495,10 +495,10 @@ Function XIpxfMis(Ipxf As Drs, ActWsf As Drs) As Drs
 'xfMis
 'Fm: @Ipxf::Drs{}
 'Ret:*IpxfMis::Drs{}
-Dim A As Drs, B As Drs, O As Drs
+Dim A As Drs, b As Drs, O As Drs
 A = LDrszJn(Ipxf, ActWsf, "Fxn Ws E:F", "Ty:ActTy", "HasF")
-B = DwEqExl(A, "HasF", False)
-O = DrpCol(B, "ActTy")
+b = DwEqExl(A, "HasF", False)
+O = DrpCol(b, "ActTy")
 XIpxfMis = O
 'Insp "QDao_Lnk_EoLnk.EoLnk", "Inspect", "Oup(XIpxfMis) IpxfMis Ipxf ActWsf",FmtDrszNoRdu(IpxfMis), FmtDrszNoRdu(IpxfMis), FmtDrszNoRdu(Ipxf), FmtDrszNoRdu(ActWsf): Stop
 End Function
@@ -593,7 +593,7 @@ Function XIpx1(A As TDoLTD) As Drs
 'Ret::*Ipx::Drs{L T Fxn Ws Stru}
 'BrwDrs A.D: Stop
 Dim Dr, L&, Dta$, Dy(), LTTT As Drs, IxT%, IxL%, IxFxnDotWs%, IxStru%, _
-Stru$, B$, T$, Ix As Dictionary, Fxn$, Ws$
+Stru$, b$, T$, Ix As Dictionary, Fxn$, Ws$
 'LTTT = TDoLTTTzT1(A, "FxTbl", "T FxnDotWs Stru").D
 Set Ix = DiKqIx(LTTT.Fny)
 IxT = Ix("T")
@@ -603,10 +603,10 @@ IxStru = Ix("Stru")
 For Each Dr In Itr(LTTT.Dy)
     L = Dr(IxL)
     T = Dr(IxT)
-    B = Dr(IxFxnDotWs)
+    b = Dr(IxFxnDotWs)
     Stru = Dr(IxStru)
-    Fxn = BefDotOrAll(B)
-    Ws = AftDot(B)
+    Fxn = BefDotOrAll(b)
+    Ws = AftDot(b)
     If Fxn = "" Then Fxn = T
     If Ws = "" Then Ws = "Sheet1"
     If Stru = "" Then Stru = T
@@ -741,9 +741,9 @@ End Function
 Function XIps(Ip As TDoLTD) As Drs
 '@Ip  : L T1 Dta IsHdr
 'Ret     : L Stru F Ty E @@
-Dim B As Drs, Dr, L&, T1$, Dta$, F$, Ty$, E$, Stru$, ODy()
+Dim b As Drs, Dr, L&, T1$, Dta$, F$, Ty$, E$, Stru$, ODy()
 'B = TDoLDtazT1Pfx(Ip, "Stru.").D
-For Each Dr In Itr(B.Dy)
+For Each Dr In Itr(b.Dy)
     L = Dr(0)
     T1 = Dr(1)
     Dta = Dr(2)

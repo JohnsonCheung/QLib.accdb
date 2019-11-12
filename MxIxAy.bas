@@ -9,7 +9,7 @@ Type NumPos
 End Type
 
 Sub Z_AsgIx()
-Dim Drs As Drs, FF$, A%, B%, C%, EA%, EB%, Ec%
+Dim Drs As Drs, FF$, A%, b%, C%, EA%, EB%, Ec%
 GoSub T1
 Exit Sub
 T1:
@@ -20,9 +20,9 @@ T1:
     Ec = 2
     GoTo Tst
 Tst:
-    AsgIx Drs, FF, A, B, C
+    AsgIx Drs, FF, A, b, C
     Debug.Print A = EA
-    Debug.Print B = EB
+    Debug.Print b = EB
     Debug.Print C = Ec
     Return
 End Sub

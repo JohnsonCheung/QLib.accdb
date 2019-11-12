@@ -18,18 +18,18 @@ WrdStszLines = WrdStszLy(SplitCrLf(Lines))
 End Function
 
 Function WrdStszLy$(Ly$())
-Dim W&, D&, Sy$(), B&, L&, S$
+Dim W&, D&, Sy$(), b&, L&, S$
 S = JnCrLf(Ly)
 Sy = WrdAy(S)
 W = Si(Sy)
 D = Si(AwDist(Sy))
 L = Si(Ly)
-B = Len(S)
-WrdStszLy = WrdSts(B, L, W, D)
+b = Len(S)
+WrdStszLy = WrdSts(b, L, W, D)
 End Function
 
-Function WrdSts$(B&, L&, W&, D&)
-Dim BB As String * 9: RSet BB = B
+Function WrdSts$(b&, L&, W&, D&)
+Dim BB As String * 9: RSet BB = b
 Dim LL As String * 9: RSet LL = L
 Dim WW As String * 9: RSet WW = W
 Dim DD As String * 9: RSet DD = D
@@ -119,7 +119,7 @@ End Function
 
 
 Function WrdLblLinPos$(WrdPos%(), OFmNo&)
-Dim O$(), A$, B$, W%, J%
+Dim O$(), A$, b$, W%, J%
 If Si(WrdPos) = 0 Then Exit Function
 PushNB O, Space(WrdPos(0) - 1)
 For J = 0 To UB(WrdPos) - 1

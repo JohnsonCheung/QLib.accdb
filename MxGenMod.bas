@@ -190,7 +190,7 @@ Dim MLines$():                MLines = B_MLines(BCKey, MExist)
 Dim BBCxt$():                  BBCxt = B_BBCxt(MLines)
 
 '-- BBExtra OK ---------------------------------------------------------------------------------------------------------
-Dim MExtra As Dictionary: Set MExtra = MPair.B
+Dim MExtra As Dictionary: Set MExtra = MPair.b
 Dim BBExtra$:                BBExtra = JnDblCrLf(SyzItr(SrtDic(MExtra).Items))
 
 '-- BBELin  ------------------------------------------------------------------------------------------------------------

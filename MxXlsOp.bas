@@ -143,10 +143,10 @@ End Sub
 Sub RmvWsIf(Fx, Wsn$)
 'Ret : Ret @Wsn in @Fx if exists @@
 If HasFxw(Fx, Wsn) Then
-   Dim B As Workbook: Set B = WbzFx(Fx)
-   WszWb(B, Wsn).Delete
-   SavWb B
-   ClsWbNoSav B
+   Dim b As Workbook: Set b = WbzFx(Fx)
+   WszWb(b, Wsn).Delete
+   SavWb b
+   ClsWbNoSav b
 End If
 End Sub
 
@@ -229,13 +229,13 @@ End Sub
 
 
 Sub ThwWbMisOupNy(A As Workbook, OupNy$())
-Dim O$(), N$, B$(), Wny$()
+Dim O$(), N$, b$(), Wny$()
 Wny = WsCdNy(A)
 O = AyMinus(AmAddPfx(OupNy, "WsO"), Wny)
 If Si(O) > 0 Then
-    N = "OupNy":  B = OupNy:  GoSub Dmp
-    N = "WbCdNy": B = Wny: GoSub Dmp
-    N = "Mssing": B = O:      GoSub Dmp
+    N = "OupNy":  b = OupNy:  GoSub Dmp
+    N = "WbCdNy": b = Wny: GoSub Dmp
+    N = "Mssing": b = O:      GoSub Dmp
     Stop
     Exit Sub
 End If
@@ -244,7 +244,7 @@ Dmp:
 Debug.Print ULin(N)
 Debug.Print N
 Debug.Print ULin(N)
-DmpAy B
+DmpAy b
 Return
 End Sub
 

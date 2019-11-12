@@ -162,30 +162,30 @@ For J = 0 To UB(Ky)
 Next
 End Function
 
-Function DiczSyab(A$(), B$(), Optional JnSep$ = vbCrLf) As Dictionary
-ThwIf_DifSi A, B, CSub
+Function DiczSyab(A$(), b$(), Optional JnSep$ = vbCrLf) As Dictionary
+ThwIf_DifSi A, b, CSub
 Dim O As New Dictionary
 Dim I, J&: For Each I In Itr(A)
     If O.Exists(I) Then
-       O(I) = O(I) & JnSep & B(J)
+       O(I) = O(I) & JnSep & b(J)
     Else
-        O.Add I, B(J)
+        O.Add I, b(J)
     End If
     J = J + 1
 Next
 Set DiczSyab = O
 End Function
 
-Function DiczAyab(A, B) As Dictionary
-ThwIf_DifSi A, B, CSub
+Function DiczAyab(A, b) As Dictionary
+ThwIf_DifSi A, b, CSub
 Dim N1&, N2&
 N1 = Si(A)
-N2 = Si(B)
+N2 = Si(b)
 If N1 <> N2 Then Stop
 Set DiczAyab = New Dictionary
 Dim J&, X
 For Each X In Itr(A)
-    DiczAyab.Add X, B(J)
+    DiczAyab.Add X, b(J)
     J = J + 1
 Next
 End Function

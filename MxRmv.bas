@@ -138,8 +138,8 @@ End Function
 Function RmvSfxDot$(S)
 RmvSfxDot = RmvSfx(S, ".")
 End Function
-Function RmvSfx$(S, Sfx$, Optional B As VbCompareMethod = vbBinaryCompare)
-If HasSfx(S, Sfx, B) Then RmvSfx = Left(S, Len(S) - Len(Sfx)) Else RmvSfx = S
+Function RmvSfx$(S, Sfx$, Optional b As VbCompareMethod = vbBinaryCompare)
+If HasSfx(S, Sfx, b) Then RmvSfx = Left(S, Len(S) - Len(Sfx)) Else RmvSfx = S
 End Function
 
 Function RmvSngQte$(S)

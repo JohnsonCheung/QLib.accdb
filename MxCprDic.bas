@@ -13,8 +13,8 @@ Type CprDic
     Sam As Dictionary
 End Type
 
-Function FmtCprDic(A As Dictionary, B As Dictionary, Optional Nm1$ = "Fst", Optional Nm2$ = "Snd", Optional ExlSam As Boolean) As String()
-FmtCprDic = FmtCprDiczCpr(CprDic(A, B, Nm1, Nm2), ExlSam)
+Function FmtCprDic(A As Dictionary, b As Dictionary, Optional Nm1$ = "Fst", Optional Nm2$ = "Snd", Optional ExlSam As Boolean) As String()
+FmtCprDic = FmtCprDiczCpr(CprDic(A, b, Nm1, Nm2), ExlSam)
 End Function
 
 Function FmtCprDiczCpr(A As CprDic, Optional ExlSam As Boolean) As String()
@@ -31,57 +31,57 @@ End If
 FmtCprDiczCpr = O
 End Function
 
-Function CprDic(A As Dictionary, B As Dictionary, Nm1$, Nm2$) As CprDic
+Function CprDic(A As Dictionary, b As Dictionary, Nm1$, Nm2$) As CprDic
 With CprDic
     .Nm1 = Nm1
     .Nm2 = Nm2
-    Set .AExcess = MinusDic(A, B)
-    Set .BExcess = MinusDic(B, A)
-    Set .Sam = SamKV(A, B)
-    AsgADifBDif A, B, .ADif, .BDif
+    Set .AExcess = MinusDic(A, b)
+    Set .BExcess = MinusDic(b, A)
+    Set .Sam = SamKV(A, b)
+    AsgADifBDif A, b, .ADif, .BDif
 End With
 End Function
 
-Sub BrwCprDic(A As Dictionary, B As Dictionary, Optional Nm1$ = "Fst", Optional Nm2$ = "Snd", Optional ExlSam As Boolean)
-BrwAy FmtCprDic(A, B, Nm1, Nm2)
+Sub BrwCprDic(A As Dictionary, b As Dictionary, Optional Nm1$ = "Fst", Optional Nm2$ = "Snd", Optional ExlSam As Boolean)
+BrwAy FmtCprDic(A, b, Nm1, Nm2)
 End Sub
 
-Function SamKV(A As Dictionary, B As Dictionary) As Dictionary
+Function SamKV(A As Dictionary, b As Dictionary) As Dictionary
 Set SamKV = New Dictionary
-If A.Count = 0 Or B.Count = 0 Then Exit Function
+If A.Count = 0 Or b.Count = 0 Then Exit Function
 Dim K
 For Each K In A.Keys
-    If B.Exists(K) Then
-        If A(K) = B(K) Then
+    If b.Exists(K) Then
+        If A(K) = b(K) Then
             SamKV.Add K, A(K)
         End If
     End If
 Next
 End Function
 
-Sub AsgADifBDif(A As Dictionary, B As Dictionary, _
+Sub AsgADifBDif(A As Dictionary, b As Dictionary, _
     OADif As Dictionary, OBDif As Dictionary)
 Dim K
 Set OADif = New Dictionary
 Set OBDif = New Dictionary
 For Each K In A.Keys
-    If B.Exists(K) Then
-        If A(K) <> B(K) Then
+    If b.Exists(K) Then
+        If A(K) <> b(K) Then
             OADif.Add K, A(K)
-            OBDif.Add K, B(K)
+            OBDif.Add K, b(K)
         End If
     End If
 Next
 End Sub
 
-Function FmtDif(A As Dictionary, B As Dictionary) As String()
-If A.Count <> B.Count Then Thw CSub, "Dic A & B should have same size", "Dic-A-Si Dic-B-Si", A.Count, B.Count
+Function FmtDif(A As Dictionary, b As Dictionary) As String()
+If A.Count <> b.Count Then Thw CSub, "Dic A & B should have same size", "Dic-A-Si Dic-B-Si", A.Count, b.Count
 If A.Count = 0 Then Exit Function
 Dim O$(), K, S1$, S2$, S As S12s, KK$
 For Each K In A
     KK = K
     S1 = "!" & "Er Dif" & vbCrLf & K & vbCrLf & ULinzLines(KK) & vbCrLf & A(K)
-    S2 = "!" & "Er Dif" & vbCrLf & K & vbCrLf & ULinzLines(KK) & vbCrLf & B(K)
+    S2 = "!" & "Er Dif" & vbCrLf & K & vbCrLf & ULinzLines(KK) & vbCrLf & b(K)
     PushS12 S, S12(S1, S2)
 Next
 FmtDif = FmtS12s(S, FF:="")
@@ -110,9 +110,9 @@ FmtSam = FmtS12s(S)
 End Function
 
 Sub Z_BrwCprDic()
-Dim A As Dictionary, B As Dictionary
+Dim A As Dictionary, b As Dictionary
 Set A = DiczVbl("X AA|A BBB|A Lines1|A Line3|B Line1|B line2|B line3..")
-Set B = DiczVbl("X AA|C Line|D Line1|D line2|B Line1|B line2|B line3|B Line4")
-BrwCprDic A, B
+Set b = DiczVbl("X AA|C Line|D Line1|D line2|B Line1|B line2|B line3|B Line4")
+BrwCprDic A, b
 End Sub
 

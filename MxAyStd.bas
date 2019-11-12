@@ -99,8 +99,8 @@ End If
 AeEmpEleAtEnd = O
 End Function
 
-Function AeFei(Ay, B As Fei)
-With B
+Function AeFei(Ay, b As Fei)
+With b
     AeFei = AeFmTo(Ay, .FmIx, .EIx)
 End With
 End Function
@@ -479,8 +479,8 @@ Function AwFE(Ay, FmIx, EIx)
 AwFE = AwFT(Ay, FmIx, EIx - 1)
 End Function
 
-Function AwFei(Ay, B As Fei)
-AwFei = AwFE(Ay, B.FmIx, B.EIx)
+Function AwFei(Ay, b As Fei)
+AwFei = AwFE(Ay, b.FmIx, b.EIx)
 End Function
 
 Function AwFm(Ay, FmIx)
@@ -520,7 +520,7 @@ Next
 AwGT = O
 End Function
 
-Function AwInAset(Ay, B As Aset)
+Function AwInAset(Ay, b As Aset)
 AwInAset = ResiU(Ay)
 Dim I
 For Each I In Itr(Ay)
@@ -664,10 +664,10 @@ Dim L: For Each L In Itr(Ly)
 Next
 End Function
 
-Function AwNm(Ay, B As WhNm) As String()
+Function AwNm(Ay, b As WhNm) As String()
 Dim I
 For Each I In Itr(Ay)
-    If HitNm(I, B) Then PushI AwNm, I
+    If HitNm(I, b) Then PushI AwNm, I
 Next
 End Function
 
@@ -905,11 +905,11 @@ Function IxyzAyPatn(Ay, Patn$) As Long()
 IxyzAyPatn = IxyzAyRe(Ay, Rx(Patn))
 End Function
 
-Function IxyzAyRe(Ay, B As RegExp) As Long()
+Function IxyzAyRe(Ay, b As RegExp) As Long()
 If Si(Ay) = 0 Then Exit Function
 Dim I, O&(), J&
 For Each I In Ay
-    If B.Test(I) Then Push O, J
+    If b.Test(I) Then Push O, J
     J = J + 1
 Next
 IxyzAyRe = O

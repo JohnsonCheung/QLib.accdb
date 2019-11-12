@@ -221,8 +221,8 @@ Next
 AyRevOy = O
 End Function
 
-Function AmRplzMid(Ay, B As Fei, ByAy)
-With AyabczAyFei(Ay, B)
+Function AmRplzMid(Ay, b As Fei, ByAy)
+With AyabczAyFei(Ay, b)
 AmRplzMid = AddAyAp(.A, ByAy, .C)
 End With
 End Function
@@ -384,7 +384,7 @@ Sub Z_AyabczAyFE()
 Dim Ay(): Ay = Array(1, 2, 3, 4)
 Dim Act As Ayabc: Act = AyabczAyFE(Ay, 1, 2)
 Ass IsEqAy(Act.A, Array(1))
-Ass IsEqAy(Act.B, Array(2, 3))
+Ass IsEqAy(Act.b, Array(2, 3))
 Ass IsEqAy(Act.C, Array(4))
 End Sub
 
@@ -454,7 +454,7 @@ Dim Ay(): Ay = Array(1, 2, 3, 4)
 Dim M As Fei: M = Fei(1, 2)
 Dim Act As Ayabc: Act = AyabczAyFei(Ay, M)
 Ass IsEqAy(Act.A, Array(1))
-Ass IsEqAy(Act.B, Array(2, 3))
+Ass IsEqAy(Act.b, Array(2, 3))
 Ass IsEqAy(Act.C, Array(4))
 End Sub
 
@@ -464,13 +464,13 @@ Ass HasDupEle(Array(1, 2, 3, 4, 4)) = True
 End Sub
 
 Sub Z_AyInsAy()
-Dim Act, Exp, Ay(), B(), At&
+Dim Act, Exp, Ay(), b(), At&
 Ay = Array(1, 2, 3, 4)
-B = Array("X", "Z")
+b = Array("X", "Z")
 At = 1
 Exp = Array(1, "X", "Z", 2, 3, 4)
 
-Act = InsAy(Ay, B, At)
+Act = InsAy(Ay, b, At)
 Ass IsEqAy(Act, Exp)
 End Sub
 
@@ -595,32 +595,32 @@ Function ItrzTT(TT$)
 Asg Itr(TermAy(TT)), ItrzTT
 End Function
 
-Function IsEqSy(A$(), B$()) As Boolean
-If Not IsEqSi(A, B) Then Exit Function
+Function IsEqSy(A$(), b$()) As Boolean
+If Not IsEqSi(A, b) Then Exit Function
 Dim J&, X
 For Each X In Itr(A)
-    If X <> B(J) Then Exit Function
+    If X <> b(J) Then Exit Function
     J = J + 1
 Next
 IsEqSy = True
 End Function
 
-Function IsEqDr(A, B) As Boolean
+Function IsEqDr(A, b) As Boolean
 Dim X, J&
 For Each X In Itr(A)
-    If X <> B(J) Then Exit Function
+    If X <> b(J) Then Exit Function
     J = J + 1
 Next
 IsEqDr = True
 End Function
 
-Function IsEqAy(A, B) As Boolean
+Function IsEqAy(A, b) As Boolean
 If Not IsArray(A) Then Exit Function
-If Not IsArray(B) Then Exit Function
-If Not IsEqSi(A, B) Then Exit Function
+If Not IsArray(b) Then Exit Function
+If Not IsEqSi(A, b) Then Exit Function
 Dim J&, X
 For Each X In Itr(A)
-    If Not IsEq(X, B(J)) Then Exit Function
+    If Not IsEq(X, b(J)) Then Exit Function
     J = J + 1
 Next
 IsEqAy = True

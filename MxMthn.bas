@@ -37,12 +37,12 @@ MthDnzM = MdDn(M) & "." & D
 End Function
 
 Function PubMthNy(Src$()) As String()
-Dim Ix, N$, B As Mthn3
+Dim Ix, N$, b As Mthn3
 For Each Ix In MthIxItr(Src)
-    B = Mthn3zL(Src(Ix))
-    If B.Nm <> "" Then
-        If B.ShtMdy = "" Or B.ShtMdy = "Pub" Then
-            PushI PubMthNy, B.Nm
+    b = Mthn3zL(Src(Ix))
+    If b.Nm <> "" Then
+        If b.ShtMdy = "" Or b.ShtMdy = "Pub" Then
+            PushI PubMthNy, b.Nm
         End If
     End If
 Next
@@ -361,7 +361,7 @@ Sub Z_MthnzS()
 GoSub Z
 Exit Sub
 Z:
-   B MthNy(SrczP(CPj))
+   b MthNy(SrczP(CPj))
    Return
 End Sub
 

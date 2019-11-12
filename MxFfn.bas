@@ -34,13 +34,13 @@ Fnn = RmvExt(Fn(Ffn))
 End Function
 
 Function RmvExt$(Ffn)
-Dim B$, C$, P%
-B = Fn(Ffn)
-P = InStrRev(B, ".")
+Dim b$, C$, P%
+b = Fn(Ffn)
+P = InStrRev(b, ".")
 If P = 0 Then
-    C = B
+    C = b
 Else
-    C = Left(B, P - 1)
+    C = Left(b, P - 1)
 End If
 RmvExt = Pth(Ffn) & C
 End Function
@@ -57,11 +57,11 @@ ExtzFfn = Ext(Ffn)
 End Function
 
 Function Ext$(Ffn)
-Dim B$, P%
-B = Fn(Ffn)
-P = InStrRev(B, ".")
+Dim b$, P%
+b = Fn(Ffn)
+P = InStrRev(b, ".")
 If P = 0 Then Exit Function
-Ext = Mid(B, P)
+Ext = Mid(b, P)
 End Function
 
 Function UpPth$(Pth, Optional NUp% = 1)
@@ -99,18 +99,18 @@ Close #F
 IsEqFfnStr = True
 End Function
 
-Function IsEqFfn(A, B, Optional FilCmp As EmFilCmp = EmFilCmp.EiCmpEq) As Boolean
+Function IsEqFfn(A, b, Optional FilCmp As EmFilCmp = EmFilCmp.EiCmpEq) As Boolean
 ThwIf_NoFfn A, CSub, "Fst File"
-If A = B Then Thw CSub, "Fil A and B are eq name", "A", A
-ThwIf_NoFfn B, CSub, "Snd File"
-If Not IsSamFfn(A, B) Then Exit Function
+If A = b Then Thw CSub, "Fil A and B are eq name", "A", A
+ThwIf_NoFfn b, CSub, "Snd File"
+If Not IsSamFfn(A, b) Then Exit Function
 If FilCmp = EiCmpSam Then
     IsEqFfn = True
     Exit Function
 End If
 Dim J&, F1%, F2%
 F1 = FnoRnd128(A)
-F2 = FnoRnd128(B)
+F2 = FnoRnd128(b)
 For J = 1 To NBlk(SizFfn(A), 128)
     If FnoBlk(F1, J) <> FnoBlk(F2, J) Then
         Close #F1, F2
@@ -121,9 +121,9 @@ Close #F1, F2
 IsEqFfn = True
 End Function
 
-Function IsSamFfn(A, B) As Boolean
-If DtezFfn(A) <> DtezFfn(B) Then Exit Function
-If Not IsSamzSi(A, B) Then Exit Function
+Function IsSamFfn(A, b) As Boolean
+If DtezFfn(A) <> DtezFfn(b) Then Exit Function
+If Not IsSamzSi(A, b) Then Exit Function
 IsSamFfn = True
 End Function
 
@@ -131,10 +131,10 @@ Function IsSamzSi(Ffn1, Ffn2) As Boolean
 IsSamzSi = SizFfn(Ffn1) = SizFfn(Ffn2)
 End Function
 
-Function MsgSamFfn(A, B, Si&, Tim$, Optional Msg$) As String()
+Function MsgSamFfn(A, b, Si&, Tim$, Optional Msg$) As String()
 Dim O$()
 Push O, "File 1   : " & A
-Push O, "File 2   : " & B
+Push O, "File 2   : " & b
 Push O, "File Size: " & Si
 Push O, "File Time: " & Tim
 Push O, "File 1 and 2 have same size and time"

@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxLofDta"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QXls."
 Const CMod$ = CLib & "MxLofDta."
 Type LofDta
     L_Lon As Drs ' L

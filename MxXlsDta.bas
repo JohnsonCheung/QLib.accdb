@@ -11,16 +11,24 @@ End Function
 Sub Z_DrszFxq()
 Dmp WnyzFx(SampFx)
 BrwDrs DrszFxw(SampFx, "Sheet1")
-
 End Sub
+
 Function DoFTyzFxw(Fx, W) As Drs
 DoFTyzFxw = DoFTy(CatzFx(Fx), CattnzWsn(W))
 End Function
 
-Function DoFxwFTy(Fx, W) As Drs
+Function DoFxwStru(Fx, W) As Drs
 Dim A As Drs
 A = DoFTyzFxw(Fx, W)
-DoFxwFTy = InsColzDrsCC(A, "Fx W", Fx, W)
+DoFxwStru = InsColzDrsCC(A, "Fx W", Fx, W)
+End Function
+
+
+Function WszDt(A As Dt) As Worksheet
+Dim O As Worksheet
+Set O = NewWs(A.DtNm)
+LozDrs DrszDt(A), A1zWs(O)
+WszDt = O
 End Function
 
 

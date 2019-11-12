@@ -30,10 +30,10 @@ Set MainFrm = Access.Forms("Main")
 End Property
 
 Sub SetTBox(A As Access.TextBox, Msg$)
-Dim CrLf$, B$
+Dim CrLf$, b$
 If A.Value <> "" Then CrLf = vbCrLf
-B = LineszLasN(A.Value & CrLf & Now & " " & Msg, 5)
-A.Value = B
+b = LineszLasN(A.Value & CrLf & Now & " " & Msg, 5)
+A.Value = b
 DoEvents
 End Sub
 

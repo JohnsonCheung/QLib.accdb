@@ -105,17 +105,6 @@ End If
 End Function
 
 
-Function DoFTy(Cat As ADOX.Catalog, T) As Drs
-Dim Axt As ADOX.Table, ODy()
-Set Axt = Cat.Tables(T)
-Dim C As Column
-For Each C In Cat.Tables(T).Columns
-    PushI ODy, Array(T, C.Name, ShtAdoTy(C.Type))
-Next
-DoFTy = Drs(FoFxwFld, ODy)
-End Function
-
-
 Function DrszFxw(Fx, Wsn) As Drs
 DrszFxw = DrszArs(ArszFxw(Fx, Wsn))
 End Function
@@ -357,3 +346,15 @@ Z:
     DmpAy WnyzFx(SampFxzKE24)
     Return
 End Sub
+
+Function DoFTy(Cat As ADOX.Catalog, T) As Drs
+Dim Axt As ADOX.Table, ODy()
+Set Axt = Cat.Tables(T)
+Dim C As Column
+For Each C In Cat.Tables(T).Columns
+    PushI ODy, Array(T, C.Name, ShtAdoTy(C.Type))
+Next
+DoFTy = Drs(FoFxwFld, ODy)
+End Function
+
+

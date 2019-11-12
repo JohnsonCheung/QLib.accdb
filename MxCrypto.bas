@@ -20,11 +20,11 @@ Dim A As Excel.Application
 Set A = GetObject(, "Excel.Application")
 A.Workbooks.Add
 A.Visible = False 'Must have workbook open to allow Visible has effect
-Dim B As Excel.Application
-Set B = GetObject(, "Excel.Application")
-B.Workbooks.Add
-B.Visible = False 'Must have workbook open to allow Visible has effect
-Debug.Print ObjPtr(A), ObjPtr(B)
+Dim b As Excel.Application
+Set b = GetObject(, "Excel.Application")
+b.Workbooks.Add
+b.Visible = False 'Must have workbook open to allow Visible has effect
+Debug.Print ObjPtr(A), ObjPtr(b)
 Stop
 Stop
 End Sub

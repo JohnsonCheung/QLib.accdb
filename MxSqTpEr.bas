@@ -26,10 +26,10 @@ End Function
 Function MsgMustNotHasSpcInTbl_NmOfIntoLin$(DroLLin())
 
 End Function
-Function BlkIx%(B As Blk)
-BlkIx = B.DroBlk(3)
+Function BlkIx%(b As Blk)
+BlkIx = b.DroBlk(3)
 End Function
-Function EoExcessBlk(B As Blks, BlkTy$) As String()
+Function EoExcessBlk(b As Blks, BlkTy$) As String()
 Dim M As Blk: 'M = BlkswTy(B, BlkTy)
 If IsBlkEmp(M) Then Exit Function
 PushI EoExcessBlk, FmtQQ("Excess [?] block, they are ignored", BlkTy)

@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxEoCol"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxEoCol."
 Const MsgoCol_Dup$ = "Lno(?) has Dup-?[?]"
 Const MsgoCol_NotIn$ = "Lno(?) has ?[?] which is invalid.  Valid-?=[?]"
@@ -23,12 +24,12 @@ End Function
 
 Function EoColx_3Er(Wi_L_Colx As Drs, ColxNm$, Vy$()) As String()
 Dim D As Drs: D = Wi_L_Colx
-Dim A$(), B$(), C$(), VV$
+Dim A$(), b$(), C$(), VV$
 VV = JnSpc(Vy)
 A = EoColx_NotIn(D, "F", "Fld", VV)
-B = EoColx_Dup(D, "F", "Fld")
+b = EoColx_Dup(D, "F", "Fld")
 C = EoColx_Blnk(D, ColxNm)
-EoColx_3Er = AddSy(A, B)
+EoColx_3Er = AddSy(A, b)
 End Function
 
 Function EoColx_Blnk(Wi_L_Colx As Drs, ColxNm$, Optional Valn0$) As String()

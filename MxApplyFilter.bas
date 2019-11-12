@@ -6,7 +6,7 @@ Const CMod$ = CLib & "MxApplyFilter."
 Enum EmCntCol: EiNoCntCol: EiWiCntCol: End Enum
 Type RnyPair
     A() As Long
-    B() As Long
+    b() As Long
 End Type
 Enum EmOp
    EiNop   ' No operation
@@ -177,8 +177,8 @@ Function NewCriStr$(Saved$, NewStr$)
 'Fm NewStr : :CriStr: new cri str to be saved
 'Ret : new cri str aft saving @NewStr to @Saved
 End Function
-Sub ClnUpSavedCri(B As Workbook)
-Dim S As Worksheet: For Each S In B.Sheets
+Sub ClnUpSavedCri(b As Workbook)
+Dim S As Worksheet: For Each S In b.Sheets
     ClnUpSavedCrizS S
 Next
 End Sub
@@ -387,10 +387,10 @@ Dim VisIxy&(): VisIxy = XVisI(CCol, CCri) ' #Vis-Rxy ! Each ele in %VisI is rix 
                                         
 Dim Ept() As Boolean: Ept = BoolAybT(RFm, RTo, VisIxy) ' #Ept-Rny-Vis      ! The ix is Rno of @Lo
 Dim Act() As Boolean: Act = VisAyzLo(Lo)               ' #Act-Rny-Vis      ! The ix is Rno of @Lo
-Dim Vis   As RnyPair: Vis = XVis(Ept, Act)             ' #Vis-Hid-Rny-Pair ! %Vis:RnyPair.A is Vis and .B is Hid
+Dim Vis   As RnyPair: Vis = RnyPair(Ept, Act)             ' #Vis-Hid-Rny-Pair ! %Vis:RnyPair.A is Vis and .B is Hid
 
 Dim Ws As Worksheet: Set Ws = WszLo(Lo)
-Dim OupVisHid:                SetVis Ws, Vis ' ! <== Turn on or off the row
+Dim OupVisHid:                SetWsRowVis Ws, Vis ' ! <== Turn on or off the row
 
 '== Bdr the cri selecting no record (Ns) (no-sel) ======================================================================
 'Dim NsFny$(): NsFny = XNsFny(CSel, CFny) '  ! What CFny selecting no rec
@@ -533,7 +533,7 @@ S = "88:90,92:271"
 Set EntRzWsRny = Ws.Range(S).EntireRow
 End Function
 
-Sub SetViszWsRny(Ws As Worksheet, Rny&(), Vis As Boolean)
+Sub SetWsRowViszRny(Ws As Worksheet, Rny&(), Vis As Boolean)
 If Si(Rny) = 0 Then Exit Sub
 #If False Then
 Dim R As Range
@@ -558,23 +558,23 @@ Function FmtNumAy(SrtdNumAy, Optional CntCol As EmCntCol = EiWiCntCol) As String
 FmtNumAy = FmtDrszNoRdu(DrszFTnbr(SrtdNumAy, CntCol))
 End Function
 Function FmtFnyPair(A As RnyPair, Optional Nm$) As String()
-Dim B As New Bfr
-B.Box Nm & ":RnyPair"
-B.ULin "A-Rny"
-B.Var FmtNumAy(A.A)
-B.ULin "B-Rny"
-B.Var FmtNumAy(A.B)
-FmtFnyPair = B.Ly
+Dim b As New Bfr
+b.Box Nm & ":RnyPair"
+b.ULin "A-Rny"
+b.Var FmtNumAy(A.A)
+b.ULin "B-Rny"
+b.Var FmtNumAy(A.b)
+FmtFnyPair = b.Ly
 End Function
-Sub SetVis(Ws As Worksheet, VisHid As RnyPair)
-Stop
-SetViszWsRny Ws, VisHid.A, True
-SetViszWsRny Ws, VisHid.B, False
+
+Sub SetWsRowVis(Ws As Worksheet, VisHid As RnyPair)
+SetWsRowViszRny Ws, VisHid.A, True
+SetWsRowViszRny Ws, VisHid.b, False
 End Sub
 
 Function VisAyzRg(R As Range) As Boolean()
-'Ret : #Vis-Array-Fm-Rg# ! ret a boolean array with true means visible and false means hidden of each row stated in @R.
-'                        ! the ix of the @Ret is row no.
+'Ret #Vis-Array-Fm-Rg# ! ret a boolean array with true means visible and false means hidden of each row stated in @R.
+'                      ! the ix of the @Ret is row no. @@
 Dim RFm&: RFm = R.Row
 Dim RTo&: RTo = NRowzRg(R)
 Dim O() As Boolean: ReDim O(RFm To RTo)
@@ -586,13 +586,10 @@ Next
 VisAyzRg = O
 End Function
 
-Function XVis(Ept() As Boolean, Act() As Boolean) As RnyPair
-'Fm Ept :  #Ept-Rny-Vis      ! The ix is Rno of @Lo
-'Fm Act :  #Act-Rny-Vis      ! The ix is Rno of @Lo
-'Ret    :  #Vis-Hid-Rny-Pair ! %Vis:RnyPair.A is Vis and .B is Hid @@
-'Fm Ept : #Visible-Array#
-'Fm Act : #Visible-Array#
-'Ret    : @Ret.A is visible, @Ret.B is hidden
+Function RnyPair(Ept() As Boolean, Act() As Boolean) As RnyPair
+'@Ept #Ept-Rny-Vis# ! The ix is Rno of @Lo
+'@Act #Act-Rny-Vis# ! The ix is Rno of @Lo
+'Ret  #Vis-Hid-Rny-Pair# ! %Vis:RnyPair.A is Vis and .B is Hid @@
 Dim Vis&(), Hid&() ' :Rno:
 Dim R&: For R = LBound(Ept) To UBound(Ept)
     Dim E&: E = Ept(R)
@@ -602,9 +599,9 @@ Dim R&: For R = LBound(Ept) To UBound(Ept)
     Case Not E And A: PushI Hid, R
     End Select
 Next
-XVis.A = Vis
-XVis.B = Hid
-'Insp "QXls_Cmd_ApplyFilter.XVis", "Inspect", "Oup(XVis) Ept Act", "NoFmtr(RnyPair)", "NoFmtr(() As Boolean)", "NoFmtr(() As Boolean)": Stop
+RnyPair.A = Vis
+RnyPair.b = Hid
+'Insp "QXls_Cmd_ApplyFilter.RnyPair", "Inspect", "Oup(RnyPair) Ept Act", "NoFmtr(RnyPair)", "NoFmtr(() As Boolean)", "NoFmtr(() As Boolean)": Stop
 End Function
 
 Function XNsFny(CSel() As Aset, CFny$()) As String()

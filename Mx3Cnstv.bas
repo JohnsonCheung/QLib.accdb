@@ -1,6 +1,7 @@
 Attribute VB_Name = "Mx3Cnstv"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QIde."
 Const CMod$ = CLib & "Mx3Cnstv."
 
 Function CNsLin$(Ns$)
@@ -17,7 +18,6 @@ Function CModLin$(M As CodeModule)
 ':CModLin: :CnstLin ! Is a Const CMod$ = CLib & "xxxx."
 CModLin = FmtQQ("Const CMod$ = CLib & ""?.""", Mdn(M))
 End Function
-
 
 Function CNsvzM$(M As CodeModule)
 CNsvzM = CNsv(DclzM(M))

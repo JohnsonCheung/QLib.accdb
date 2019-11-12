@@ -45,9 +45,9 @@ Next
 Thw CSub, "LasEle of Src has LasChr = _", "Src", Src
 End Function
 
-Function AddFc(A As Fc, B As Fc) As Fcs
+Function AddFc(A As Fc, b As Fc) As Fcs
 PushFc AddFc, A
-PushFc AddFc, B
+PushFc AddFc, b
 End Function
 
 Function FmtFcs$(A As Fcs)
@@ -124,13 +124,13 @@ Next
 Thw CSub, "All line From Lno has _ as LasChr", "Lno Md Src", Lno, Mdn(M), AddIxPfx(Src(M), 1)
 End Function
 
-Sub UnRmkMdzFcs(M As CodeModule, B As Fcs)
-Dim J&: For J = 0 To B.N - 1
-    UnRmkMdzFc M, B.Ay(J)
+Sub UnRmkMdzFcs(M As CodeModule, b As Fcs)
+Dim J&: For J = 0 To b.N - 1
+    UnRmkMdzFc M, b.Ay(J)
 Next
 End Sub
 
-Sub UnRmkMdzFc(M As CodeModule, B As Fc)
+Sub UnRmkMdzFc(M As CodeModule, b As Fc)
 'If Not IsRmkzS(LyzMdFei(A, B)) Then Exit Sub
 Stop
 Dim J%, L$
@@ -141,22 +141,22 @@ Dim J%, L$
 'Next
 End Sub
 
-Sub RmkMdzFcs(M As CodeModule, B As Fcs)
+Sub RmkMdzFcs(M As CodeModule, b As Fcs)
 Dim J%
-For J = 0 To B.N - 1
-    RmkMdzFc M, B.Ay(J)
+For J = 0 To b.N - 1
+    RmkMdzFc M, b.Ay(J)
 Next
 End Sub
 
-Sub RmkMdzFc(M As CodeModule, B As Fc)
-If IsRmkzFc(M, B) Then Exit Sub
-Dim J&: For J = 0 To B.Cnt - 1
-    M.ReplaceLine J, "'" & M.Lines(B.FmLno + J, 1)
+Sub RmkMdzFc(M As CodeModule, b As Fc)
+If IsRmkzFc(M, b) Then Exit Sub
+Dim J&: For J = 0 To b.Cnt - 1
+    M.ReplaceLine J, "'" & M.Lines(b.FmLno + J, 1)
 Next
 End Sub
 
-Function IsRmkzFc(M As CodeModule, B As Fc) As Boolean
-IsRmkzFc = IsRmkzS(SrczFc(M, B))
+Function IsRmkzFc(M As CodeModule, b As Fc) As Boolean
+IsRmkzFc = IsRmkzS(SrczFc(M, b))
 End Function
 
 Function DoMthCxt() As Drs

@@ -3,35 +3,35 @@ Option Explicit
 Option Compare Text
 Const CLib$ = "QXls."
 Const CMod$ = CLib & "MxAddWs."
-Function AddWszSq(B As Workbook, Sq(), Optional Wsn$) As Worksheet
-Dim A1 As Range: Set A1 = A1zWs(AddWs(B, Wsn))
+Function AddWszSq(b As Workbook, Sq(), Optional Wsn$) As Worksheet
+Dim A1 As Range: Set A1 = A1zWs(AddWs(b, Wsn))
 CrtLozSq Sq, A1
 Set AddWszSq = WszRg(A1)
 End Function
 
-Function AddWszDbt1(B As Workbook, Db As Database, T, Optional Wsn$, Optional AddgWay As EmAddgWay) As Worksheet
+Function AddWszDbt1(b As Workbook, Db As Database, T, Optional Wsn$, Optional AddgWay As EmAddgWay) As Worksheet
 If AddgWay = EiSqWay Then
-    Set AddWszDbt1 = AddWszDbt(B, Db, T, Wsn, AddgWay)
+    Set AddWszDbt1 = AddWszDbt(b, Db, T, Wsn, AddgWay)
 Else
-    Set AddWszDbt1 = AddWszSq(B, SqzT(Db, T), Wsn)
+    Set AddWszDbt1 = AddWszSq(b, SqzT(Db, T), Wsn)
 End If
 End Function
 
-Function AddWszDrs(B As Workbook, D As Drs, Optional Wsn$) As Worksheet
-Set AddWszDrs = AddWszSq(B, SqzDrs(D), Wsn)
+Function AddWszDrs(b As Workbook, D As Drs, Optional Wsn$) As Worksheet
+Set AddWszDrs = AddWszSq(b, SqzDrs(D), Wsn)
 End Function
 
-Sub AddWszDbTny(B As Workbook, Db As Database, Tny$(), Optional AddgWay As EmAddgWay)
+Sub AddWszDbTny(b As Workbook, Db As Database, Tny$(), Optional AddgWay As EmAddgWay)
 Dim T$, I
 For Each I In Tny
     T = I
-    AddWszDbt B, Db, T, , AddgWay
+    AddWszDbt b, Db, T, , AddgWay
 Next
 End Sub
 
-Function AddWszDt(B As Workbook, Dt As Dt) As Worksheet
+Function AddWszDt(b As Workbook, Dt As Dt) As Worksheet
 Dim O As Worksheet
-Set O = AddWs(B, Dt.DtNm)
+Set O = AddWs(b, Dt.DtNm)
 LozDrs DrszDt(Dt), A1zWs(O)
 Set AddWszDt = O
 End Function

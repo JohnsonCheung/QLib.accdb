@@ -143,13 +143,13 @@ End Sub
 
 Function PatnzSS$(SS, LisAy$())
 Dim A$(): A = AwDist(SyzSS(SS))
-Dim B$()
+Dim b$()
     Dim I: For Each I In Itr(A)
         If HasEle(LisAy, I) Then
-            PushNDup B, I
+            PushNDup b, I
         End If
     Next
-Dim C$: C = Jn(B, "|")
+Dim C$: C = Jn(b, "|")
 If C = "" Then Exit Function
 PatnzSS = Qte(C, "()")
 End Function

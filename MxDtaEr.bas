@@ -5,8 +5,8 @@ Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxDtaEr."
 
 Function EoColDup(D As Drs, C$) As String()
-Dim B As Drs: B = DwDup(D, C)
+Dim b As Drs: b = DwDup(D, C)
 Dim Msg$: Msg = "Dup [" & C & "]"
-EoColDup = EoDrsMsg(B, Msg)
+EoColDup = EoDrsMsg(b, Msg)
 End Function
 

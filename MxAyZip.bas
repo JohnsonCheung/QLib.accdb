@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxAyZip"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QVb."
 Const CMod$ = CLib & "MxAyZip."
 
 Sub Unzip(Dy2(), OAy1, OAy2)

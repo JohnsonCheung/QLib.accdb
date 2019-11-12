@@ -105,22 +105,22 @@ For Each I In K
 Next
 End Function
 
-Function DicAyIntersect(A As Dictionary, B As Dictionary) As Dictionary
+Function DicAyIntersect(A As Dictionary, b As Dictionary) As Dictionary
 Dim O As New Dictionary
 If A.Count = 0 Then GoTo X
-If B.Count = 0 Then GoTo X
+If b.Count = 0 Then GoTo X
 Dim K
 For Each K In A.Keys
-    If B.Exists(K) Then
-        If A(K) = B(K) Then
+    If b.Exists(K) Then
+        If A(K) = b(K) Then
             O.Add K, A(K)
         End If
     End If
 Next
 X: Set DicAyIntersect = O
 End Function
-Sub ThwIf_DifDic(A As Dictionary, B As Dictionary, Fun$, Optional N1$ = "A", Optional N2$ = "B")
-If Not IsEqDic(A, B) Then Thw Fun, "2 given dic are diff", FmtQQ("[?] [?]", N1, N2), FmtDic(A), FmtDic(B)
+Sub ThwIf_DifDic(A As Dictionary, b As Dictionary, Fun$, Optional N1$ = "A", Optional N2$ = "B")
+If Not IsEqDic(A, b) Then Thw Fun, "2 given dic are diff", FmtQQ("[?] [?]", N1, N2), FmtDic(A), FmtDic(b)
 End Sub
 
 Function KeySet(A As Dictionary) As Aset
@@ -233,12 +233,12 @@ Dim K: For Each K In KSet1.Keys
 Next
 
 End Function
-Function MinusDic(A As Dictionary, B As Dictionary) As Dictionary
+Function MinusDic(A As Dictionary, b As Dictionary) As Dictionary
 'Ret those Ele in A and not in B
-If B.Count = 0 Then Set MinusDic = CloneDic(A): Exit Function
+If b.Count = 0 Then Set MinusDic = CloneDic(A): Exit Function
 Dim O As New Dictionary, K
 For Each K In A.Keys
-   If Not B.Exists(K) Then O.Add K, A(K)
+   If Not b.Exists(K) Then O.Add K, A(K)
 Next
 Set MinusDic = O
 End Function
@@ -324,11 +324,11 @@ X: Set WbzNmzDiLines = O
 End Function
 
 Function DicACzOuter(DicAB As Dictionary, DicBC As Dictionary) As Dictionary
-Dim A, B, C
+Dim A, b, C
 Set DicACzOuter = New Dictionary
 For Each A In DicAB.Keys
-    B = DicAB(A)
-    If DicBC.Exists(B) Then
+    b = DicAB(A)
+    If DicBC.Exists(b) Then
         DicACzOuter.Add A, C
     Else
         DicACzOuter.Add A, Empty
@@ -336,23 +336,23 @@ For Each A In DicAB.Keys
 Next
 End Function
 Function DicAC(DicAB As Dictionary, DicBC As Dictionary) As Dictionary
-Dim A, B, C
+Dim A, b, C
 Set DicAC = New Dictionary
 For Each A In DicAB.Keys
-    B = DicAB(A)
-    If DicBC.Exists(B) Then
-        DicAC.Add A, DicBC(B)
+    b = DicAB(A)
+    If DicBC.Exists(b) Then
+        DicAC.Add A, DicBC(b)
     End If
 Next
 End Function
 
-Function DicAzDifVal(A As Dictionary, B As Dictionary) As Dictionary
+Function DicAzDifVal(A As Dictionary, b As Dictionary) As Dictionary
 Set DicAzDifVal = New Dictionary
 Dim K, V
 For Each K In A.Keys
-    If B.Exists(K) Then
+    If b.Exists(K) Then
         V = A(K)
-        If V <> B(K) Then DicAzDifVal.Add K, V
+        If V <> b(K) Then DicAzDifVal.Add K, V
     End If
 Next
 End Function
@@ -379,13 +379,13 @@ End Sub
 Function ChnDic(DiAqB As Dictionary, DiBqC As Dictionary) As Dictionary
 ':Ret :DiAqC  ! Thw Er if A->B and B not in fnd in DiBqC @@
 Dim A As Dictionary: Set A = DiAqB
-Dim B As Dictionary: Set B = DiBqC
+Dim b As Dictionary: Set b = DiBqC
 Set ChnDic = New Dictionary
 Dim KA: For Each KA In A.Keys
-    If Not B.Exists(A(KA)) Then
+    If Not b.Exists(A(KA)) Then
         Thw CSub, "KeyA has ValB which not found in DiBqC", "KeyA ValB DiAqB DiBqC", KA, A(KA), FmtDic(DiAqB), FmtDic(DiBqC)
     End If
-    ChnDic.Add KA, B(A(KA))
+    ChnDic.Add KA, b(A(KA))
 Next
 End Function
 

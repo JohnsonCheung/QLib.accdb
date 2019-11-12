@@ -67,7 +67,7 @@ Optional FnPfx$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
 BrwAy FmtDrs(A, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt), FnPfx, OupTy
 End Sub
 
-Sub BrwDrs2(A As Drs, B As Drs, _
+Sub BrwDrs2(A As Drs, b As Drs, _
 Optional MaxColWdt% = 100, Optional BrkColnn$, Optional ShwZer As Boolean, Optional IxCol As EmIxCol = EiBeg1, _
 Optional Fmt As EmTblFmt = EiTblFmt, Optional NN$, Optional Tit$ = "Brw 2 Drs", _
 Optional FnPfx$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
@@ -75,13 +75,13 @@ Dim Ay$(), AyA$(), AyB$(), N1$, N2$, T$()
 N1 = DftStr(BefSpc(NN), "Drs-A")
 N2 = DftStr(AftSpc(NN), " Drs-B")
 AyA = FmtDrszNoRdu(A, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N1)
-AyB = FmtDrszNoRdu(B, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N2)
+AyB = FmtDrszNoRdu(b, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N2)
 T = Sy(Tit, ULinDbl(Tit))
 Ay = Sy(T, AyA, AyB)
 Brw Ay, FnPfx, OupTy:=OupTy
 End Sub
 
-Sub BrwDrs3(A As Drs, B As Drs, C As Drs, _
+Sub BrwDrs3(A As Drs, b As Drs, C As Drs, _
 Optional MaxColWdt% = 100, Optional BrkColnn$, Optional ShwZer As Boolean, Optional IxCol As EmIxCol = EmIxCol.EiBeg1, _
 Optional Fmt As EmTblFmt = EiTblFmt, Optional NN$, Optional Tit$ = "Brw 3 Drs", _
 Optional FnPfx$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
@@ -90,20 +90,20 @@ N1 = DftStr(T1(NN), "Drs-A")
 N2 = DftStr(T2(NN), " Drs-B")
 N3 = DftStr(RmvTT(NN), " Drs-C")
 AyA = FmtDrszNoRdu(A, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N1)
-AyB = FmtDrszNoRdu(B, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N2)
+AyB = FmtDrszNoRdu(b, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N2)
 AyC = FmtDrszNoRdu(C, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt, Nm:=N3)
 T = Sy(Tit, ULinDbl(Tit))
 Ay = Sy(T, AyA, AyB, AyC)
 Brw Ay, FnPfx, OupTy:=OupTy
 End Sub
 
-Sub BrwDrs4(A As Drs, B As Drs, C As Drs, D As Drs, _
+Sub BrwDrs4(A As Drs, b As Drs, C As Drs, D As Drs, _
 Optional MaxColWdt% = 100, Optional BrkColnn$, Optional ShwZer As Boolean, Optional IxCol As EmIxCol = EiBeg1, _
 Optional Fmt As EmTblFmt = EiTblFmt, _
 Optional FnPfx$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
 Dim Ay$(), AyA$(), AyB$(), AyC$(), AyD$()
 AyA = FmtDrszNoRdu(A, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt)
-AyB = FmtDrszNoRdu(B, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt)
+AyB = FmtDrszNoRdu(b, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt)
 AyC = FmtDrszNoRdu(C, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt)
 AyD = FmtDrszNoRdu(D, MaxColWdt, BrkColnn, ShwZer, IxCol, Fmt)
 Ay = Sy(AyA, AyB, AyC, AyD)
@@ -236,10 +236,10 @@ PushI FmtDt, "*Tbl " & A.DtNm
 PushIAy FmtDt, FmtDrszNoRdu(DrszDt(A), MaxColWdt, BrkColNm, ShwZer, IxCol)
 End Function
 
-Function IsEqAyzIxy(A, B, Ixy&()) As Boolean
+Function IsEqAyzIxy(A, b, Ixy&()) As Boolean
 Dim J%
 For J = 0 To UB(Ixy)
-    If A(Ixy(J)) <> B(Ixy(J)) Then Exit Function
+    If A(Ixy(J)) <> b(Ixy(J)) Then Exit Function
 Next
 IsEqAyzIxy = True
 End Function

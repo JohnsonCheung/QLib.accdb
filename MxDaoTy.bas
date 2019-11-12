@@ -177,8 +177,8 @@ Function JnStrDicTwoFldRs(A As DAO.Recordset, Optional Sep$ = " ") As Dictionary
 Set JnStrDicTwoFldRs = JnStrDicRsKeyJn(A, 0, 1, Sep)
 End Function
 
-Function MaxSim(A As EmSimTy, B As EmSimTy) As EmSimTy
-MaxSim = Max(A, B)
+Function MaxSim(A As EmSimTy, b As EmSimTy) As EmSimTy
+MaxSim = Max(A, b)
 End Function
 
 Function ShtAdoTyAy(A() As ADODB.DataTypeEnum) As String()
@@ -301,15 +301,15 @@ Function SqlTyzDao$(T As DAO.DataTypeEnum, Optional Si%, Optional Precious%)
 Stop '
 End Function
 
-Function MaxVbTy(A As VbVarType, B As VbVarType) As VbVarType
+Function MaxVbTy(A As VbVarType, b As VbVarType) As VbVarType
 Dim O As VbVarType: O = vbBoolean
 If IsArray(A) Then Stop
-If B >= vbArray Then Stop
+If b >= vbArray Then Stop
 Select Case True
-Case A = vbBoolean And B = vbBoolean: O = A
-Case A = vbBoolean And B = VbVarType.vbByte: O = A
-Case A = vbBoolean And B = VbVarType.vbByte: O = A
-Case Else: Thw CSub, "VbTy-A-&-B cannot be compared", "VarType-A B", ShtVbTy(A), ShtVbTy(B)
+Case A = vbBoolean And b = vbBoolean: O = A
+Case A = vbBoolean And b = VbVarType.vbByte: O = A
+Case A = vbBoolean And b = VbVarType.vbByte: O = A
+Case Else: Thw CSub, "VbTy-A-&-B cannot be compared", "VarType-A B", ShtVbTy(A), ShtVbTy(b)
 End Select
 End Function
 

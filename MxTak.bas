@@ -136,8 +136,8 @@ End Sub
 Function BetFstLas$(S, Fst$, LAs$)
 BetFstLas = BefRev(Aft(S, Fst), LAs)
 End Function
-Function BetLng(L&, A&, B&) As Boolean
-BetLng = A <= L And L <= B
+Function BetLng(L&, A&, b&) As Boolean
+BetLng = A <= L And L <= b
 End Function
 
 Function BetStr$(S, S1$, S2$, Optional NoTrim As Boolean, Optional InclMarker As Boolean)

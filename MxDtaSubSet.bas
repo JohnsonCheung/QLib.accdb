@@ -45,8 +45,8 @@ Dim ODy(): ODy = AwIxy(D.Dy, Rxy)
 DeVy = Drs(D.Fny, ODy)
 End Function
 Function Dw2Eq(D As Drs, C2$, V1, V2) As Drs
-Dim A$, B$: AsgTRst C2, A, B
-Dw2Eq = DwEq(DwEq(D, A, V1), B, V2)
+Dim A$, b$: AsgTRst C2, A, b
+Dw2Eq = DwEq(DwEq(D, A, V1), b, V2)
 End Function
 Function DwNBlnk(D As Drs, C$) As Drs
 DwNBlnk = DwNe(D, C, "")
@@ -62,8 +62,8 @@ Dw2Patn = DwPatn(DwPatn(A, C1, Patn1), C2, Patn2)
 End Function
 
 Function Dw3Eq(D As Drs, C3$, V1, V2, V3) As Drs
-Dim A$, B$, C$: AsgTTRst C3, A, B, C
-Dw3Eq = DwEq(DwEq(DwEq(D, A, V1), B, V2), C, V3)
+Dim A$, b$, C$: AsgTTRst C3, A, b, C
+Dw3Eq = DwEq(DwEq(DwEq(D, A, V1), b, V2), C, V3)
 End Function
 
 Function Dw3EqE(D As Drs, C3$, V1, V2, V3) As Drs

@@ -4,17 +4,17 @@ Option Explicit
 Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxRetSrc."
 
-Function SrclFi$(M As CodeModule, B As Fei)
-If IsFeizEmp(B) Then Exit Function
+Function SrclFi$(M As CodeModule, b As Fei)
+If IsFeizEmp(b) Then Exit Function
 'SrclFi = A.Lines(B.FmNo, B.Cnt)
 End Function
 
-Function SrczMFi(M As CodeModule, B As Fei) As String()
+Function SrczMFi(M As CodeModule, b As Fei) As String()
 'SrczMFi = SplitCrLf(SrclFei(A, B))
 End Function
 
-Function SrczMRe(M As CodeModule, B As RegExp) As String()
-Dim Ix&(): Ix = IxyzAyRe(Src(M), B)
+Function SrczMRe(M As CodeModule, b As RegExp) As String()
+Dim Ix&(): Ix = IxyzAyRe(Src(M), b)
 Dim O$(), I, Md As CodeModule
 Dim N$: N = Mdn(M)
 If Si(Ix) = 0 Then Exit Function

@@ -12,8 +12,9 @@ End Function
 
 Function DrszFcsv(Fcsv$) As Drs
 Dim Ly$(): Ly = LyzFt(Fcsv)
-Dim Fny$(): Fny = DrzCsvLin(Ly(0))
-Fny(0) = RmvUtfSig(Fny(0))
+Stop
+Dim Fny$(): 'Fny = DrzCsvLin(Ly(0))
+Fny(0) = RmvUtf8Sig(Fny(0))
 Dim Dy()
     Dim J&: For J = 1 To UB(Ly)
         PushSomSi Dy, SplitComma(Ly(J))

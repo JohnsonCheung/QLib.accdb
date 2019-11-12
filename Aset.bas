@@ -25,7 +25,7 @@ Av = AvzItr(Itms)
 End Function
 
 Sub Brw(Optional Fnn$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
-B Aset.Keys, DftStr(Fnn, "Aset"), OupTy
+b Aset.Keys, DftStr(Fnn, "Aset"), OupTy
 End Sub
 
 Function Clone() As Aset
@@ -59,17 +59,17 @@ Function IsEmp() As Boolean
 IsEmp = Aset.Count = 0
 End Function
 
-Function IsEq(B As Aset) As Boolean
-If Cnt <> B.Cnt Then Exit Function
+Function IsEq(b As Aset) As Boolean
+If Cnt <> b.Cnt Then Exit Function
 Dim K
 For Each K In Itms
-    If Not B.Has(K) Then Exit Function
+    If Not b.Has(K) Then Exit Function
 Next
 IsEq = True
 End Function
 
-Function IsInOrdEq(B As Aset) As Boolean
-IsInOrdEq = IsEqAy(Me.Av, B.Av)
+Function IsInOrdEq(b As Aset) As Boolean
+IsInOrdEq = IsEqAy(Me.Av, b.Av)
 End Function
 
 Function Itms()
@@ -80,11 +80,11 @@ Function Lin()
 Lin = JnSpc(Aset.Keys)
 End Function
 
-Function Minus(B As Aset) As Aset
+Function Minus(b As Aset) As Aset
 Dim O As Aset, I
 Set O = EmpAset
 For Each I In Itms
-    If Not B.Has(I) Then O.PushItm I
+    If Not b.Has(I) Then O.PushItm I
 Next
 Set Minus = O
 End Function

@@ -65,9 +65,9 @@ If HasSubFdr(Pth) Then Exit Function
 IsEmpPth = True
 End Function
 
-Function AddPfxzPth$(Pth, Pfx)
-With Brk2Rev(RmvSfx(Pth, PthSep), PthSep, NoTrim:=True)
-    AddPfxzPth = .S1 & PthSep & Pfx & .S2 & PthSep
+Function AddFdrPfx$(Pth, Pfx)
+With Brk2Rev(RmvPthSfx(Pth), PthSep, NoTrim:=True)
+    AddFdrPfx = .S1 & PthSep & Pfx & .S2 & PthSep
 End With
 End Function
 
@@ -80,7 +80,7 @@ FdrzFfn = Fdr(Pth(Ffn))
 End Function
 
 Function Fdr$(Pth)
-Fdr = AftRev(DltPthSfx(Pth), PthSep)
+Fdr = AftRev(RmvPthSfx(Pth), PthSep)
 End Function
 
 Sub ThwIf_NotProperFdrNm(Fdr$)
@@ -90,7 +90,7 @@ If HasChrList(Fdr, C) Then Thw CSub, "Fdr cannot has these char " & C, "Fdr Char
 End Sub
 
 Function RmvFdr$(Pth)
-RmvFdr = BefRev(DltPthSfx(Pth), PthSep) & PthSep
+RmvFdr = BefRev(RmvPthSfx(Pth), PthSep) & PthSep
 End Function
 
 Function ParPth$(Pth) ' Return the ParPth of given Pth
@@ -124,7 +124,7 @@ For J = 1 To UBound(Ay)
     O = O & PthSep & Ay(J)
     EnsPth O
 Next
-EnsPthAll = Pth
+EnsPthAll = EnsPthSfx(Pth)
 End Function
 
 Function HasPth(Pth) As Boolean
@@ -260,8 +260,8 @@ While M <> ""
 Wend
 End Function
 
-Function Fxy(Pth) As String()
-Fxy = FfnAy(Pth, "*.xls*")
+Function FxAy(Pth) As String()
+FxAy = FfnAy(Pth, "*.xls*")
 End Function
 
 Function FfnAy(Pth, Optional Spec$ = "*.*") As String()
@@ -280,9 +280,9 @@ Tst:
     Return
 End Sub
 
-Sub Z_Fxy()
+Sub Z_FxAy()
 Dim A$()
-A = Fxy(CurDir)
+A = FxAy(CurDir)
 DmpAy A
 End Sub
 
@@ -299,8 +299,8 @@ Else
 End If
 End Function
 
-Function DltPthSfx$(Pth)
-DltPthSfx = RmvSfx(Pth, PthSep)
+Function RmvPthSfx$(Pth)
+RmvPthSfx = RmvSfx(Pth, PthSep)
 End Function
 
 Function HasSiblingFdr(Pth, Fdr$) As Boolean

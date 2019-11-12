@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxPrimCol"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QDta."
 Const CMod$ = CLib & "MxPrimCol."
 
 Function Col(D As Drs, C) As Variant()
@@ -68,9 +69,9 @@ FstCol = FstColzDy(A.Dy)
 End Function
 
 Function StrColzEq(A As Drs, Col$, V, ColNm$) As String()
-Dim B As Drs
-B = DwEqSel(A, Col, V, ColNm)
-StrColzEq = StrCol(B, ColNm)
+Dim b As Drs
+b = DwEqSel(A, Col, V, ColNm)
+StrColzEq = StrCol(b, ColNm)
 End Function
 
 Function ColzDrs(A As Drs, ColNm$) As Variant()

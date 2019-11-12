@@ -6,7 +6,7 @@ Const CMod$ = CLib & "MxS12."
 Type S12: S1 As String: S2 As String: End Type
 Type S12Opt: Som As Boolean: S12 As S12: End Type
 Type S12s: N As Long: Ay() As S12: End Type
-Type S3: A As String: B As String: C As String: End Type
+Type S3: A As String: b As String: C As String: End Type
 Function MapS1(A As S12s, Dic As Dictionary) As S12s
 Dim J&: For J = 0 To A.N - 1
     Dim M As S12: M = A.Ay(J)
@@ -69,10 +69,10 @@ O.Ay(O.N) = M
 O.N = O.N + 1
 End Sub
 
-Function AddS12(A As S12, B As S12) As S12s
+Function AddS12(A As S12, b As S12) As S12s
 Dim O As S12s: O = S12szU(1)
 O.Ay(0) = A
-O.Ay(1) = B
+O.Ay(1) = b
 AddS12 = O
 End Function
 Function Y_S12s() As S12s
@@ -89,14 +89,14 @@ S12szU.N = U + 1
 ReDim S12szU.Ay(U)
 End Function
 
-Function S12szAyab(A, B, Optional NoTrim As Boolean) As S12s
-ThwIf_DifSi A, B, CSub
+Function S12szAyab(A, b, Optional NoTrim As Boolean) As S12s
+ThwIf_DifSi A, b, CSub
 Dim U&, O As S12s
 U = UB(A)
 O = S12szU(U)
 Dim J&
 For J = 0 To U
-    O.Ay(J) = S12(A(J), B(J), NoTrim)
+    O.Ay(J) = S12(A(J), b(J), NoTrim)
 Next
 S12szAyab = O
 End Function
@@ -126,13 +126,13 @@ Dim S1$(), S2() ' S2 is ay of sy
 Dim I1%, I2%
     If CC = "" Then I1 = 0: I2 = 1 Else AsgIx D, CC, I1, I2
 Dim Dr: For Each Dr In Itr(D.Dy)
-    Dim A$, B$: A = Dr(I1): B = Dr(I2)
+    Dim A$, b$: A = Dr(I1): b = Dr(I2)
     Dim R&: R = IxzAy(S1, A, ThwEr:=EiNoThw)
     If R = -1 Then
         PushI S1, A
-        PushI S2, Sy(B)
+        PushI S2, Sy(b)
     Else
-        PushI S2(R), B
+        PushI S2(R), b
     End If
 Next
 Dim J&: For J = 0 To UB(S1)
@@ -140,25 +140,25 @@ Dim J&: For J = 0 To UB(S1)
 Next
 End Function
 
-Function IsEqS12(A As S12, B As S12) As Boolean
+Function IsEqS12(A As S12, b As S12) As Boolean
 With A
-    If .S1 <> B.S1 Then Exit Function
-    If .S2 <> B.S2 Then Exit Function
+    If .S1 <> b.S1 Then Exit Function
+    If .S2 <> b.S2 Then Exit Function
 End With
 IsEqS12 = True
 End Function
 
-Function HasS12(A As S12s, B As S12) As Boolean
+Function HasS12(A As S12s, b As S12) As Boolean
 Dim Ay() As S12: Ay = A.Ay
 Dim J&: For J = 0 To A.N - 1
-    If IsEqS12(Ay(J), B) Then HasS12 = True: Exit Function
+    If IsEqS12(Ay(J), b) Then HasS12 = True: Exit Function
 Next
 End Function
-Function S12szDif(A As S12s, B As S12s) As S12s
+Function S12szDif(A As S12s, b As S12s) As S12s
 'Ret : Subset of @A.  Those itm in @A also in @B will be exl.
 Dim Ay() As S12: Ay = A.Ay
 Dim J&: For J = 0 To A.N - 1
-    If Not HasS12(B, Ay(J)) Then
+    If Not HasS12(b, Ay(J)) Then
         PushS12 S12szDif, Ay(J)
     End If
 Next

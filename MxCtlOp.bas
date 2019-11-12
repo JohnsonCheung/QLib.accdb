@@ -133,17 +133,17 @@ End Function
 
 Sub EnsBtnzC(Bar As CommandBar, BtnCap)
 If HasBtn(Bar, BtnCap) Then Exit Sub
-Dim B As CommandBarButton
-Set B = Bar.Controls.Add(MsoControlType.msoControlButton)
-B.Caption = BtnCap
-B.Style = msoButtonCaption
+Dim b As CommandBarButton
+Set b = Bar.Controls.Add(MsoControlType.msoControlButton)
+b.Caption = BtnCap
+b.Style = msoButtonCaption
 End Sub
 
 Sub AddBtn(Bar As CommandBar, BtnCap)
-Dim B As CommandBarButton
-Set B = Bar.Controls.Add(MsoControlType.msoControlButton)
-B.Caption = BtnCap
-B.Style = msoButtonCaption
+Dim b As CommandBarButton
+Set b = Bar.Controls.Add(MsoControlType.msoControlButton)
+b.Caption = BtnCap
+b.Style = msoButtonCaption
 End Sub
 
 Sub ABtn_Click(ByVal Ctrl As Office.CommandBarButton, CancelDefault As Boolean)

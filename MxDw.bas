@@ -224,7 +224,7 @@ For Each IDr In Itr(Dy)
 Next
 End Function
 
-Function JnDrs(A As Drs, B As Drs, Jn$, Add$, Optional IsLeftJn As Boolean, Optional AnyFld$) As Drs
+Function JnDrs(A As Drs, b As Drs, Jn$, Add$, Optional IsLeftJn As Boolean, Optional AnyFld$) As Drs
 'Fm A        : ..@Jn-LHS..              ! It is a drs with col-@Jn-LHS.
 'Fm B        : ..@Jn-RHS..@Add-RHS      ! It is a drs with col-@Jn-RHS & col-@Add-RHS.
 'Fm Jn       : :SS-of-:ColonTerm        ! It is :SS-of-:ColTerm. :ColTerm: is a :Term with 1-or-0 [:]. :Term: is a fm :TLin: or :Termss:  LHS of [:] is for @A and RHS of [:] is for @B
@@ -242,8 +242,8 @@ Dim AddFnyFm$(), AddFnyAs$()
     AsgColonFF Jn, JnFnyA, JnFnyB
     AsgColonFF Add, AddFnyFm, AddFnyAs
     
-Dim AddIxy&(): AddIxy = IxyzSubAy(B.Fny, AddFnyFm, ThwNFnd:=True)
-Dim BJnIxy&(): BJnIxy = IxyzSubAy(B.Fny, JnFnyB, ThwNFnd:=True)
+Dim AddIxy&(): AddIxy = IxyzSubAy(b.Fny, AddFnyFm, ThwNFnd:=True)
+Dim BJnIxy&(): BJnIxy = IxyzSubAy(b.Fny, JnFnyB, ThwNFnd:=True)
 Dim AJnIxy&(): AJnIxy = IxyzSubAy(A.Fny, JnFnyA, ThwNFnd:=True)
 
 Dim Emp() ' it is for LeftJn and for those rec when @B has no rec joined.  It is for @Add-fld & @AnyFld.
@@ -255,7 +255,7 @@ Dim Emp() ' it is for LeftJn and for those rec when @B has no rec joined.  It is
 Dim ODy()                       ' Bld %ODy for each %ADr, that mean fld-Add & fld-Any
     Dim Adr: For Each Adr In Itr(A.Dy)
         Dim JnVy():            JnVy = AwIxy(Adr, AJnIxy)                     'JnFld-Vy-Fm-@A
-        Dim Bdy():            Bdy = DywKeySel(B.Dy, BJnIxy, JnVy, AddIxy) '@B-Dy-joined
+        Dim Bdy():            Bdy = DywKeySel(b.Dy, BJnIxy, JnVy, AddIxy) '@B-Dy-joined
         Dim NoRec As Boolean: NoRec = Si(Bdy) = 0                           'no rec joined
             
         Select Case True
@@ -279,7 +279,7 @@ If False Then
     Erase XX
     XBox "Debug JnDrs"
     X "A-Fny  : " & Termss(A.Fny)
-    X "B-Fny  : " & Termss(B.Fny)
+    X "B-Fny  : " & Termss(b.Fny)
     X "Jn     : " & Jn
     X "Add    : " & Add
     X "IsLefJn: " & IsLeftJn
@@ -287,7 +287,7 @@ If False Then
     X "O-Fny  : " & Termss(O.Fny)
     X "More ..: A-Drs B-Drs Rslt"
     X LyzNmDrs("A-Drs  : ", A)
-    X LyzNmDrs("B-Drs  : ", B)
+    X LyzNmDrs("B-Drs  : ", b)
     X LyzNmDrs("Rslt   : ", O)
     Brw XX
     Erase XX
@@ -295,8 +295,8 @@ If False Then
 End If
 End Function
 
-Function LDrszJn(A As Drs, B As Drs, Jn$, Add$, Optional AnyFld$) As Drs
-LDrszJn = JnDrs(A, B, Jn, Add, IsLeftJn:=True, AnyFld:=AnyFld)
+Function LDrszJn(A As Drs, b As Drs, Jn$, Add$, Optional AnyFld$) As Drs
+LDrszJn = JnDrs(A, b, Jn, Add, IsLeftJn:=True, AnyFld:=AnyFld)
 End Function
 
 Function F_SubRxy_ByDupFF(A As Drs, FF$) As Long()
@@ -435,13 +435,13 @@ Next
 UpdCC = Drs(A.Fny, Dy)
 End Function
 
-Function UpdDrs(A As Drs, B As Drs, Jn$, Upd$, IsLefJn As Boolean) As Drs
+Function UpdDrs(A As Drs, b As Drs, Jn$, Upd$, IsLefJn As Boolean) As Drs
 '@A  : ..@Jn-LHS..@Upd-LHS.. ! to be updated
 '@B  : ..@Jn-RHS..@Upd-RHS.. ! used to update @A.@Upd-LHS
 '@Jn : :SS-JnTerm            ! :JnTerm is :ColonTerm.  LHS is @A-fld and RHS is @B-fld
 'Fm Upd : :Upd-UpdTerm          ! :UpdTer: is :ColTerm.  LHS is @A-fld and RHS is @B-fld
 'Ret    : sam as @A             ! new Drs from @A with @A.@Upd-LHS updated from @B.@Upd-RHS. @@
-Dim C As Dictionary: Set C = DiczDrsCC(B)
+Dim C As Dictionary: Set C = DiczDrsCC(b)
 Dim O As Drs
     O.Fny = A.Fny
     Dim Dr, K
@@ -492,6 +492,7 @@ Sub Z_SelDist()
 'BrwDrs SelDistCnt(DoPubFun, "Mdn Ty")
 End Sub
 Function DePatn(A As Drs, C$, ExlPatn$) As Drs
+If ExlPatn = "" Then DePatn = A: Exit Function
 Dim ODy()
 Dim R As RegExp: Set R = Rx(ExlPatn)
 Dim Ix%: Ix = IxzAy(A.Fny, C)

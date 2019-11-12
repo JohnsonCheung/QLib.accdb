@@ -19,7 +19,7 @@ Vc A
 End Sub
 
 Sub Z_DiMthnqLinesM()
-B DiMthnqLinesM
+b DiMthnqLinesM
 End Sub
 
 Function DiMthnqLinesP() As Dictionary
@@ -79,12 +79,12 @@ End Sub
 Sub Z_Dcl_BefAndAft_Srt()
 Const Mdn$ = "VbStrRe"
 Dim A$() ' Src
-Dim B$() ' Src->Srt
+Dim b$() ' Src->Srt
 Dim A1$() 'Src->Dcl
 Dim B1$() 'Src->Src->Dcl
 A = Src(Md(Mdn))
-B = SrtSrc(A)
+b = SrtSrc(A)
 A1 = Dcl(A)
-B1 = Dcl(B)
+B1 = Dcl(b)
 Stop
 End Sub

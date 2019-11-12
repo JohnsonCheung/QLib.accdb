@@ -60,10 +60,10 @@ AddHypLnk LasRowCell(X.IxLo, "Val"), Wsn
 End Sub
 
 Function XNxtDrsNo%(DrsNm$)
-Dim A As Drs, B As Drs, C As Drs
+Dim A As Drs, b As Drs, C As Drs
 A = DrszLo(X.IxLo)
-B = DwEqSel(A, "Nm", DrsNm, "Nm Drs# ValTy")
-C = DwEqExl(B, "ValTy", "Drs")
+b = DwEqSel(A, "Nm", DrsNm, "Nm Drs# ValTy")
+C = DwEqExl(b, "ValTy", "Drs")
 If NoReczDrs(C) Then XNxtDrsNo = 1: Exit Function
 XNxtDrsNo = AyMax(IntCol(C, "Drs#")) + 1
 End Function

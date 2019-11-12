@@ -305,8 +305,8 @@ Function SeqDiKqCntzDy(Dy(), C&) As Dictionary
 Set SeqDiKqCntzDy = SeqDiKqCnt(ColzDy(Dy, C&))
 End Function
 
-Sub ThwIf_NEDy(Dy(), B())
-If Not IsEqDy(Dy, B) Then Stop
+Sub ThwIf_NEDy(Dy(), b())
+If Not IsEqDy(Dy, b) Then Stop
 End Sub
 
 Sub Z_DyJnFldKK()

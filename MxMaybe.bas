@@ -18,8 +18,8 @@ Function SomDic(Dic As Dictionary) As DicOpt: SomDic.Som = True:  Set SomDic.Dic
 Function SomTrue() As BoolOpt:  SomTrue = SomBool(True):   End Function
 Function SomFalse() As BoolOpt: SomFalse = SomBool(False): End Function
 
-Function IsEqStrOpt(A As StrOpt, B As StrOpt) As Boolean
+Function IsEqStrOpt(A As StrOpt, b As StrOpt) As Boolean
 Select Case True
-Case A.Som And B.Som And A.Str = A.Str: IsEqStrOpt = True
+Case A.Som And b.Som And A.Str = A.Str: IsEqStrOpt = True
 End Select
 End Function

@@ -20,7 +20,7 @@ Vc FmtLinesAy(LinesAy)
 End Sub
 
 Sub BrwLinesAy(LinesAy)
-B FmtLinesAy(LinesAy)
+b FmtLinesAy(LinesAy)
 End Sub
 
 Function MrkLines$(Lines, Lno&)
@@ -46,18 +46,18 @@ Y_LinesAy = .Ly
 End With
 End Function
 
-Function FmtLinesAy(LinesAy, Optional B As EmIxCol = EiBeg0) As String()
+Function FmtLinesAy(LinesAy, Optional b As EmIxCol = EiBeg0) As String()
 If Si(LinesAy) = 0 Then Exit Function
 Dim W%: W = WdtzLinesAy(LinesAy)
 Dim LinzSep: LinzSep = Qte(Dup("-", W + 2), "|")
 Dim Lines
 PushI FmtLinesAy, LinzSep
 For Each Lines In Itr(LinesAy)
-    PushIAy FmtLinesAy, AddIxPfxzLineszW(Lines, W, B)
+    PushIAy FmtLinesAy, AddIxPfxzLineszW(Lines, W, b)
     PushI FmtLinesAy, LinzSep
 Next
 End Function
-Function AddIxPfxzLineszW(Lines, W%, Optional B As EmIxCol = EiBeg0) As String()
+Function AddIxPfxzLineszW(Lines, W%, Optional b As EmIxCol = EiBeg0) As String()
 Dim L
 For Each L In Itr(SplitCrLf(Lines))
     PushI AddIxPfxzLineszW, "| " & AlignL(L, W) & " |"
@@ -65,10 +65,10 @@ Next
 End Function
 
 
-Function EnsBet%(I%, A%, B%)
+Function EnsBet%(I%, A%, b%)
 Select Case True
 Case I < A: EnsBet = A
-Case I > B: EnsBet = B
+Case I > b: EnsBet = b
 Case Else: EnsBet = I
 End Select
 End Function

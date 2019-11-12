@@ -90,8 +90,8 @@ Act = InStrN(S, SubStr, N)
 Ass Exp = Act
 End Sub
 
-Function Max(A, B, ParamArray Ap())
-Dim O: O = IIf(A > B, A, B)
+Function Max(A, b, ParamArray Ap())
+Dim O: O = IIf(A > b, A, b)
 Dim J%: For J = 0 To UBound(Ap)
    If Ap(J) > O Then O = Ap(J)
 Next
@@ -103,32 +103,32 @@ Function CvVbTy(A) As VbVarType
 CvVbTy = A
 End Function
 
-Function MaxVbTy(A As VbVarType, B As VbVarType) As VbVarType
+Function MaxVbTy(A As VbVarType, b As VbVarType) As VbVarType
 Dim O As VbVarType
-If A = vbString Or B = vbString Then O = A: Exit Function
-If A = vbEmpty Then O = B: Exit Function
-If B = vbEmpty Then O = A: Exit Function
-If A = B Then O = A: Exit Function
+If A = vbString Or b = vbString Then O = A: Exit Function
+If A = vbEmpty Then O = b: Exit Function
+If b = vbEmpty Then O = A: Exit Function
+If A = b Then O = A: Exit Function
 Dim AIsNum As Boolean, BIsNum As Boolean
 AIsNum = IsVbTyNum(A)
-BIsNum = IsVbTyNum(B)
+BIsNum = IsVbTyNum(b)
 Select Case True
-Case A = vbBoolean And BIsNum: O = B
-Case AIsNum And B = vbBoolean: O = A
-Case A = vbDate Or B = vbDate: O = vbString
+Case A = vbBoolean And BIsNum: O = b
+Case AIsNum And b = vbBoolean: O = A
+Case A = vbDate Or b = vbDate: O = vbString
 Case AIsNum And BIsNum:
     Select Case True
-    Case A = vbByte: O = B
-    Case B = vbByte: O = A
-    Case A = vbInteger: O = B
-    Case B = vbInteger: O = A
-    Case A = vbLong: O = B
-    Case B = vbLong: O = A
-    Case A = vbSingle: O = B
-    Case B = vbSingle: O = A
-    Case A = vbDouble: O = B
-    Case B = vbDouble: O = A
-    Case A = vbCurrency Or B = vbCurrency: O = A
+    Case A = vbByte: O = b
+    Case b = vbByte: O = A
+    Case A = vbInteger: O = b
+    Case b = vbInteger: O = A
+    Case A = vbLong: O = b
+    Case b = vbLong: O = A
+    Case A = vbSingle: O = b
+    Case b = vbSingle: O = A
+    Case A = vbDouble: O = b
+    Case b = vbDouble: O = A
+    Case A = vbCurrency Or b = vbCurrency: O = A
     Case Else: Stop
     End Select
 Case Else: Stop
@@ -173,7 +173,7 @@ Sub Vc(V, Optional Fnn$)
 Brw V, Fnn, OupTy:=EiOtVc
 End Sub
 
-Sub B(A, Optional Fnn$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
+Sub b(A, Optional Fnn$, Optional OupTy As EmOupTy = EmOupTy.EiOtBrw)
 Brw A, Fnn, OupTy
 End Sub
 

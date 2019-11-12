@@ -83,14 +83,14 @@ End Select
 End Function
 
 Function IsSomF(A() As Boolean) As Boolean
-Dim B: For Each B In A
-    If Not B Then IsSomF = True: Exit Function
+Dim b: For Each b In A
+    If Not b Then IsSomF = True: Exit Function
 Next
 End Function
 
 Function IsSomT(A() As Boolean) As Boolean
-Dim B: For Each B In A
-    If B Then IsSomT = True: Exit Function
+Dim b: For Each b In A
+    If b Then IsSomT = True: Exit Function
 Next
 End Function
 

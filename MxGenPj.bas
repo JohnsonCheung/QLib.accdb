@@ -3,9 +3,8 @@ Option Compare Text
 Option Explicit
 Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxGenPj."
-':SrcRoot: :Pth #Src-Root#          ! is a :Pth.  Its :Fdr eq ".Src"
-':Srcp:    :Pth #Src-Path#          ! is a :Pth.  Its :Fdr is a PjFn and par fdr is :SrcRoot
-':Disp:    :Pth #Distribution-Path# ! is a :Pth.  d
+':Srcp:    :Pth #Src-Path#          ! is a :Pth.  Its fdr is a `{PjFn}.src`
+':Distp:   :Pth #Distribution-Path# ! is a :Pth.  It comes from :Srcp
 ':InstPth: :Pth #Instance-Path#     ! of a @pth is any :TimNm :Fdr under @pth
 ':TimNm:   :Nm
 
@@ -13,8 +12,8 @@ Function Fxa$(FxaNm, Srcp)
 Fxa = Distp(Srcp) & FxaNm & ".xlam"
 End Function
 
-Function Fba$(FbaNm, Srcp)
-Fba = EnsPth(Srcp & "Dist") & FbaNm & ".accdb"
+Function Fba$(FbaFnn, Srcp)
+Fba = EnsPth(RplExt(RmvPthSfx(Srcp), ".dist")) & FbaFnn & ".accdb"
 End Function
 
 Sub Z_CompressFxa()
@@ -28,36 +27,9 @@ GenFxazSrcp Srcp
 'BackupFfn Fxa, Srcp
 End Sub
 
-Function SrcRoot$(Srcp$)
-'Ret: :SrcRoot @@
-SrcRoot = ParPth(Srcp)
-End Function
-
-Function DistpP$() 'Distribution Path
-DistpP = Distp(SrcpP)
-End Function
-
-Function Distp$(Srcp)
-Dim A$: A = DltPthSfx(Srcp)
-If HasPfx(A, ".Src") Then Thw CSub, "Given @Srcp is not a Src path (fdr with .src at end)", "Given-Src-Pth", Srcp
-Distp = EnsPth(RmvExt(A) & ".dist")
-End Function
-
-Function DistFbaP$()
-DistFbaP = DistFba(SrcpzP(CPj))
-End Function
-
-Function DistFba$(Srcp)
-DistFba = DistPjfzSrcp(Srcp, ".accdb")
-End Function
-
-Function DistPjfzSrcp(Srcp, Ext)
-Dim P$:   P = Distp(Srcp)
-Dim F1$: F1 = RplExt(Fdr(ParPth(P)), Ext)
-Dim F2$: F2 = NxtFfnzNotIn(F1, PjfnAyV)
-Dim F$:   F = NxtFfnzAva(P & F2)
-DistPjfzSrcp = F
-End Function
+Sub GenFxazSrcp(Srcp$)
+Stop
+End Sub
 
 Sub Z_FxazSrcp()
 Dim Srcp$
@@ -72,10 +44,6 @@ Tst:
     C
     Return
 End Sub
-
-Function DistFxazSrcp$(Srcp)
-DistFxazSrcp = DistPjfzSrcp(Srcp, ".xlam")
-End Function
 
 Sub LoadBas(P As VBProject, Srcp$)
 Dim F$(): F = BasFfnAy(Srcp)
@@ -143,9 +111,6 @@ End Sub
 
 Sub GenFxaP()
 GenFxazP CPj
-End Sub
-Sub GenFxazSrcp(Srcp$)
-
 End Sub
 
 Sub GenFxazP(Pj As VBProject)

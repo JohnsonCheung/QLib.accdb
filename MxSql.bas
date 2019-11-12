@@ -207,10 +207,10 @@ End Function
 Function SqlIns_T_FF_Dr$(T, FF$, Dr)
 Dim Fny$(): Fny = SyzSS(FF)
 ThwIf_DifSi Fny, Dr, CSub
-Dim A$, B$
+Dim A$, b$
 A = JnComma(SyzQteSqIf(Fny))
-B = JnComma(SqlQteVy(Dr))
-SqlIns_T_FF_Dr = FmtQQ("Insert Into [?] (?) Values(?)", T, A, B)
+b = JnComma(SqlQteVy(Dr))
+SqlIns_T_FF_Dr = FmtQQ("Insert Into [?] (?) Values(?)", T, A, b)
 End Function
 
 Function SqlIns_T_FF_ValAp$(T, FF$, ParamArray ValAp())
@@ -473,8 +473,8 @@ Function SqpAEqB_Fny_AliasAB$(Fny$(), Optional AliasAB$ = "x a")
 Dim A1$: A1 = BefSpc(AliasAB) ' Alias1
 Dim A2$: A2 = BefSpc(AliasAB) ' Alias2
 Dim A$(): A = AmAddPfx(Fny, A1 & ".")
-Dim B$(): B = AmAddPfx(Fny, A2 & ".")
-Dim J$(): J = LyzAyab(A, B, " = ")
+Dim b$(): b = AmAddPfx(Fny, A2 & ".")
+Dim J$(): J = LyzAyab(A, b, " = ")
 SqpAEqB_Fny_AliasAB = JnCommaSpc(J)
 End Function
 

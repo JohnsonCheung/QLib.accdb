@@ -108,11 +108,11 @@ Dim P%: P = InStr(L, " "): If P = 0 Then Exit Function
 BlkTyzSepLin = Left(L, P - 1)
 End Function
 
-Function BlkswEr(B As Blks, Mul$(), Sng$()) As Blks
+Function BlkswEr(b As Blks, Mul$(), Sng$()) As Blks
 'Fm Mul : :BlkTyAy which alw more than 1 blk
 'Fm Sng : only alw 1 blk
 'Ret    : those blk in @B not in neither
-Dim Dy(): Dy = B.D.Dy
+Dim Dy(): Dy = b.D.Dy
 Dim BTy$(): BTy = AddSy(Mul, Sng)
 Dim Dr, ODy(): For Each Dr In Itr(Dy)
     If Not HasEle(BTy, RoBlkTy(Blk(Dr))) Then PushI ODy, Dr
@@ -120,10 +120,10 @@ Next
 BlkswEr = Blks(ODy)
 End Function
 
-Function BlkswExcess(B As Blks, Sng$()) As Blks
+Function BlkswExcess(b As Blks, Sng$()) As Blks
 'Fm Sng : sng blk instance blk ty.
 'Ret : subset of @B which is excess blk.  For those blk type is @Sng, the 2nd and rest blk is treated as excess.
-Dim Dy(): Dy = B.D.Dy
+Dim Dy(): Dy = b.D.Dy
 Dim Fnd$()
 Dim ODy(), Dr: For Each Dr In Itr(Dy)
     Dim BlkTy$:  BlkTy = RoBlkTy(Blk(Dr))
@@ -138,9 +138,9 @@ Next
 BlkswExcess = Blks(ODy)
 End Function
 
-Function BlkswOk(B As Blks, BtoMul$(), BtoSng$()) As Blks
+Function BlkswOk(b As Blks, BtoMul$(), BtoSng$()) As Blks
 'Ret : subset of @B which is ok.  It is ok when the #BlkTy is :Mul or is (:Sng and fst blk)
-Dim Dy(): Dy = B.D.Dy
+Dim Dy(): Dy = b.D.Dy
 Dim BtoSngDone$()
 Dim ODy(), Dr: For Each Dr In Itr(Dy)
     Dim BlkTy$:  BlkTy = RoBlkTy(Blk(Dr))
@@ -169,14 +169,14 @@ Exit Sub
 Z:
     Tp = SampSqTp
     SepLinPfx = "=="
-    Dim B As TpBrk: B = TpBrk(Tp, "SQ", "PM SW")
-    Vc FmtTpBrk(B)
+    Dim b As TpBrk: b = TpBrk(Tp, "SQ", "PM SW")
+    Vc FmtTpBrk(b)
     Return
 End Sub
 
 Function FmtTpBrk(A As TpBrk) As String()
-Dim B As New Bfr
-With B
+Dim b As New Bfr
+With b
 .Box "TpBrk"
 .Lin
 .ULin "BlkTyoMul: [" & JnSpc(A.BlkTyAyoMul) & "]"
@@ -191,31 +191,31 @@ With B
 .Box "Er Blks", "&"
 .Var FmtBlks(A.Er)
 End With
-FmtTpBrk = B.Ly
+FmtTpBrk = b.Ly
 End Function
 
-Sub BrwBlks(B As Blks)
-Brw FmtBlks(B)
+Sub BrwBlks(b As Blks)
+Brw FmtBlks(b)
 End Sub
 
-Sub VcBlks(B As Blks)
-Vc FmtBlks(B)
+Sub VcBlks(b As Blks)
+Vc FmtBlks(b)
 End Sub
 
-Function CntBlk%(B As Blks, BlkTy$)
+Function CntBlk%(b As Blks, BlkTy$)
 Dim O&
-Dim DroBlk: For Each DroBlk In B.D.Dy
+Dim DroBlk: For Each DroBlk In b.D.Dy
     If DroBlk(0) = BlkTy Then O = O + 1
 Next
 CntBlk = O
 End Function
 
-Function DyoLLinzBlk(B As Blk) As Variant()
-DyoLLinzBlk = B.DroBlk(2)
+Function DyoLLinzBlk(b As Blk) As Variant()
+DyoLLinzBlk = b.DroBlk(2)
 End Function
 
-Function FmtBlks(B As Blks) As String()
-Dim DroBlk, J&: For Each DroBlk In B.D.Dy
+Function FmtBlks(b As Blks) As String()
+Dim DroBlk, J&: For Each DroBlk In b.D.Dy
     PushIAy FmtBlks, FmtBlk(Blk(DroBlk), J)
 Next
 End Function
@@ -230,24 +230,24 @@ Function FmtLLin(DyoLLin()) As String()
 FmtLLin = AmRTrim(AlignDyAsLy(DyoLLin))
 End Function
 
-Function RoBlkIx%(B As Blk)
-RoBlkIx = B.DroBlk(3)
+Function RoBlkIx%(b As Blk)
+RoBlkIx = b.DroBlk(3)
 End Function
 
-Function RoBlkTy%(B As Blk)
-RoBlkTy = B.DroBlk(0)
+Function RoBlkTy%(b As Blk)
+RoBlkTy = b.DroBlk(0)
 End Function
 
-Function RoBlkSepLin$(B As Blk)
-RoBlkSepLin = B.DroBlk(1)
+Function RoBlkSepLin$(b As Blk)
+RoBlkSepLin = b.DroBlk(1)
 End Function
 
-Function RoBlkSepLno&(B As Blk)
-RoBlkSepLno = B.DroBlk(4)
+Function RoBlkSepLno&(b As Blk)
+RoBlkSepLno = b.DroBlk(4)
 End Function
 
-Function RoBlk(B As Blk) As RoBlk
-Dim Dr(): Dr = B.DroBlk
+Function RoBlk(b As Blk) As RoBlk
+Dim Dr(): Dr = b.DroBlk
 With RoBlk
     .BlkTy = Dr(0)
     .SepLin = Dr(1)
@@ -257,18 +257,18 @@ With RoBlk
 End With
 End Function
 
-Function FmtBlk(B As Blk, Optional BlkIx = -1) As String()
+Function FmtBlk(b As Blk, Optional BlkIx = -1) As String()
 'Fm Blk : Dro<BlkTy SepLin Dyo<L Lin>>
 Dim P$: If BlkIx >= 0 Then P = "(BlkIx:" & BlkIx & ") "
-Dim RoB As RoBlk: RoB = RoBlk(B)
+Dim RoB As RoBlk: RoB = RoBlk(b)
 With RoB
 PushI FmtBlk, FmtQQ("**BlkIx(?) BlkTy(?) SepLno(?) SepLin(?)", .BlkIx, .BlkTy, .SepLno, .SepLin)
 PushIAy FmtBlk, FmtLLin(.DyoLLin)
 End With
 End Function
 
-Function BlkzTy(B As Blks, BlkTy$, Optional FmIx = 0) As Blk
-Dim Dy(): Dy = B.D.Dy
+Function BlkzTy(b As Blks, BlkTy$, Optional FmIx = 0) As Blk
+Dim Dy(): Dy = b.D.Dy
 Dim Dr$(), Ix%: For Ix = FmIx To UB(Dy) ' Dro<BlkTy SepLin Dyo<Lno Lin> BlkIx>
     Dr = Dy(Ix)
     If Dr(0) = BlkTy Then
@@ -277,25 +277,25 @@ Dim Dr$(), Ix%: For Ix = FmIx To UB(Dy) ' Dro<BlkTy SepLin Dyo<Lno Lin> BlkIx>
 Next
 End Function
 
-Function LyzBlkTy(B As Blks, BlkTy$) As String()
-LyzBlkTy = StrColzDySnd(DyoLLinzBlk(BlkzTy(B, BlkTy)))
+Function LyzBlkTy(b As Blks, BlkTy$) As String()
+LyzBlkTy = StrColzDySnd(DyoLLinzBlk(BlkzTy(b, BlkTy)))
 End Function
 
-Function LyAyzBlkTy(B As Blks, BlkTy$, Optional FmIx% = 0) As Variant()
-Dim D As Drs: D = DwEq(B.D, "BlkTy", BlkTy)
+Function LyAyzBlkTy(b As Blks, BlkTy$, Optional FmIx% = 0) As Variant()
+Dim D As Drs: D = DwEq(b.D, "BlkTy", BlkTy)
 Dim Dr: For Each Dr In D.Dy
     Dim DyoBlk(): DyoBlk = Dr(2)  ' Av<BlkTy SepLin Dyo<Lno Lin>>
     PushI LyAyzBlkTy, StrColzDySnd(DyoBlk)
 Next
 End Function
 
-Function IsBlkEmp(B As Blk) As Boolean
-IsBlkEmp = Si(B.DroBlk) = 0
+Function IsBlkEmp(b As Blk) As Boolean
+IsBlkEmp = Si(b.DroBlk) = 0
 End Function
 
-Function EoBlkTy(B As Blks, BlkTy$, Optional FmIx = 0) As String()
+Function EoBlkTy(b As Blks, BlkTy$, Optional FmIx = 0) As String()
 'Ret: Those Blk @FmIx and eq @BlkTy in @B are considered as error.  Upd them as :ErLy @@
-Dim Dy(): Dy = B.D.Dy
+Dim Dy(): Dy = b.D.Dy
 Dim Ix%: For Ix = FmIx To UB(Dy)
     PushIAy EoBlkTy, EoBlk(Blk(Dy(Ix)))
 Next
@@ -305,14 +305,14 @@ Function EoBlk(Er As Blk) As String()
 Stop
 End Function
 
-Function NxtBlk(B As Blks, M As Blk) As Blk
+Function NxtBlk(b As Blks, M As Blk) As Blk
 'Ret : Nxt :Blk of @M fm @B.  M.BlkIx
-NxtBlk = BlkzTy(B, RoBlkTy(M), BlkIx(M) + 1)
+NxtBlk = BlkzTy(b, RoBlkTy(M), BlkIx(M) + 1)
 End Function
 
-Function EoAftBlk(B As Blks, Aft As Blk) As String()
+Function EoAftBlk(b As Blks, Aft As Blk) As String()
 'Ret : :ErLy of all :Blk @Aft in @B of-sam-ty-as-@Aft which are considered as er.  `Aft` means those blks in @B aft @Aft.BlkIx
-Dim Dy(): Dy = B.D.Dy
+Dim Dy(): Dy = b.D.Dy
 Dim TyAft$: TyAft = RoBlkTy(Aft) ' The-Ty-of-@Aft
 Dim Ix%: For Ix = BlkIx(Aft) + 1 To UB(Dy)
     Dim Dr: Dr = Dy(Ix)

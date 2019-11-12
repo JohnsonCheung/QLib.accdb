@@ -423,8 +423,8 @@ End Function
 
 Function FmtPm(Pm$, Optional IsNoBkt As Boolean) 'Pm is wo bkt.
 Dim A$: A = Replace(Pm, "Optional ", "?")
-Dim B$: B = Replace(A, " As ", ":")
-Dim C$: C = Replace(B, "ParamArray ", "...")
+Dim b$: b = Replace(A, " As ", ":")
+Dim C$: C = Replace(b, "ParamArray ", "...")
 If IsNoBkt Then
     FmtPm = C
 Else
@@ -481,8 +481,8 @@ End Sub
 Function RetSfx$(MthLin)
 ':RetAs: :S ! The As-String aft the MthBkt with 'As'
 Dim A$: A = AftBkt(MthLin)
-Dim B$: B = BefOrAll(A, ":")
-RetSfx = BefOrAll(B, "'")
+Dim b$: b = BefOrAll(A, ":")
+RetSfx = BefOrAll(b, "'")
 End Function
 
 Function RetAs$(MthLin)
@@ -492,11 +492,11 @@ End Function
 
 Function RetAszDclSfx$(DclSfx)
 If DclSfx = "" Then Exit Function
-Dim B$
+Dim b$
 Dim F$: F = FstChr(DclSfx)
 If IsTyChr(F) Then
     If Len(DclSfx) = 1 Then Exit Function
-    B = RmvFstChr(DclSfx): If B <> "()" Then Stop
+    b = RmvFstChr(DclSfx): If b <> "()" Then Stop
     RetAszDclSfx = " As " & TyNmzTyChr(F) & "()"
     Exit Function
 End If

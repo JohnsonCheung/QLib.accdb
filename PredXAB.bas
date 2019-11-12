@@ -11,5 +11,5 @@ Option Explicit
 Option Compare Text
 Const CLib$ = "QVb."
 Const CMod$ = CLib & "PredXAB."
-Function PredXAB(X, A, B) As Boolean
+Function PredXAB(X, A, b) As Boolean
 End Function

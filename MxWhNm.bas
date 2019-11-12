@@ -13,13 +13,13 @@ End Type
 Function EmpWhNm() As WhNm
 End Function
 
-Function IsEqWhNm(A As WhNm, B As WhNm) As Boolean
+Function IsEqWhNm(A As WhNm, b As WhNm) As Boolean
 With A
 Select Case True
 Case _
     ObjPtr(.Re) <> ObjPtr(.Re), _
-    IsEqAy(.ExlLikAy, B.ExlLikAy), _
-    IsEqAy(.LikAy, B.LikAy)
+    IsEqAy(.ExlLikAy, b.ExlLikAy), _
+    IsEqAy(.LikAy, b.LikAy)
 Case Else
     IsEqWhNm = True
 End Select

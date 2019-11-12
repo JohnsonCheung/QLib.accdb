@@ -97,86 +97,86 @@ Tst:
     Return
 End Sub
 Function EoLof_LoFny(L_LoFny As Drs) As String()
-Dim Dy(), A$(), B$, C$()
+Dim Dy(), A$(), b$, C$()
 Dy = L_LoFny.Dy
  A = EoLofLoFld_LinMis(Dy)
- B = EoLofLoFld_FldMis(Dy)
+ b = EoLofLoFld_FldMis(Dy)
  C = EoLofLoFld_FldDupLin(Dy)
-EoLof_LoFny = SyzApNB(A, B, C)
+EoLof_LoFny = SyzApNB(A, b, C)
 End Function
 
 Function EoLof_Lon(L_Lon As Drs) As String()
-Dim Dy(), A$(), B$, C$()
+Dim Dy(), A$(), b$, C$()
 Dy = L_Lon.Dy
  A = EoLofLon_NmEr(Dy)
- B = EoLofLon_LinMis(Dy)
+ b = EoLofLon_LinMis(Dy)
  C = EoLofLon_LinDup(Dy)
-EoLof_Lon = SyzApNB(A, B, C)
+EoLof_Lon = SyzApNB(A, b, C)
 End Function
 
 Function EoLof_Ali(L_Ali_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Ali_FldLikAy
-Dim A$(), B$()
+Dim A$(), b$()
 A = EoColx_NotIn(L_Ali_FldLikAy, "Ali", "Ali", VdtLofAlivv)
-B = EoColFldLikAy_3Er(Drs, Fny)
-EoLof_Ali = SyzApNB(A, B)
+b = EoColFldLikAy_3Er(Drs, Fny)
+EoLof_Ali = SyzApNB(A, b)
 End Function
 
 Function EoLof_Fmt(L_Fmt_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Fmt_FldLikAy
-Dim A$(), B$(), C$(), D$(), E$()
+Dim A$(), b$(), C$(), D$(), E$()
 EoLof_Fmt = SyzApNB(A)
 End Function
 
 Function EoLof_Lvl(L_Lvl_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Lvl_FldLikAy
-Dim A$(), B$(), C$(), D$(), E$()
+Dim A$(), b$(), C$(), D$(), E$()
 A = EoColx_NumNotBet(Drs, "Lvl", 2, 8)
-B = EoColx_NotNum(Drs, "Lvl")
+b = EoColx_NotNum(Drs, "Lvl")
 C = EoColFldLikAy_3Er(Drs, Fny)
-EoLof_Lvl = SyzApNB(A, B, C)
+EoLof_Lvl = SyzApNB(A, b, C)
 End Function
 
 Function EoLof_Cor(L_Cor_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Cor_FldLikAy
-Dim A$(), B$(), C$(), D$(), E$()
+Dim A$(), b$(), C$(), D$(), E$()
 A = EoColx_NumNotBet(Drs, "Cor", 2, 8)
-B = EoColx_NotNum(Drs, "Cor")
+b = EoColx_NotNum(Drs, "Cor")
 C = EoColFldLikAy_3Er(Drs, Fny)
-EoLof_Cor = SyzApNB(A, B, C)
+EoLof_Cor = SyzApNB(A, b, C)
 End Function
 
 Function EoLof_Wdt(L_Wdt_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Wdt_FldLikAy
-Dim A$(), B$(), C$()
+Dim A$(), b$(), C$()
 A = EoColx_NumNotBet(Drs, "Wdt", 5, 100)
-B = EoColx_NotNum(Drs, "Wdt")
+b = EoColx_NotNum(Drs, "Wdt")
 C = EoColFldLikAy_3Er(Drs, Fny)
-EoLof_Wdt = SyzApNB(A, B, C)
+EoLof_Wdt = SyzApNB(A, b, C)
 End Function
 
 Function EoLof_Lbl(L_F_Lbl As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_F_Lbl
-Dim A$(), B$()
+Dim A$(), b$()
 Dim FF$: FF = JnSpc(Fny)
 A = EoColx_NotIn(Drs, "F", Valn:="Fld", VdtValss:=FF)
-B = EoColx_Dup(Drs, "F", "Fld")
-EoLof_Lbl = SyzApNB(A, B)
+b = EoColx_Dup(Drs, "F", "Fld")
+EoLof_Lbl = SyzApNB(A, b)
 End Function
 
 Function EoLof_Tot(L_Tot_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Tot_FldLikAy
-Dim A$(), B$(), C$()
+Dim A$(), b$(), C$()
 A = EoColFldLikAy_3Er(L_Tot_FldLikAy, Fny)
-B = EoColx_NotIn(L_Tot_FldLikAy, "Tot", "Tot", VdtLofT1ss)
+b = EoColx_NotIn(L_Tot_FldLikAy, "Tot", "Tot", VdtLofT1ss)
 End Function
 
 Function EoLof_Bet(L_Fm_To_Sum As Drs, Fny$()) As String()
-Dim A$(), B$(), C$(), FF$, D As Drs
+Dim A$(), b$(), C$(), FF$, D As Drs
 FF = JnSpc(Fny)
 D = L_Fm_To_Sum
 A = EoColx_NotIn(D, "Fm", "FmFld", FF)
-B = EoColx_NotIn(D, "To", "FmFld", FF)
+b = EoColx_NotIn(D, "To", "FmFld", FF)
 C = EoColx_NotIn(D, "Sum", "SumFld", FF)
 Dim IxL%, IxFm%, IxTo%, IxSum%: AsgIx L_Fm_To_Sum, "L Fm To Sum", IxL, IxFm, IxTo, IxSum
 Dim L&, PosFm%, PosTo%, PosSum%, FmFld$, ToFld$, SumFld$
@@ -229,11 +229,11 @@ End Function
 
 Function EoLof_Bdr(L_Bdr_FldLikAy As Drs, Fny$()) As String()
 Dim Drs As Drs: Drs = L_Bdr_FldLikAy
-Dim A$(), B$(), C$()
+Dim A$(), b$(), C$()
 A = EoColFldLikAy_3Er(Drs, Fny)
-B = EoColx_NotIn(Drs, "Bdr", "Bdr", VdtLofBdrvv)
+b = EoColx_NotIn(Drs, "Bdr", "Bdr", VdtLofBdrvv)
 C = EoColx_Dup(Drs, "Bdr", "Bdr")
-EoLof_Bdr = SyzApNB(A, B, C)
+EoLof_Bdr = SyzApNB(A, b, C)
 End Function
 
 Function EoLofBet_FldCannotBetFmTo() As String()

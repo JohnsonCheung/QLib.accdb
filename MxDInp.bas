@@ -39,7 +39,7 @@ Dim I%: I = IxzAy(Wi_Ffn.Fny, "Ffn")
 Dim Dr, Dy(): For Each Dr In Itr(Wi_Ffn.Dy)
     If NoFfn(Dr(I)) Then PushI Dy, Dr
 Next
-Dim B As Drs: B = Drs(Wi_Ffn.Fny, Dy)
-EoFfnMiszD = EoDrsMsg(B, "File not exist")
+Dim b As Drs: b = Drs(Wi_Ffn.Fny, Dy)
+EoFfnMiszD = EoDrsMsg(b, "File not exist")
 End Function
 

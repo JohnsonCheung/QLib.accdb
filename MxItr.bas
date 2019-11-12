@@ -100,8 +100,8 @@ For Each I In Itr
 Next
 End Function
 
-Function IsEqNmItr(Itr, B)
-IsEqNmItr = IsAySam(Itn(Itr), Itn(B))
+Function IsEqNmItr(Itr, b)
+IsEqNmItr = IsAySam(Itn(Itr), Itn(b))
 End Function
 
 Function AvzItrMap(Itr, Map$) As Variant()
@@ -245,11 +245,11 @@ Dim Obj: For Each Obj In Itr
 Next
 End Function
 
-Function IwNm(Itr, B As WhNm)
+Function IwNm(Itr, b As WhNm)
 IwNm = ItrClnAy(Itr)
 Dim O
 For Each O In Itr
-    If HitNm(ObjNm(O), B) Then
+    If HitNm(ObjNm(O), b) Then
         Push IwNm, O
     End If
 Next

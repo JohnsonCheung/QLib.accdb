@@ -28,18 +28,18 @@ With FdClone
 End With
 End Function
 
-Function IsEqFd(A As DAO.Field2, B As DAO.Field2) As Boolean
+Function IsEqFd(A As DAO.Field2, b As DAO.Field2) As Boolean
 With A
-    If .Name <> B.Name Then Exit Function
-    If .Type <> B.Type Then Exit Function
-    If .Required <> B.Required Then Exit Function
-    If .AllowZeroLength <> B.AllowZeroLength Then Exit Function
-    If .DefaultValue <> B.DefaultValue Then Exit Function
-    If .ValidationRule <> B.ValidationRule Then Exit Function
-    If .ValidationText <> B.ValidationText Then Exit Function
-    If .Expression <> B.Expression Then Exit Function
-    If .Attributes <> B.Attributes Then Exit Function
-    If .Size <> B.Size Then Exit Function
+    If .Name <> b.Name Then Exit Function
+    If .Type <> b.Type Then Exit Function
+    If .Required <> b.Required Then Exit Function
+    If .AllowZeroLength <> b.AllowZeroLength Then Exit Function
+    If .DefaultValue <> b.DefaultValue Then Exit Function
+    If .ValidationRule <> b.ValidationRule Then Exit Function
+    If .ValidationText <> b.ValidationText Then Exit Function
+    If .Expression <> b.Expression Then Exit Function
+    If .Attributes <> b.Attributes Then Exit Function
+    If .Size <> b.Size Then Exit Function
 End With
 IsEqFd = True
 End Function

@@ -27,24 +27,24 @@ For Each I In A
 Next
 End Function
 
-Function IsEqIdx(A As DAO.Index, B As DAO.Index) As Boolean
+Function IsEqIdx(A As DAO.Index, b As DAO.Index) As Boolean
 With A
 Select Case True
-Case .Name <> B.Name
-Case .Primary <> B.Primary
-Case .Unique <> B.Unique
-Case Not IsEqAy(Itn(.Fields), Itn(B.Fields))
+Case .Name <> b.Name
+Case .Primary <> b.Primary
+Case .Unique <> b.Unique
+Case Not IsEqAy(Itn(.Fields), Itn(b.Fields))
 Case Else: IsEqIdx = True
 End Select
 End With
 End Function
 
-Function IsEqIdxs(A As DAO.Indexes, B As DAO.Indexes) As Boolean
-If A.Count <> B.Count Then Exit Function
-If Not IsEqNmItr(A, B) Then Exit Function
+Function IsEqIdxs(A As DAO.Indexes, b As DAO.Indexes) As Boolean
+If A.Count <> b.Count Then Exit Function
+If Not IsEqNmItr(A, b) Then Exit Function
 Dim I
 For Each I In A
-    If Not IsEqIdx(CvIdx(I), B(CvIdx(I).Name)) Then Exit Function
+    If Not IsEqIdx(CvIdx(I), b(CvIdx(I).Name)) Then Exit Function
 Next
 End Function
 

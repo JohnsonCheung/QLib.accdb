@@ -65,11 +65,11 @@ Set LasRowCell = RgRC(LasRow(L), 1, L.ListColumns(C).Index)
 End Function
 
 Function LoCC(L As ListObject, C1$, C2$) As Range
-Dim A%, B%
+Dim A%, b%
 With L
     A = .ListColumns(C1).Index
-    B = .ListColumns(C2).Index
-    Set LoCC = RgCC(.DataBodyRange, A, B)
+    b = .ListColumns(C2).Index
+    Set LoCC = RgCC(.DataBodyRange, A, b)
 End With
 End Function
 

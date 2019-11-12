@@ -73,10 +73,10 @@ If IsAySuper(SuperAy, SubAy) Then Exit Function
 Thw CSub, "Some element in SubAy are found in SuperAy", "Som-Ele-in-SubAy SubAy SuperAy", AyMinus(SubAy, SuperAy), SubAy, SuperAy
 End Function
 
-Function HasEleAyInSeq(A, B) As Boolean
+Function HasEleAyInSeq(A, b) As Boolean
 Dim BItm, Ix&
-If Si(B) = 0 Then Stop
-For Each BItm In B
+If Si(b) = 0 Then Stop
+For Each BItm In b
     Ix = IxzAy(A, BItm, Ix)
     If Ix = -1 Then Exit Function
     Ix = Ix + 1
@@ -121,8 +121,8 @@ Next
 End Function
 
 Sub Z_HasEleAyInSeq()
-Dim A, B
+Dim A, b
 A = Array(1, 2, 3, 4, 5, 6, 7, 8)
-B = Array(2, 4, 6)
-Debug.Assert HasEleAyInSeq(A, B) = True
+b = Array(2, 4, 6)
+Debug.Assert HasEleAyInSeq(A, b) = True
 End Sub

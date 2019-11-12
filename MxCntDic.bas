@@ -40,8 +40,8 @@ For Each K In DiKqCnt.Keys
 Next
 End Function
 
-Function DiKqCntwEmCnt(DiKqCnt As Dictionary, B As EmCnt) As Dictionary
-Select Case B
+Function DiKqCntwEmCnt(DiKqCnt As Dictionary, b As EmCnt) As Dictionary
+Select Case b
 Case EmCnt.EiCntDup: Set DiKqCntwEmCnt = DiKqCntwDup(DiKqCnt)
 Case EmCnt.EiCntSng: Set DiKqCntwEmCnt = DiKqCntwSng(DiKqCnt)
 Case Else: Set DiKqCntwEmCnt = DiKqCnt

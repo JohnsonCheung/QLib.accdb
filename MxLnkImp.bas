@@ -85,10 +85,10 @@ End Sub
 Function WDStru(Ip As TDoLTDH) As Drs
 'Fm Ip : L T1 Dta IsHdr}
 'Ret WDStru: Stru F Ty E
-Dim A As Drs, Dr, Dy(), B As Drs, T1$, Dta$
+Dim A As Drs, Dr, Dy(), b As Drs, T1$, Dta$
 A = DwEqSel(Ip.D, "IsHdr", False, "T1 Dta")
-B = DwPfx(A, "T1", "Stru.") 'T1 Dta
-For Each Dr In Itr(B.Dy)
+b = DwPfx(A, "T1", "Stru.") 'T1 Dta
+For Each Dr In Itr(b.Dy)
     T1 = Dr(0)
     Dta = Dr(1)
     PushI Dy, XDrOfStru(T1, Dta)

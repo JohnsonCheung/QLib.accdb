@@ -60,8 +60,8 @@ If IsEmpPth(Pth) Then Exit Sub
 RmDir Pth
 End Sub
 
-Sub RenPthAddPfx(Pth, Pfx)
-RenPth Pth, AddPfxzPth(Pth, Pfx)
+Sub RenPthAddFdrPfx(Pth, Pfx)
+RenPth Pth, AddFdrPfx(Pth, Pfx)
 End Sub
 
 Sub RenPth(Pth, NewPth)

@@ -121,7 +121,7 @@ Sub ClsMd(M As CodeModule)
 M.CodePane.Window.Close
 End Sub
 
-Sub CprMd(M As CodeModule, B As CodeModule)
+Sub CprMd(M As CodeModule, b As CodeModule)
 'BrwCprDic DiMthnqLineszM(A), DiMthnqLineszMd(B), MdDn(A), MdDn(B)
 End Sub
 

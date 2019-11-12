@@ -30,8 +30,8 @@ Dim A1 As Drs:
     Else
         A1 = DwNe(A, "Mdy", "Prv")
     End If
-Dim B As Drs: B = DwDup(A1, "Mthn")
-Dim C As Drs: C = SrtDrs(B, "Mthn")
+Dim b As Drs: b = DwDup(A1, "Mthn")
+Dim C As Drs: C = SrtDrs(b, "Mthn")
 Dim D As Drs: D = AddColzValIdqCnt(C, "Mthl")
 If IsExactDup Then
     DoDupMthzP = DwDup(D, "MthlId")

@@ -85,8 +85,8 @@ Sub XCpyWs(P As CWs, Fm As Workbook, Tar As Workbook)
 Dim FmWs As Worksheet
 End Sub
 
-Sub XFmt(F As IWbFmtr, B As Workbook)
-If Not IsNothing(F) Then F.FmtWb B
+Sub XFmt(F As IWbFmtr, b As Workbook)
+If Not IsNothing(F) Then F.FmtWb b
 End Sub
 
 Function XShouldOpnWb(P As RptPm) As Boolean
@@ -100,12 +100,12 @@ XShouldOpnWb = False
 End Function
 
 Sub Z_Rpt()
-Dim WDb As Database, B As IOupGenr
+Dim WDb As Database, b As IOupGenr
 GoSub Z
 Exit Sub
 Z:
     Set WDb = Nothing
-    Set B = New TaxCmpOupGenr
+    Set b = New TaxCmpOupGenr
     GoTo Tst
 Tst:
     'Rpt_Oup WDb, B

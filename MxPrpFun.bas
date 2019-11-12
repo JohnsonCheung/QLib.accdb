@@ -5,7 +5,7 @@ Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxPrpFun."
 Dim Inf$()
 Function IsLinPrpFun(Lin) As Boolean
-Dim L$, B$
+Dim L$, b$
 L = RmvMdy(Lin)
 If ShfMthTy(L) <> "Function" Then Exit Function
 If ShfNm(L) = "" Then Exit Function

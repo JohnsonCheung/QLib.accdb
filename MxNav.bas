@@ -33,8 +33,8 @@ End Function
 
 Function LyzFunMsgNav(Fun$, Msg$, Nav()) As String()
 Dim A$(): A = LyzFunMsg(Fun, Msg)
-Dim B$(): B = IndentSy(LyzNav(Nav))
-LyzFunMsgNav = AddAy(A, B)
+Dim b$(): b = IndentSy(LyzNav(Nav))
+LyzFunMsgNav = AddAy(A, b)
 End Function
 
 Function LyzMsgNav(Msg$, Nav()) As String()

@@ -173,9 +173,9 @@ Dim O&()
         Dim I&(): I = Ixy
         Dim P&:   P = Pop(I)
         Dim A&(): A = RxyzSrtDy__LE(I, P)
-        Dim B&(): B = RxyzSrtDy__GT(I, P)
+        Dim b&(): b = RxyzSrtDy__GT(I, P)
         Dim L&(): L = RxyzSrtDy___Srt(A)
-        Dim H&(): H = RxyzSrtDy___Srt(B)
+        Dim H&(): H = RxyzSrtDy___Srt(b)
 
         PushIAy O, L
           PushI O, P

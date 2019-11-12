@@ -43,14 +43,14 @@ Function RplVBar$(S)
 RplVBar = Replace(S, "|", vbCrLf)
 End Function
 Function RplBet$(S, By$, S1$, S2$)
-Dim P1%, P2%, B$, C$
+Dim P1%, P2%, b$, C$
 P1 = InStr(S, S1)
 If P1 = 0 Then Stop
 P2 = InStr(P1 + Len(S1), S, S2)
 If P2 = 0 Then Stop
-B = Left(S, P1 + Len(S1) - 1)
+b = Left(S, P1 + Len(S1) - 1)
 C = Mid(S, P2 + Len(S2) - 1)
-RplBet = B & By & C
+RplBet = b & By & C
 End Function
 
 Function Rpl2DblQ$(S)

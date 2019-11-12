@@ -35,19 +35,19 @@ Ass:
             Stop
         End If
     End If
-    Dim A$(), B$(), II
+    Dim A$(), b$(), II
     A = AyMinus(BefSrt, AftSrt)
-    B = AyMinus(AftSrt, BefSrt)
+    b = AyMinus(AftSrt, BefSrt)
     Debug.Print
-    If Si(A) = 0 And Si(B) = 0 Then Return
+    If Si(A) = 0 And Si(b) = 0 Then Return
     If Si(AeEmpEle(A)) <> 0 Then
         Debug.Print "Si(A)=" & Si(A)
         BrwAy A
         Stop
     End If
-    If Si(AeEmpEle(B)) <> 0 Then
-        Debug.Print "Si(B)=" & Si(B)
-        BrwAy B
+    If Si(AeEmpEle(b)) <> 0 Then
+        Debug.Print "Si(B)=" & Si(b)
+        BrwAy b
         Stop
     End If
     Return

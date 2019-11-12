@@ -45,11 +45,11 @@ IsPmEr = False
 End Function
 
 Sub Z_UnzipPth()
-Dim B$: B = ResPthB
+Dim b$: b = ResPthB
 Dim A$: A = ResPthA
 CrtResPthA
-EnsPth B
-Dim Z$: Z = ZipPth(CurrentDb, A, B)
+EnsPth b
+Dim Z$: Z = ZipPth(CurrentDb, A, b)
 Stop ' Wait the Dos to zip
 UnzipPth CurrentDb, Z, A
 BrwPth A '<== A should be restored

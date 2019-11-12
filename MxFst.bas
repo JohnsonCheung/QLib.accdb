@@ -36,10 +36,10 @@ For Each X In Itr(A)
 Next
 End Function
 
-Function FstElePredXABTrue(Ay, XAB$, A, B)
+Function FstElePredXABTrue(Ay, XAB$, A, b)
 Dim X
 For Each X In Itr(Ay)
-    If Run(XAB, X, A, B) Then Asg X, FstElePredXABTrue: Exit Function
+    If Run(XAB, X, A, b) Then Asg X, FstElePredXABTrue: Exit Function
 Next
 End Function
 

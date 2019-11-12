@@ -20,25 +20,25 @@ If IsStr(A) Then Exit Sub
 Thw Fun, "Given parameter should be str, but now TypeName=" & TypeName(A)
 End Sub
 
-Sub ThwIf_AyabNE(A, B, Optional N1$ = "Exp", Optional N2$ = "Act")
-ThwIf_Er ChkEqAy(A, B, N1, N2), CSub
+Sub ThwIf_AyabNE(A, b, Optional N1$ = "Exp", Optional N2$ = "Act")
+ThwIf_Er ChkEqAy(A, b, N1, N2), CSub
 End Sub
 
-Sub ThwIf_NE(A, B, Optional N1$ = "A", Optional N2$ = "B")
+Sub ThwIf_NE(A, b, Optional N1$ = "A", Optional N2$ = "B")
 Const CSub$ = CMod & "ThwIf_NE"
-ThwIf_DifTy A, B, N1, N2
+ThwIf_DifTy A, b, N1, N2
 Dim IsLinesA As Boolean, IsLinesB As Boolean
 IsLinesA = IsLines(A)
-IsLinesB = IsLines(B)
+IsLinesB = IsLines(b)
 Select Case True
-Case IsLinesA Or IsLinesB: If A <> B Then CprLines CStr(A), CStr(B), Hdr:=FmtQQ("Lines [?] [?] not eq.", N1, N2): Stop: Exit Sub
-Case IsStr(A):    If A <> B Then CprStr CStr(A), CStr(B), Hdr:=FmtQQ("String [?] [?] not eq.", N1, N2): Stop: Exit Sub
-Case IsDic(A):    If Not IsEqDic(CvDic(A), CvDic(B)) Then BrwCprDic CvDic(A), CvDic(B): Stop: Exit Sub
-Case IsArray(A):  ThwIf_DifAy A, B, N1, N2
-Case IsObject(A): If ObjPtr(A) <> ObjPtr(B) Then Thw CSub, "Two object are diff", FmtQQ("Ty-? Ty-?", N1, N2), TypeName(A), TypeName(B)
+Case IsLinesA Or IsLinesB: If A <> b Then CprLines CStr(A), CStr(b), Hdr:=FmtQQ("Lines [?] [?] not eq.", N1, N2): Stop: Exit Sub
+Case IsStr(A):    If A <> b Then CprStr CStr(A), CStr(b), Hdr:=FmtQQ("String [?] [?] not eq.", N1, N2): Stop: Exit Sub
+Case IsDic(A):    If Not IsEqDic(CvDic(A), CvDic(b)) Then BrwCprDic CvDic(A), CvDic(b): Stop: Exit Sub
+Case IsArray(A):  ThwIf_DifAy A, b, N1, N2
+Case IsObject(A): If ObjPtr(A) <> ObjPtr(b) Then Thw CSub, "Two object are diff", FmtQQ("Ty-? Ty-?", N1, N2), TypeName(A), TypeName(b)
 Case Else:
-    If A <> B Then
-        Thw CSub, "A B NE", "A B", A, B
+    If A <> b Then
+        Thw CSub, "A B NE", "A B", A, b
         Exit Sub
     End If
 End Select
@@ -59,23 +59,23 @@ For Each A In Itr(AyA)
 Next
 End Sub
 
-Sub ThwIf_DifTy(A, B, Optional N1$ = "A", Optional N2$ = "B")
-If TypeName(A) = TypeName(B) Then Exit Sub
+Sub ThwIf_DifTy(A, b, Optional N1$ = "A", Optional N2$ = "B")
+If TypeName(A) = TypeName(b) Then Exit Sub
 Dim NN$
 NN = FmtQQ("?-TyNm ?-TyNm", N1, N2)
-Thw CSub, "Type Diff", NN, TypeName(A), TypeName(B)
+Thw CSub, "Type Diff", NN, TypeName(A), TypeName(b)
 End Sub
 
-Sub ThwIf_DifSi(A, B, Fun$)
-If Si(A) <> Si(B) Then Thw Fun, "Si-A <> Si-B", "Si-A Si-B", Si(A), Si(B)
+Sub ThwIf_DifSi(A, b, Fun$)
+If Si(A) <> Si(b) Then Thw Fun, "Si-A <> Si-B", "Si-A Si-B", Si(A), Si(b)
 End Sub
 
 Sub ThwIf_DifFF(A As Drs, FF$, Fun$)
 If JnSpc(A.Fny) <> FF Then Thw Fun, "Drs-FF <> FF", "Drs-FF FF", JnSpc(A.Fny), FF
 End Sub
 
-Sub ThwIf_ObjNE(A, B, Fun$, Msg$, Nav())
-If IsEqObj(A, B) Then ThwNav Fun, Msg, Nav
+Sub ThwIf_ObjNE(A, b, Fun$, Msg$, Nav())
+If IsEqObj(A, b) Then ThwNav Fun, Msg, Nav
 End Sub
 
 Sub ThwIf_NoSrt(Ay, Fun$)
@@ -93,8 +93,8 @@ If IsArray(A) Then Exit Sub
 Thw Fun, "Given parameter should be array, but now TypeName=" & TypeName(A)
 End Sub
 
-Sub ThwIf_EqObj(A, B, Fun$, Optional Msg$ = "Two given object cannot be same")
-If IsEqObj(A, B) Then Thw Fun, Msg
+Sub ThwIf_EqObj(A, b, Fun$, Optional Msg$ = "Two given object cannot be same")
+If IsEqObj(A, b) Then Thw Fun, Msg
 End Sub
 
 

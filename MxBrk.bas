@@ -5,29 +5,29 @@ Const CLib$ = "QVb."
 Const CMod$ = CLib & "MxBrk."
 ':Dn:  :S #Dot-Nm# ! one-or-more-nm sep by Dot
 
-Sub AsgBrkBet(L$, A$, B$, O1, O2, O3)
-AsgS3 BrkBet(L, A, B), O1, O2, O3
+Sub AsgBrkBet(L$, A$, b$, O1, O2, O3)
+AsgS3 BrkBet(L, A, b), O1, O2, O3
 End Sub
 
 Sub AsgS3(A As S3, O1, O2, O3)
 O1 = A.A
-O2 = A.B
+O2 = A.b
 O3 = A.C
 End Sub
 
-Function BrkBet(L$, A$, B$) As S3
+Function BrkBet(L$, A$, b$) As S3
 If L = "" Then Exit Function
 Dim P1%, P2%, O As S3, LA%, LB%
 LA = Len(A)
-LB = Len(B)
+LB = Len(b)
 P1 = InStr(L, A)
-P2 = InStr(L, B)
+P2 = InStr(L, b)
 Select Case True
 Case P1 <> 0 And P2 <> 0 And P1 > P2:       Stop
 Case P1 = 0 And P2 = 0: O.A = Trim(L)
 Case P1 = 0:            O.A = Trim(Left(L, P2 - 1)): O.C = Trim(Mid(L, P2 + LB))
-Case P2 = 0:            O.A = Trim(Left(L, P1 - 1)): O.B = Trim(Mid(L, P1 + LA))
-Case Else:              O.A = Trim(Left(L, P1 - 1)): O.B = Trim(Mid(L, P1 + LA, P2 - P1 + LA - 2)): O.C = Trim(Mid(L, P2 + Len(LB)))
+Case P2 = 0:            O.A = Trim(Left(L, P1 - 1)): O.b = Trim(Mid(L, P1 + LA))
+Case Else:              O.A = Trim(Left(L, P1 - 1)): O.b = Trim(Mid(L, P1 + LA, P2 - P1 + LA - 2)): O.C = Trim(Mid(L, P2 + Len(LB)))
 End Select
 BrkBet = O
 End Function

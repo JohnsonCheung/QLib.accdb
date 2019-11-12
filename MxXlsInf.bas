@@ -476,8 +476,8 @@ Set TmpDbzFxWny = O
 End Function
 
 Function HasWb(Wbn) As Boolean
-Dim B As Workbook: For Each B In Xls.Workbooks
-    If B.Name = Wbn Then HasWb = True: Exit Function
+Dim b As Workbook: For Each b In Xls.Workbooks
+    If b.Name = Wbn Then HasWb = True: Exit Function
 Next
 End Function
 
@@ -574,11 +574,10 @@ If Si(EoFxwMis) > 0 Then Exit Function
 EoFxwMis = EoWsMis(Fx, Wsn, Inpn)
 End Function
 
-
-
-Function WszAyab(A, B, Optional N1$ = "Ay1", Optional N2$ = "Ay2") As Worksheet
-Set WszAyab = WszDrs(DrszAyab(A, B, N1, N2))
+Function WszAyab(A, b, Optional N1$ = "Ay1", Optional N2$ = "Ay2") As Worksheet
+Set WszAyab = WszDrs(DrszAyab(A, b, N1, N2))
 End Function
+
 Function WszCd(WsCdn$) As Worksheet
 Dim Ws As Worksheet
 For Each Ws In CWb.Sheets
@@ -589,13 +588,6 @@ Function WszDic(Dic As Dictionary, Optional InclValTy As Boolean) As Worksheet
 Set WszDic = WszDrs(DoDic(Dic, InclValTy))
 End Function
 
-Function WszDt(A As Dt) As Worksheet
-Dim O As Worksheet
-Set O = NewWs(A.DtNm)
-LozDrs DrszDt(A), A1zWs(O)
-WszDt = O
-End Function
-
 Function NyzFml(Fml$) As String()
 NyzFml = NyzMacro(Fml)
 End Function
@@ -603,24 +595,6 @@ End Function
 Function WszLy(Ly$(), Optional Wsn$ = "Sheet1") As Worksheet
 Set WszLy = WszRg(RgzAyV(Ly, A1zWs(NewWs(Wsn))))
 End Function
-
-Property Get MaxWsCol&()
-Static C&, Y As Boolean
-If Not Y Then
-    Y = True
-    C = IIf(Xls.Version = "16.0", 16384, 255)
-End If
-MaxWsCol = C
-End Property
-
-Property Get MaxWsRow&()
-Static R&, Y As Boolean
-If Not Y Then
-    Y = True
-    R = IIf(Xls.Version = "16.0", 1048576, 65535)
-End If
-MaxWsRow = R
-End Property
 
 Function SqHzN(N%) As Variant()
 Dim O()
@@ -644,11 +618,11 @@ End Function
 
 Sub Z_AyabWs()
 GoTo Z
-Dim A, B
+Dim A, b
 Z:
     A = SyzSS("A B C D E")
-    B = SyzSS("1 2 3 4 5")
-    ShwWs WszAyab(A, B)
+    b = SyzSS("1 2 3 4 5")
+    ShwWs WszAyab(A, b)
 End Sub
 
 Sub Z_WbFbOupTbl()

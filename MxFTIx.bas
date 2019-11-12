@@ -41,9 +41,9 @@ For J = 0 To M.N - 1
     PushFei O, M.Ay(J)
 Next
 End Sub
-Function AddFeis(A As Feis, B As Feis) As Feis
+Function AddFeis(A As Feis, b As Feis) As Feis
 AddFeis = A
-PushFeis A, B
+PushFeis A, b
 End Function
 Function SngFei(A As Fei) As Feis
 PushFei SngFei, A
@@ -63,11 +63,11 @@ Function FeizFC(FmIx, Cnt) As Fei
 FeizFC = Fei(FmIx, FmIx + Cnt - 1)
 End Function
 
-Function IsEqFeis(A As Feis, B As Feis) As Boolean
-If A.N <> B.N Then Exit Function
+Function IsEqFeis(A As Feis, b As Feis) As Boolean
+If A.N <> b.N Then Exit Function
 Dim J&
 For J = 0 To A.N - 1
-    If Not IsEqFei(A.Ay(J), B.Ay(J)) Then Exit Function
+    If Not IsEqFei(A.Ay(J), b.Ay(J)) Then Exit Function
     J = J + 1
 Next
 IsEqFeis = True
@@ -101,10 +101,10 @@ Next
 LinCntzFeis = O
 End Function
 
-Function IsEqFei(A As Fei, B As Fei) As Boolean
+Function IsEqFei(A As Fei, b As Fei) As Boolean
 With A
-    If .FmIx <> B.FmIx Then Exit Function
-    If .EIx <> B.EIx Then Exit Function
+    If .FmIx <> b.FmIx Then Exit Function
+    If .EIx <> b.EIx Then Exit Function
 End With
 IsEqFei = True
 End Function

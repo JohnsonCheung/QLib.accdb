@@ -142,8 +142,8 @@ Function MthRmkzP(P As VBProject) As S12s
 Dim C As VBComponent
 For Each C In P.VBComponents
     Dim A As S12s: A = MthRmkzM(C.CodeModule)
-    Dim B As S12s: B = AddS1Pfx(A, C.Name & ".")
-    PushS12s MthRmkzP, B
+    Dim b As S12s: b = AddS1Pfx(A, C.Name & ".")
+    PushS12s MthRmkzP, b
 Next
 End Function
 

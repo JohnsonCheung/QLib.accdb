@@ -41,7 +41,7 @@ Stop
 End Function
 
 Function PjnzSrcp$(Srcp$)
-Dim P$: P = DltPthSfx(Srcp)
+Dim P$: P = RmvPthSfx(Srcp)
 If Ext(P) <> ".src" Then Thw CSub, "Not source path", "CmitgPth", Srcp
 PjnzSrcp = RmvExt(Fn(P))
 End Function

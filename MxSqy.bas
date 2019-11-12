@@ -266,7 +266,7 @@ Set Y_Pm = Dic(Y_PmLy)
 End Function
 
 Sub BrwSw(A As Sw)
-B FmtSw(A)
+b FmtSw(A)
 End Sub
 
 Function FmtSw(A As Sw) As String()
@@ -304,17 +304,17 @@ Dim SqTp$
 GoSub Z
 Exit Sub
 Z:
-    B SqyzTp(Y_SqTp)
+    b SqyzTp(Y_SqTp)
     Return
 End Sub
 
 Function SqyzTp(SqTp$) As String()
 ThwIf_Er EoSqTp(SqTp), CSub
 Dim Brk As TpBrk:             Brk = TpBrkzSq(SqTp)
-Dim B As Blks:                  B = Brk.Ok
-Dim Pm As Dictionary:      Set Pm = Dic(LyzBlkTy(B, "PM"))
-Dim S As Sw:               S = Sw(LyzBlkTy(B, "SW"), Pm)
-SqyzTp = Sqy(LyAyzBlkTy(B, "SQ"), Pm, S)
+Dim b As Blks:                  b = Brk.Ok
+Dim Pm As Dictionary:      Set Pm = Dic(LyzBlkTy(b, "PM"))
+Dim S As Sw:               S = Sw(LyzBlkTy(b, "SW"), Pm)
+SqyzTp = Sqy(LyAyzBlkTy(b, "SQ"), Pm, S)
 End Function
 
 Sub Z_Pm()

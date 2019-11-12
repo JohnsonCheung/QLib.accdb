@@ -67,11 +67,11 @@ Next
 OywNmPfx = O
 End Function
 
-Function OywNm(Oy, B As WhNm)
+Function OywNm(Oy, b As WhNm)
 Dim Obj, O
 O = Oy: Erase O
 For Each Obj In Itr(Oy)
-    If HitNm(Obj.Name, B) Then PushObj OywNm, Obj
+    If HitNm(Obj.Name, b) Then PushObj OywNm, Obj
 Next
 End Function
 

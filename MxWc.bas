@@ -133,8 +133,8 @@ For Each I In Ny(TT)
 Next
 End Sub
 Function WcStrAyzFx(Fx) As String()
-Dim B As Workbook: Set B = Xls.Workbooks.Open(Fx)
-WcStrAyzFx = WcStrAyzWbOLE(B)
-B.Close False
+Dim b As Workbook: Set b = Xls.Workbooks.Open(Fx)
+WcStrAyzFx = WcStrAyzWbOLE(b)
+b.Close False
 End Function
 

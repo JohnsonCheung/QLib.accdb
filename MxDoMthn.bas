@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxDoMthn"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxDoMthn."
 
 

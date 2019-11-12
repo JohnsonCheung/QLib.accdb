@@ -15,9 +15,9 @@ Function DftStr$(Str, Dft)
 DftStr = IIf(Str = "", Dft, Str)
 End Function
 
-Function Limit(V, A, B)
+Function Limit(V, A, b)
 Select Case V
-Case V > B: Limit = B
+Case V > b: Limit = b
 Case V < A: Limit = A
 Case Else: Limit = V
 End Select

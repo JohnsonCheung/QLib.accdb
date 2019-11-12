@@ -8,7 +8,7 @@ Function SrcpzCmp$(A As VBComponent)
 SrcpzCmp = SrcpzP(PjzC(A))
 End Function
 
-Function SrcpzPjf$(Pjf, Optional Libv$)
+Function SrcpzPjf$(Pjf)
 SrcpzPjf = EnsPth(Pjf & ".src")
 End Function
 
@@ -21,12 +21,12 @@ Dim P$: P = Pjp(DistPj)
 SrcpzDistPj = AddFdrAp(UpPth(P, 1), ".Src", Fdr(P))
 End Function
 
-Function SrcpP$(Optional Libv$)
-SrcpP = SrcpzP(CPj, Libv)
+Function SrcpP$()
+SrcpP = SrcpzP(CPj)
 End Function
 
-Function SrcpzP$(P As VBProject, Optional Libv$)
-SrcpzP = SrcpzPjf(Pjf(P), Libv)
+Function SrcpzP$(P As VBProject)
+SrcpzP = SrcpzPjf(Pjf(P))
 End Function
 
 Sub BrwSrcpP()

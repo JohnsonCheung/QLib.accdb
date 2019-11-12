@@ -41,8 +41,8 @@ MdlzTbMdP = MdlzTbMd(CurrentDb, CPjn, Mdn)
 End Function
 
 Function MdlzTbMd$(D As Database, Pjn$, Mdn)
-Dim B$: B = FmtQQ("Pjn='?' and Mdn='?'", Pjn, Mdn)
-MdlzTbMd = FvzTFW(D, "Md", "Mdl", B)
+Dim b$: b = FmtQQ("Pjn='?' and Mdn='?'", Pjn, Mdn)
+MdlzTbMd = FvzTFW(D, "Md", "Mdl", b)
 End Function
 
 Sub Z_RfhTbMth()

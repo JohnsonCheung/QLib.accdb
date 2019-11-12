@@ -296,22 +296,22 @@ OStr = ""
 End Function
 
 Sub BrwRepeatedBytes(S)
-Dim J&, B%, B1%, RepeatCnt&, L&
+Dim J&, b%, B1%, RepeatCnt&, L&
 L = Len(S)
 If L = 0 Then Exit Sub
-B = Asc(FstChr(S)): RepeatCnt = 1
+b = Asc(FstChr(S)): RepeatCnt = 1
 Erase XX
 X FmtQQ("Len(?)", L)
 For J = 2 To L
     B1 = Asc(Mid(S, J, 1))
     Select Case True
-    Case B = B1:        RepeatCnt = RepeatCnt + 1
+    Case b = B1:        RepeatCnt = RepeatCnt + 1
     Case Else
         If RepeatCnt > 1 Then
-            X FmtQQ("Pos(?) Asc(?) RepeatCnt(?)", J, B, RepeatCnt)
+            X FmtQQ("Pos(?) Asc(?) RepeatCnt(?)", J, b, RepeatCnt)
             RepeatCnt = 1
         End If
-        B = B1
+        b = B1
     End Select
 Next
 Brw AddIxPfx(XX)

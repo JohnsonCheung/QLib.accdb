@@ -130,9 +130,9 @@ ShtTyBqlzT = Jn(Ay, "`")
 End Function
 
 Function ShtTyszFd$(A As DAO.Field)
-Dim B$: B = ShtDaoTy(A.Type)
+Dim b$: b = ShtDaoTy(A.Type)
 If A.Type = dbText Then
-    B = B & A.Size
+    b = b & A.Size
 End If
-ShtTyszFd = B
+ShtTyszFd = b
 End Function

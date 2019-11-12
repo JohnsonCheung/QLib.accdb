@@ -55,12 +55,12 @@ Thw Fun, "There are dup in array", "Dup Ay", Dup, Ay
 End Sub
 
 
-Function OffsetzEmBeg(B As EmIxCol, Optional FmI&) As Byte
+Function OffsetzEmBeg(b As EmIxCol, Optional FmI&) As Byte
 Select Case True
-Case B = EiBeg0: OffsetzEmBeg = 0
-Case B = EiBeg1: OffsetzEmBeg = 1
-Case B = EiBegI: OffsetzEmBeg = FmI
-Case Else: Thw CSub, "EmIxCol value error", "EmIxCol", B
+Case b = EiBeg0: OffsetzEmBeg = 0
+Case b = EiBeg1: OffsetzEmBeg = 1
+Case b = EiBegI: OffsetzEmBeg = FmI
+Case Else: Thw CSub, "EmIxCol value error", "EmIxCol", b
 End Select
 End Function
 

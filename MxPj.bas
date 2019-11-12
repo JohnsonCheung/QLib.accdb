@@ -32,15 +32,16 @@ End Function
 Function PjfP$()
 PjfP = Pjf(CPj)
 End Function
-Function PthP$()
-PthP = Pjp(CPj)
-End Function
+
 Function PjpP$()
 PjpP = Pjp(CPj)
 End Function
+
 Function Pjp$(P As VBProject)
+':Pjp: :Pth #Pj-Pth#
 Pjp = Pth(Pjf(P))
 End Function
+
 Function Pjfn$(P As VBProject)
 Pjfn = Fn(Pjf(P))
 End Function
@@ -92,9 +93,9 @@ Dim Fnn$
     End If
 ActPj P
 'Chk BoSav
-    Dim B As CommandBarButton: Set B = BoSav(Vbe)
-    If B.Caption <> "&Save " & Fnn Then Thw CSub, "Caption is not expected", "Save-Bottun-Caption Expected", B.Caption, "&Save " & Fnn
-B.Execute '<===== Save
+    Dim b As CommandBarButton: Set b = BoSav(Vbe)
+    If b.Caption <> "&Save " & Fnn Then Thw CSub, "Caption is not expected", "Save-Bottun-Caption Expected", b.Caption, "&Save " & Fnn
+b.Execute '<===== Save
 If P.Saved Then
     Debug.Print FmtQQ("SavPj: Pj(?) is saved <---------------", P.Name)
 Else

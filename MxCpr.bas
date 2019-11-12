@@ -5,14 +5,14 @@ Const CLib$ = "QVb."
 Const CNs$ = "Str.Cpr"
 Const CMod$ = CLib & "MxCpr."
 
-Sub CprLines(A$, B$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$)
-Brw FmtCprLines(A, B, N1, N2, Hdr)
+Sub CprLines(A$, b$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$)
+Brw FmtCprLines(A, b, N1, N2, Hdr)
 End Sub
 
-Function FmtCprLines(A$, B$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$ = "Compare 2 Lines") As String()
-If A = B Then Exit Function
+Function FmtCprLines(A$, b$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$ = "Compare 2 Lines") As String()
+If A = b Then Exit Function
 Dim AA$(): AA = SplitCrLf(A)
-Dim BB$(): BB = SplitCrLf(B)
+Dim BB$(): BB = SplitCrLf(b)
 Dim DifAt&: DifAt = DifAtIx(AA, BB)
 Dim O$()
     PushNB O, Box(Hdr)
@@ -40,53 +40,53 @@ PushI O, FmtQQ("-- Rst-? (?-?) ----------", N1, DifAt + 1, UB(A))
 PushIAy O, AddIxPfx(AwFm(A, DifAt + 1), EiBegI, DifAt + 1)
 FmtCprLines__Rst = O
 End Function
-Sub CprStr(A$, B$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$)
-If A = B Then Exit Sub
-Brw FmtCprStr(A, B, N1, N2, Hdr)
+Sub CprStr(A$, b$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$)
+If A = b Then Exit Sub
+Brw FmtCprStr(A, b, N1, N2, Hdr)
 End Sub
 
-Function FmtCprStr(A$, B$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$) As String()
+Function FmtCprStr(A$, b$, Optional N1$ = "A", Optional N2$ = "B", Optional Hdr$) As String()
 '== Case1 A=B ===
-If A = B Then
+If A = b Then
     PushIAy FmtCprStr, Box(Hdr)
     PushI FmtCprStr, FmtQQ("Str(?) = Str(?).  Len(?)", N1, N2, Len(A))
     Exit Function
 End If
 '== Case2 IsLines ==
 Select Case True
-Case IsLines(A), IsLines(B)
-    FmtCprStr = FmtCprLines(A, B, N1, N2, Hdr)
+Case IsLines(A), IsLines(b)
+    FmtCprStr = FmtCprLines(A, b, N1, N2, Hdr)
     Exit Function
 End Select
 '== Case3 IsStr
-Dim At&: At = DifAt(A, B)
+Dim At&: At = DifAt(A, b)
 Dim O$()
     PushI O, FmtQQ("Str-(?)-Len: ?", N1, Len(A))
-    PushI O, FmtQQ("Str-(?)-Len: ?", N2, Len(B))
+    PushI O, FmtQQ("Str-(?)-Len: ?", N2, Len(b))
     PushI O, "Dif At: " & At
-    PushIAy O, Lbl123(Max(Len(A), Len(B)))
+    PushIAy O, Lbl123(Max(Len(A), Len(b)))
     PushI O, A
-    PushI O, B
+    PushI O, b
     PushI O, Space(At - 1) & "^"
 FmtCprStr = O
 End Function
 
-Function DifAt&(A$, B$)
+Function DifAt&(A$, b$)
 Dim O&
-For O = 1 To Min(Len(A), Len(B))
-    If Mid(A, O, 1) <> Mid(B, O, 1) Then DifAt = O: Exit Function
+For O = 1 To Min(Len(A), Len(b))
+    If Mid(A, O, 1) <> Mid(b, O, 1) Then DifAt = O: Exit Function
 Next
-If Len(A) > Len(B) Then
-    DifAt = Len(B) + 1
+If Len(A) > Len(b) Then
+    DifAt = Len(b) + 1
 Else
     DifAt = Len(A) + 1
 End If
 End Function
 
-Function DifAtIx&(A$(), B$())
+Function DifAtIx&(A$(), b$())
 Dim O&
-For O = 0 To Min(UB(A), UB(B))
-    If A(O) <> B(O) Then DifAtIx = O: Exit Function
+For O = 0 To Min(UB(A), UB(b))
+    If A(O) <> b(O) Then DifAtIx = O: Exit Function
 Next
 'Thw_Never CSub
 End Function
@@ -132,13 +132,13 @@ Lbl123__Hundred = Left(Jn(O), L)
 End Function
 
 Sub Z_FmtCprLines()
-Dim A$, B$
+Dim A$, b$
 A = LineszVbl("AAAAAAA|bbbbbbbb|cc|dd")
-B = LineszVbl("AAAAAAA|bbbbbbbb |cc")
+b = LineszVbl("AAAAAAA|bbbbbbbb |cc")
 GoSub Tst
 Exit Sub
 Tst:
-    Act = FmtCprLines(A, B)
+    Act = FmtCprLines(A, b)
     Brw Act
     Return
 

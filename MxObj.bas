@@ -9,12 +9,12 @@ Enum EmThw
     EiThwEr
     EiNoThw
 End Enum
-Function IsEqObj(A, B) As Boolean
-IsEqObj = ObjPtr(A) = ObjPtr(B)
+Function IsEqObj(A, b) As Boolean
+IsEqObj = ObjPtr(A) = ObjPtr(b)
 End Function
 
-Function IsEqVar(A, B) As Boolean
-IsEqVar = VarPtr(A) = VarPtr(B)
+Function IsEqVar(A, b) As Boolean
+IsEqVar = VarPtr(A) = VarPtr(b)
 End Function
 
 Function IntozOy(OInto, Oy)

@@ -39,8 +39,8 @@ End Function
 Sub EnsPrvZ(M As CodeModule, Optional Upd)
 Const CmPfx$ = "X_"
 Dim A As Drs: ' A = DPubZMth(M) ' L MthLin
-Dim B As Drs: ' B = X_EnsPrv(A)   ' L MthLin PrvZ
-Dim C As Drs: C = SelDrsAs(B, "L PrvZ:NewL MthLin:OldL")
+Dim b As Drs: ' B = X_EnsPrv(A)   ' L MthLin PrvZ
+Dim C As Drs: C = SelDrsAs(b, "L PrvZ:NewL MthLin:OldL")
 
 RplLin M, C
 End Sub

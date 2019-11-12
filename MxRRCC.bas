@@ -18,9 +18,9 @@ Type RC
     R As Long
     C As Long
 End Type
-Function HasRC(A As RRCC, B As RC) As Boolean
-If IsNBet(B.R, A.R1, A.R2) Then Exit Function
-If IsNBet(B.C, A.C1, A.C2) Then Exit Function
+Function HasRC(A As RRCC, b As RC) As Boolean
+If IsNBet(b.R, A.R1, A.R2) Then Exit Function
+If IsNBet(b.C, A.C1, A.C2) Then Exit Function
 HasRC = True
 End Function
 Function RRCC(R1, R2, C1, C2) As RRCC
@@ -36,9 +36,9 @@ With RRCC
 End With
 End Function
 
-Function IsEqRRCC(A As RRCC, B As RRCC) As Boolean
+Function IsEqRRCC(A As RRCC, b As RRCC) As Boolean
 Dim A1 As RRCC: A1 = NormRRCC(A)
-Dim B1 As RRCC: B1 = NormRRCC(B)
+Dim B1 As RRCC: B1 = NormRRCC(b)
 If A1.R1 <> B1.R1 Then Exit Function
 If A1.R2 <> B1.R2 Then Exit Function
 If A1.C1 <> B1.C1 Then Exit Function

@@ -143,10 +143,10 @@ With BrkSpc(DicLin)
     ODic.Add .S1, .S2
 End With
 End Sub
-Function AddDic(A As Dictionary, B As Dictionary) As Dictionary
+Function AddDic(A As Dictionary, b As Dictionary) As Dictionary
 Set AddDic = New Dictionary
 PushDic AddDic, A
-PushDic AddDic, B
+PushDic AddDic, b
 End Function
 
 Function DicAyzAp(ParamArray DicAp()) As Dictionary()

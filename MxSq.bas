@@ -176,16 +176,16 @@ Next
 InsSqr = O
 End Function
 
-Function IsEqSq(A, B) As Boolean
+Function IsEqSq(A, b) As Boolean
 Dim NR&, NC&
 NR = UBound(A, 1)
 NC = UBound(A, 2)
-If NR <> UBound(B, 1) Then Exit Function
-If NC <> UBound(B, 2) Then Exit Function
+If NR <> UBound(b, 1) Then Exit Function
+If NC <> UBound(b, 2) Then Exit Function
 Dim R&, C&
 For R = 1 To NR
     For C = 1 To NC
-        If A(R, C) <> B(R, C) Then
+        If A(R, C) <> b(R, C) Then
             Exit Function
         End If
     Next

@@ -1,6 +1,7 @@
 Attribute VB_Name = "MxLnoStr"
 Option Explicit
 Option Compare Text
+Const CLib$ = "QTp."
 Const CMod$ = CLib & "MxLnoStr."
 Const NLnoStrDig As Byte = 2
 

@@ -156,12 +156,12 @@ End Function
 
 
 Sub TimFun(FunNN)
-Dim B!, E!, F
+Dim b!, E!, F
 For Each F In TermAy(FunNN)
-    B = Timer
+    b = Timer
     Run F
     E = Timer
-    Debug.Print F, "<-- Run"; E - B
+    Debug.Print F, "<-- Run"; E - b
 Next
 End Sub
 

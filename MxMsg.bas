@@ -108,13 +108,13 @@ Function LyzNmDrs(Nm$, A As Drs, Optional MaxColWdt% = 100) As String()
 LyzNmDrs = LyzNmLy(Nm, FmtDrszNoRdu(A, MaxColWdt), EiNoIx)
 End Function
 
-Function LyzNmLy(Nm$, Ly$(), Optional B As EmIxCol = EiBeg1) As String()
+Function LyzNmLy(Nm$, Ly$(), Optional b As EmIxCol = EiBeg1) As String()
 Dim L$(), J&, S$
 If Si(Ly) = 0 Then
     PushI LyzNmLy, Nm & "(No Lin)"
     Exit Function
 End If
-L = AddIxPfx(Ly, B)
+L = AddIxPfx(Ly, b)
 'Brw L:Stop
 S = Space(Len(Nm))
 PushI LyzNmLy, Nm & L(0)

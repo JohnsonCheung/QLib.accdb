@@ -68,12 +68,12 @@ Next
 FnyzTdLy = CvSy(AwDist(O))
 End Function
 
-Function IsEqTd(A As DAO.TableDef, B As DAO.TableDef) As Boolean
+Function IsEqTd(A As DAO.TableDef, b As DAO.TableDef) As Boolean
 With A
 Select Case True
-Case .Name <> B.Name
-Case .Attributes <> B.Attributes
-Case Not IsEqIdxs(.Indexes, B.Indexes)
+Case .Name <> b.Name
+Case .Attributes <> b.Attributes
+Case Not IsEqIdxs(.Indexes, b.Indexes)
 'Case Not FdsIsEq(.Fields, B.Fields)
 Case Else: IsEqTd = True
 End Select
@@ -143,10 +143,10 @@ Next
 Set TdzTFdAy = O
 End Function
 
-Sub ThwIf_NETd(A As DAO.TableDef, B As DAO.TableDef)
+Sub ThwIf_NETd(A As DAO.TableDef, b As DAO.TableDef)
 Dim A1$(): A1 = TdStru(A)
-Dim B1$(): B1 = TdStru(B)
-If Not IsEqAy(A, B) Then Thw CSub, "Two 2 Td as diff", "Td-A Td-B", TdStru(A), TdStru(B)
+Dim B1$(): B1 = TdStru(b)
+If Not IsEqAy(A, b) Then Thw CSub, "Two 2 Td as diff", "Td-A Td-B", TdStru(A), TdStru(b)
 End Sub
 
 Property Get TmpTd() As DAO.TableDef

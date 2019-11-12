@@ -18,7 +18,7 @@ K    SC                   SC_U        how many unit per SC   ('no need)
 L    COL per case         AC_B        how many bottle per AC
 -----
 Letter meaning
-B = Bottle
+b = Bottle
 AC = act case
 SC = standard case
 U = Unit  (Bottle(COL) or Set (PCE))

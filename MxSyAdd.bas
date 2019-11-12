@@ -9,9 +9,9 @@ If Not IsSy(Osy) Then Exit Function
 AddOsy = AddSy(CvSy(Osy), CvSy(MsgStrOrSy))
 End Function
 
-Function AddSy(A$(), B$()) As String()
+Function AddSy(A$(), b$()) As String()
 AddSy = A
-PushIAy AddSy, B
+PushIAy AddSy, b
 End Function
 
 Function AddSyItm(A$(), Itm$) As String()
@@ -61,9 +61,9 @@ AddAy = AyA
 PushAy AddAy, AyB
 End Function
 
-Function AddAv(A(), B()) As Variant()
+Function AddAv(A(), b()) As Variant()
 AddAv = A
-PushAy AddAv, B
+PushAy AddAv, b
 End Function
 
 Function VbTyNyzAy(Ay) As String()

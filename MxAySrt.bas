@@ -71,17 +71,17 @@ Dim O&()
         Dim L&():   L = Ixy
         Dim P&:   P = Pop(L)
         Dim A&(): A = AySrtQ__LE(L, P)
-        Dim B&(): B = AySrtQ__GT(L, P)
+        Dim b&(): b = AySrtQ__GT(L, P)
                   A = AySrtQ__Srt(A) 'Srt-it
-                  B = AySrtQ__Srt(B)
+                  b = AySrtQ__Srt(b)
         PushIAy O, A
           PushI O, P
-        PushIAy O, B
+        PushIAy O, b
     End Select
 AySrtQ__Srt = O
 End Function
-Function AySrtQ__IsLE(A, B&) As Boolean
-AySrtQ__IsLE = A_Ay(A) <= A_Ay(B)
+Function AySrtQ__IsLE(A, b&) As Boolean
+AySrtQ__IsLE = A_Ay(A) <= A_Ay(b)
 End Function
 Function AySrtQ__LE(Ixy&(), P&) As Long()
 '@Ixy : Ix to be selected

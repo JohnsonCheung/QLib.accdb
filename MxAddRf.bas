@@ -3,8 +3,8 @@ Option Explicit
 Option Compare Text
 Const CLib$ = "QIde."
 Const CMod$ = CLib & "MxAddRf."
-Sub AddRf(P As VBProject, B As RfLin)
-Dim F$: F = RffzRfLin(B)
+Sub AddRf(P As VBProject, b As RfLin)
+Dim F$: F = RffzRfLin(b)
 If HasRff(P, F) Then Exit Sub
 P.References.AddFromFile F
 End Sub

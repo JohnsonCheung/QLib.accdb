@@ -50,32 +50,32 @@ Function IsDte(V) As Boolean
 IsDte = VarType(V) = vbDate
 End Function
 
-Function IsEq(A, B) As Boolean
-If Not IsEqTy(A, B) Then Exit Function
+Function IsEq(A, b) As Boolean
+If Not IsEqTy(A, b) Then Exit Function
 Select Case True
-Case IsArray(A): IsEq = IsEqAy(A, B)
-Case IsDic(A): IsEq = IsEqDic(CvDic(A), CvDic(B))
-Case IsObject(A): IsEq = ObjPtr(A) = ObjPtr(B)
-Case Else: IsEq = A = B
+Case IsArray(A): IsEq = IsEqAy(A, b)
+Case IsDic(A): IsEq = IsEqDic(CvDic(A), CvDic(b))
+Case IsObject(A): IsEq = ObjPtr(A) = ObjPtr(b)
+Case Else: IsEq = A = b
 End Select
 End Function
 
-Function IsEqDic(V As Dictionary, B As Dictionary) As Boolean
-If V.Count <> B.Count Then Exit Function
+Function IsEqDic(V As Dictionary, b As Dictionary) As Boolean
+If V.Count <> b.Count Then Exit Function
 If V.Count = 0 Then IsEqDic = True: Exit Function
 Dim K1, k2
 K1 = AySrtQ(V.Keys)
-k2 = AySrtQ(B.Keys)
+k2 = AySrtQ(b.Keys)
 If Not IsEqAy(K1, k2) Then Exit Function
 Dim K
 For Each K In K1
-   If B(K) <> V(K) Then Exit Function
+   If b(K) <> V(K) Then Exit Function
 Next
 IsEqDic = True
 End Function
 
-Function IsEqTy(V, B) As Boolean
-IsEqTy = VarType(V) = VarType(B)
+Function IsEqTy(V, b) As Boolean
+IsEqTy = VarType(V) = VarType(b)
 End Function
 Function IsInt(V) As Boolean
 IsInt = VarType(V) = vbInteger
@@ -114,8 +114,8 @@ Function IsLngAy(V) As Boolean
 IsLngAy = VarType(V) = vbArray + vbLong
 End Function
 
-Function IsNE(V, B) As Boolean
-IsNE = Not IsEq(V, B)
+Function IsNE(V, b) As Boolean
+IsNE = Not IsEq(V, b)
 End Function
 
 Function IsNoLinMd(V As CodeModule) As Boolean
@@ -270,22 +270,22 @@ End Function
 
 Sub ZIsSy()
 Dim V$()
-Dim B: B = V
+Dim b: b = V
 Dim C()
 Dim D
 Ass IsSy(V) = True
-Ass IsSy(B) = True
+Ass IsSy(b) = True
 Ass IsSy(C) = False
 Ass IsSy(D) = False
 End Sub
 
 Sub Z_IsStrAy()
 Dim V$()
-Dim B: B = V
+Dim b: b = V
 Dim C()
 Dim D
 Ass IsStrAy(V) = True
-Ass IsStrAy(B) = True
+Ass IsStrAy(b) = True
 Ass IsStrAy(C) = False
 Ass IsStrAy(D) = False
 End Sub
@@ -318,9 +318,9 @@ If IsStr(V) Then
     If Trim(V) = "" Then IsBlnkStr = True
 End If
 End Function
-Function IsBet(V, A, B) As Boolean
+Function IsBet(V, A, b) As Boolean
 If A > V Then Exit Function
-If V > B Then Exit Function
+If V > b Then Exit Function
 IsBet = True
 End Function
 Function IsErObj(A) As Boolean
@@ -334,8 +334,8 @@ Case IsEmpty(A), IsNothing(A), IsMissing(A), IsNull(A): IsEmp = True
 End Select
 End Function
 
-Function IsNBet(V, A, B) As Boolean
-IsNBet = Not IsBet(V, A, B)
+Function IsNBet(V, A, b) As Boolean
+IsNBet = Not IsBet(V, A, b)
 End Function
 
 Function IsSqBktQted(S) As Boolean
@@ -351,8 +351,8 @@ Next
 End Function
 
 
-Function IsEqStr(A, B, Optional C As VbCompareMethod = vbBinaryCompare) As Boolean
-IsEqStr = StrComp(A, B, C) = 0
+Function IsEqStr(A, b, Optional C As VbCompareMethod = vbBinaryCompare) As Boolean
+IsEqStr = StrComp(A, b, C) = 0
 End Function
 
 Function IsDteStr(S) As Boolean
@@ -371,8 +371,8 @@ Exit Function
 X:
 End Function
 
-Function IsAySam(A, B) As Boolean
-IsAySam = IsEqDic(DiKqCnt(A), DiKqCnt(B))
+Function IsAySam(A, b) As Boolean
+IsAySam = IsEqDic(DiKqCnt(A), DiKqCnt(b))
 End Function
 
 Function IsEqzAllEle(Ay) As Boolean
@@ -385,14 +385,14 @@ Next
 IsEqzAllEle = True
 End Function
 
-Function IsEqSi(A, B) As Boolean
-IsEqSi = Si(A) = Si(B)
+Function IsEqSi(A, b) As Boolean
+IsEqSi = Si(A) = Si(b)
 End Function
 
-Function IsNeAy(A, B) As Boolean
-IsNeAy = Not IsEqAy(A, B)
+Function IsNeAy(A, b) As Boolean
+IsNeAy = Not IsEqAy(A, b)
 End Function
 
-Function IsEqDy(A, B) As Boolean
-IsEqDy = IsEqAy(A, B)
+Function IsEqDy(A, b) As Boolean
+IsEqDy = IsEqAy(A, b)
 End Function

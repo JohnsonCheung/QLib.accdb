@@ -16,16 +16,16 @@ Dim Av(): Av = PfxAp
 HitPfxAp = HitPfxAv(S, Av)
 End Function
 
-Function HitPfxSpc(S, Pfx$, Optional B As VbCompareMethod = vbTextCompare) As Boolean
-HitPfxSpc = HasPfx(S, Pfx & " ", B)
+Function HitPfxSpc(S, Pfx$, Optional b As VbCompareMethod = vbTextCompare) As Boolean
+HitPfxSpc = HasPfx(S, Pfx & " ", b)
 End Function
 
-Function HitPfxAySpc(S, PfxAy$(), Optional B As VbCompareMethod = vbTextCompare) As Boolean
+Function HitPfxAySpc(S, PfxAy$(), Optional b As VbCompareMethod = vbTextCompare) As Boolean
 Dim Pfx
 HitPfxAySpc = True
 For Each Pfx In PfxAy
-    If HasPfx(S, Pfx & " ", B) Then Exit Function
-    If IsEqStr(S, Pfx, B) Then Exit Function
+    If HasPfx(S, Pfx & " ", b) Then Exit Function
+    If IsEqStr(S, Pfx, b) Then Exit Function
 Next
 HitPfxAySpc = False
 End Function

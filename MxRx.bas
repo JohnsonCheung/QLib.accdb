@@ -26,7 +26,7 @@ Set CvRe = A
 End Function
 
 Function Rx(Patn$, Optional MultiLine As Boolean, Optional IgnoreCase As Boolean, Optional IsGlobal As Boolean) As RegExp
-If Patn = "" Or Patn = ".*" Then Exit Function
+If Patn = "" Then Thw CSub, "Given @Patn is blank"
 Dim O As New RegExp
 With O
    .Pattern = Patn

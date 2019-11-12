@@ -1,8 +1,11 @@
 Attribute VB_Name = "MxGenLibPj"
-Option Compare Database
+Option Explicit
+Option Compare Text
+Const CLib$ = "QIde."
+Const CMod$ = CLib & "MxGenLibPj."
 
 Sub GenLibFbaP(Libv$)
-GenFbaByLibzP CPj, Libv
+GenLibFbazP CPj, Libv
 End Sub
 
 Sub GenLibFbazP(P As VBProject, Libv$)

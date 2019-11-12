@@ -44,11 +44,11 @@ Stop
 End Function
 
 
-Function AddColzExiB(A As Drs, B As Drs, Jn$, ExiB_FldNm$) As Drs
+Function AddColzExiB(A As Drs, b As Drs, Jn$, ExiB_FldNm$) As Drs
 Dim IA&(), IB&(), Dr, KA(), BKeyDy(), ODy()
 IA = IxyzJnA(A.Fny, Jn)
-IB = IxyzJnB(B.Fny, Jn)
-BKeyDy = SelDy(B.Dy, IB)
+IB = IxyzJnB(b.Fny, Jn)
+BKeyDy = SelDy(b.Dy, IB)
 For Each Dr In Itr(A.Dy)
     KA = AwIxy(Dr, IA)
     If HasDr(BKeyDy, KA) Then
@@ -121,15 +121,15 @@ Next
 AddColzLen = AddColzFFDy(D, LenC, Dy)
 End Function
 
-Function AddDrs(A As Drs, B As Drs) As Drs
-If IsEmpDrs(A) Then AddDrs = B: Exit Function
-If IsEmpDrs(B) Then AddDrs = A: Exit Function
-If Not IsEqAy(A.Fny, B.Fny) Then Thw CSub, "Dif Fny: Cannot add", "A-Fny B-Fny", A.Fny, B.Fny
-AddDrs = Drs(A.Fny, AddAv(A.Dy, B.Dy))
+Function AddDrs(A As Drs, b As Drs) As Drs
+If IsEmpDrs(A) Then AddDrs = b: Exit Function
+If IsEmpDrs(b) Then AddDrs = A: Exit Function
+If Not IsEqAy(A.Fny, b.Fny) Then Thw CSub, "Dif Fny: Cannot add", "A-Fny B-Fny", A.Fny, b.Fny
+AddDrs = Drs(A.Fny, AddAv(A.Dy, b.Dy))
 End Function
 
-Function AddDrs3(A As Drs, B As Drs, C As Drs) As Drs
-Dim O As Drs: O = AddDrs(A, B)
+Function AddDrs3(A As Drs, b As Drs, C As Drs) As Drs
+Dim O As Drs: O = AddDrs(A, b)
           AddDrs3 = AddDrs(O, C)
 End Function
 
@@ -187,12 +187,12 @@ Next
 End Sub
 
 Sub AsgColDist(A As Drs, CC$, ParamArray OColAp())
-Dim OColAv(), J%, Col, B As Drs, C$()
-B = DwDist(A, CC)
+Dim OColAv(), J%, Col, b As Drs, C$()
+b = DwDist(A, CC)
 OColAv = OColAp
 C = SyzSS(CC)
 For J = 0 To UB(OColAv)
-    Col = IntozDrsC(OColAv(J), B, C(J))
+    Col = IntozDrsC(OColAv(J), b, C(J))
     OColAp(J) = Col
 Next
 End Sub
@@ -660,9 +660,9 @@ If Si(A.Fny) > 0 Then Exit Function
 IsEmpDrs = True
 End Function
 
-Function IsEqDrs(A As Drs, B As Drs) As Boolean
+Function IsEqDrs(A As Drs, b As Drs) As Boolean
 Select Case True
-Case Not IsEqAy(A.Fny, B.Fny), Not IsEqAy(A.Dy, B.Dy)
+Case Not IsEqAy(A.Fny, b.Fny), Not IsEqAy(A.Dy, b.Dy)
 Case Else: IsEqDrs = True
 End Select
 End Function
